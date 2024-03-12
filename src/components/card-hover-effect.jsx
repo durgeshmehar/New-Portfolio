@@ -1,7 +1,6 @@
 import { cn } from "../utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { Link } from "react-router-dom";
 
 export const HoverEffect = ({ items, className }) => {
   let [hoveredIndex, setHoveredIndex] = useState(null);
@@ -9,22 +8,24 @@ export const HoverEffect = ({ items, className }) => {
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10",
+        "grid grid-cols-2 md:grid-cols-3  lg:grid-cols-3  py-10",
         className
       )}
     >
-      {items.map((item, idx) => (
-        <Link
-          href={item?.link}
-          key={item?.link}
-          className="relative group  block p-2 h-full w-full"
+      {items.map((item, idx) => {
+        const Icon = item.icon;
+        return (
+
+        <div
+          key={idx}
+          className="relative group  block p-2 h-full w-full "
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-3xl"
+                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-lg"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -38,12 +39,20 @@ export const HoverEffect = ({ items, className }) => {
               />
             )}
           </AnimatePresence>
-          <Card>
-            <CardTitle>{item.title}</CardTitle>
-            <CardDescription>{item.description}</CardDescription>
-          </Card>
-        </Link>
-      ))}
+          <div className="cursor-pointer rounded-md w-full p-4 overflow-hidden border border-transparent dark:border-white/[0.2]  bg-primary group-hover:ring-2 ring-green-400 relative z-20 transition-all duration-500">
+
+            <div className="py-10 z-50 relative space-y-5">
+            <Icon className="w-8 h-8 mx-auto" />
+              <p className="text-2xl font-bold text-center text-gray-300"> {item.name}</p>
+            </div>
+          </div>
+          
+        </div>
+        )
+
+      }
+      
+      )}
     </div>
   );
 };

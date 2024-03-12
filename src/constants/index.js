@@ -3,18 +3,18 @@ import {
     backend,
     creator,
     web,
-    javascript,
-    typescript,
-    html,
-    css,
-    reactjs,
-    redux,
-    tailwind,
-    nodejs,
-    mongodb,
-    git,
-    figma,
-    docker,
+    // javascript,
+    // typescript,
+    // html,
+    // css,
+    // reactjs,
+    // redux,
+    // tailwind,
+    // nodejs,
+    // mongodb,
+    // git,
+    // figma,
+    // docker,
     meta,
     starbucks,
     tesla,
@@ -22,8 +22,20 @@ import {
     carrent,
     jobit,
     tripguide,
-    threejs,
+    // threejs,
   } from "../assets";
+  import {
+    SiReact,
+    SiNextdotjs,
+    SiTailwindcss,
+    SiNodedotjs,
+    SiJavascript,
+    SiTypescript,
+    SiCplusplus,
+    SiRedux,
+    SiMongodb,
+    // SiPostgresql,
+  } from "react-icons/si";
   
   export const navLinks = [
     {
@@ -59,58 +71,42 @@ import {
     },
   ];
   
-  const technologies = [
+  const skills = [
     {
-      name: "HTML 5",
-      icon: html,
+      name: "React",
+      icon: SiReact,
     },
     {
-      name: "CSS 3",
-      icon: css,
+      name: "Next.js ",
+      icon: SiNextdotjs,
     },
     {
-      name: "JavaScript",
-      icon: javascript,
-    },
-    {
-      name: "TypeScript",
-      icon: typescript,
-    },
-    {
-      name: "React JS",
-      icon: reactjs,
-    },
-    {
-      name: "Redux Toolkit",
-      icon: redux,
-    },
-    {
-      name: "Tailwind CSS",
-      icon: tailwind,
+      name: "Tailwind",
+      icon: SiTailwindcss,
     },
     {
       name: "Node JS",
-      icon: nodejs,
+      icon: SiNodedotjs,
+    },
+    {
+      name: "JavaScript",
+      icon: SiJavascript,
+    },
+    {
+      name: "Typescript",
+      icon: SiTypescript,
+    },
+    {
+      name: "C++ (DSA)",
+      icon: SiCplusplus,
+    },
+    {
+      name: "Redux",
+      icon: SiRedux,
     },
     {
       name: "MongoDB",
-      icon: mongodb,
-    },
-    {
-      name: "Three JS",
-      icon: threejs,
-    },
-    {
-      name: "git",
-      icon: git,
-    },
-    {
-      name: "figma",
-      icon: figma,
-    },
-    {
-      name: "docker",
-      icon: docker,
+      icon: SiMongodb,
     },
   ];
   
@@ -262,4 +258,4 @@ import {
     },
   ];
   
-  export { services, technologies, experiences, testimonials, projects };
+  export { services, skills, experiences, testimonials, projects };

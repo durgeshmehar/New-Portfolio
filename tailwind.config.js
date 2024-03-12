@@ -13,6 +13,9 @@ export default {
         "black-200": "#090325",
         "white-100": "#f3f3f3",
       },
+      borderWidth: {
+        '0.5': '0.1px',
+      },
       boxShadow: {
         card: "0px 35px 120px -15px #211e35",
       },

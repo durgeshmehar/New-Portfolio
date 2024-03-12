@@ -7,7 +7,7 @@ import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
 const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className='xs:w-[250px] w-full'
+  <Tilt className=' w-full xs:w-[230px] md:w-[240px]'
   options={{
           max: 45,
           scale: 1,
