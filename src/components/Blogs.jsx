@@ -19,13 +19,13 @@ const BlogCard = ({ index, title, description, bloglink, tags, image }) => (
         scale: 1,
         speed: 450,
       }}
-      className="bg-black-200 p-5 rounded-3xl xs:w-[320px] w-full"
+      className="bg-black-200 p-5 rounded-xl w-[280px]  md:w-[320px]"
     >
-      <div className="relative w-full h-[230px]">
+      <div className="relative mx-auto h-[170px] w-full md:h-[230px]">
         <img
           src={image}
           alt="project_image"
-          className="w-full h-full  rounded-2xl"
+          className="w-full h-full  rounded-xl"
           // className="w-full h-full object-cover  rounded-2xl"
         />
 
@@ -48,7 +48,7 @@ const BlogCard = ({ index, title, description, bloglink, tags, image }) => (
       </div> */}
 
       <div className="mt-7">
-        <h3 className="text-white font-bold text-[24px]">{title}</h3>
+        <h3 className="text-white font-bold text-base md:text-[24px]">{title}</h3>
         <p className="mt-5 text-secondary text-[14px]">{description}</p>
       </div>
 
@@ -65,7 +65,7 @@ const BlogCard = ({ index, title, description, bloglink, tags, image }) => (
 
 const Blogs = () => {
   return (
-    <div className={`mt-6 md:mt-12 bg-black-100 rounded-[20px] flex justify-center items-center flex-col md:block`}>
+    <div className={`-mt-6 md:mt-12 bg-black-100 rounded-[20px] flex justify-center items-center flex-col md:block`}>
       <div
         className={`md:bg-tertiary rounded-xl ${styles.padding} md:min-h-[300px]`}
       >

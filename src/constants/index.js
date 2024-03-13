@@ -28,17 +28,21 @@ import {
   
   export const navLinks = [
     {
-      id: "about",
+      id: "#about",
       title: "About",
     },
     {
-      id: "work",
-      title: "Work",
+      id: "#projects",
+      title: "Projects",
     },
     {
-      id: "contact",
+      id: "#contact",
       title: "Contact",
     },
+    {
+      id:"https://drive.google.com/file/d/1znLobhz79qq0zmj-bWv0NEutAAGRTxCR/view?usp=sharing",
+      title:"Download CV"
+    }
   ];
   
   const services = [
@@ -55,7 +59,7 @@ import {
       icon: backend,
     },
     {
-      title: "Tech-Blog Writer",
+      title: "Blog Writer",
       icon: creator,
     },
   ];
@@ -138,7 +142,7 @@ import {
       ],
     },
     {
-      title: "Database Technologies Such as MongoDB and Postgres.",
+      title: "Database Technologies",
       company_name: "From Youtube & Web Dev Bootcamp by Angela Yu on Udemy",
       icon: mongodb,
       iconBg: "#383E56",
@@ -169,10 +173,6 @@ import {
       description:
         "E-shop Website is a platform designed to enhance your shopping experience, offering a wide range of products, secure payment options,email notification and efficient order management. You can shop with confidence, knowing that your data is secure and your transactions are handled with care.",
       tags: [
-        {
-          name: "React",
-          color: "blue-text-gradient",
-        },
         {
           name: "Redux",
           color: "orange-text-gradient",

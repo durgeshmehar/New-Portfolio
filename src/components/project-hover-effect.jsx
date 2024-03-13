@@ -42,7 +42,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
               )}
             </AnimatePresence>
 
-            <div className="rounded-md w-full p-4 overflow-hidden border border-transparent dark:border-white/[0.2]  bg-primary  relative z-20 transition-all duration-700">
+            <div className="rounded-lg w-full p-4 overflow-hidden border border-transparent dark:border-white/[0.2]  bg-primary  relative z-20 transition-all duration-700">
               <div className="py-4 z-50 relative space-y-5">
                 {/*  */}
                 <div>
@@ -52,7 +52,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                         src={image}
                        
                         alt="project_image"
-                        className="w-full h-full object-cover rounded-2xl cursor-pointer"
+                        className="w-full h-full object-cover rounded-lg cursor-pointer"
                       />
                     
 
@@ -72,8 +72,8 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                   </div>
 
                   <div className="mt-5">
-                    <h3 className="text-white font-bold text-[24px]">{name}</h3>
-                    <p className="mt-2 text-secondary text-[14px]">
+                    <h3 className="text-white font-bold text-base mb-6 md:text-[24px]">{name}</h3>
+                    <p className="mt-2 text-secondary text-[14px] text-left">
                       {description}
                     </p>
                   </div>
