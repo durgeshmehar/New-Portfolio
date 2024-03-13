@@ -20,7 +20,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
         return (
           <div
             key={idx}
-            className="relative group  block p-3 gap-2 h-full w-full "
+            className="relative group block p-3 gap-2 h-full w-full "
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
