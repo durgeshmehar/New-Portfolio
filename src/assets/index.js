@@ -1,13 +1,18 @@
 import logo from "./logo.png";
-import backend from "./backend.png";
-import creator from "./creator.png";
-import mobile from "./mobile.png";
-import web from "./web.png";
 import github from "./github.png";
+import linkedin from "./linkedin.png";
+import gmail from "./gmail.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
 
+import backend from "./roles/backend.png";
+import creator from "./roles/creator.png";
+import mobile from "./roles/mobile.png";
+import web from "./roles/web.png";
+
+
 import css from "./tech/css.png";
+import cpp from "./tech/cpp.png";
 import docker from "./tech/docker.png";
 import figma from "./tech/figma.png";
 import git from "./tech/git.png";
@@ -21,14 +26,18 @@ import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
 import threejs from "./tech/threejs.svg";
 
-import meta from "./company/meta.png";
-import shopify from "./company/shopify.png";
-import starbucks from "./company/starbucks.png";
-import tesla from "./company/tesla.png";
+import chatbot from "./project/chatbot.png"
+import eshop from "./project/eshop.png"
+import koinx from "./project/koinx.png"
+import portfolio from "./project/portfolio.png"
+import razorpay from "./project/razorpay.png"
+import snappy from "./project/snappy.png"
+import youtube from "./project/youtube.png"
 
-import carrent from "./carrent.png";
-import jobit from "./jobit.png";
-import tripguide from "./tripguide.png";
+import git_Blog from "./blogs/git.jpg"
+import mongodb_Blog from "./blogs/mongodb.gif"
+
+// koinx , portfolio,razorpay ,snappy , youtube
 
 export {
   logo,
@@ -36,6 +45,7 @@ export {
   creator,
   mobile,
   web,
+  cpp,
   github,
   menu,
   close,
@@ -52,11 +62,11 @@ export {
   tailwind,
   typescript,
   threejs,
-  meta,
-  shopify,
-  starbucks,
-  tesla,
-  carrent,
-  jobit,
-  tripguide,
+
+  linkedin,
+  gmail,
+
+  chatbot ,eshop, koinx , portfolio,razorpay ,snappy , youtube,
+  git_Blog, mongodb_Blog
+
 };

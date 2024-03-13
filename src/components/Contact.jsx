@@ -2,11 +2,14 @@
 import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { github, linkedin, gmail } from "../assets";
 
 import { styles } from "../styles";
 import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
+import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Contact = () => {
   const formRef = useRef();
@@ -114,13 +117,20 @@ const Contact = () => {
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
           </label>
+          <div className="flex justify-between items-center ">
+            <button
+              type="submit"
+              className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+            >
+              {loading ? "Sending..." : "Send"}
+            </button>
 
-          <button
-            type="submit"
-            className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
-          >
-            {loading ? "Sending..." : "Send"}
-          </button>
+            <div className="flex gap-6 border-0.5 px-4 p-2 group hover:border-blue-500 border-blue-500/40 rounded-md ">
+              <a href="mailto:durgeshmehar2002@gmail.com" target="_blank" ><img src={gmail} className="h-8 w-8" /></a>
+              <Link to="https://github.com/durgeshmehar" target="_blank" > <img src={github} className="h-8 w-8" /> </Link>
+              <Link to="https://www.linkedin.com/in/durgeshmehar/" target="_blank" > <img src={linkedin} className="h-8 w-8" /> </Link>
+            </div>
+          </div>
         </form>
       </motion.div>
 
