@@ -1,24 +1,46 @@
 // require("dotenv").config();
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { github, linkedin, gmail } from "../assets";
 
 import { styles } from "../styles";
-import { EarthCanvas } from "./canvas";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import { Link } from "react-router-dom";
-// import { Link } from "react-router-dom";
+
+const isLaptop = () => {
+  return window.innerWidth > 1024;
+};
 
 const Contact = () => {
+  const [isLaptopDevice, setIsLaptopDevice] = useState(isLaptop());
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsLaptopDevice(isLaptop());
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  const [EarthCanvas, setEarthCanvas] = useState(null);
+  useEffect(() => {
+    if (isLaptopDevice) {
+      import("./canvas").then((module) => {
+        setEarthCanvas(() => module.EarthCanvas);
+      });
+    }
+  }, [isLaptopDevice]);
+
   const formRef = useRef();
   const [form, setForm] = useState({
     name: "",
     email: "",
     message: "",
   });
-  
+
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
@@ -126,20 +148,32 @@ const Contact = () => {
             </button>
 
             <div className="flex gap-6 border-0.5 px-4 p-2 group hover:border-blue-500 border-blue-500/40 rounded-md ">
-              <a href="mailto:durgeshmehar2002@gmail.com" target="_blank" ><img src={gmail} className="h-8 w-8" /></a>
-              <Link to="https://github.com/durgeshmehar" target="_blank" > <img src={github} className="h-8 w-8" /> </Link>
-              <Link to="https://www.linkedin.com/in/durgeshmehar/" target="_blank" > <img src={linkedin} className="h-8 w-8" /> </Link>
+              <a href="mailto:durgeshmehar2002@gmail.com" target="_blank">
+                <img src={gmail} className="h-8 w-8" />
+              </a>
+              <Link to="https://github.com/durgeshmehar" target="_blank">
+                {" "}
+                <img src={github} className="h-8 w-8" />{" "}
+              </Link>
+              <Link
+                to="https://www.linkedin.com/in/durgeshmehar/"
+                target="_blank"
+              >
+                {" "}
+                <img src={linkedin} className="h-8 w-8" />{" "}
+              </Link>
             </div>
           </div>
         </form>
       </motion.div>
-
-      <motion.div
-        variants={slideIn("right", "tween", 0.2, 1)}
-        className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
-      >
-        <EarthCanvas />
-      </motion.div>
+      {EarthCanvas && (
+        <motion.div
+          variants={slideIn("right", "tween", 0.2, 1)}
+          className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+        >
+          <EarthCanvas />
+        </motion.div>
+      )}
     </div>
   );
 };
