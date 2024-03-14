@@ -18,7 +18,7 @@ const Contact = () => {
     email: "",
     message: "",
   });
-
+  
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
