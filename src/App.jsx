@@ -9,7 +9,6 @@ import {
   Navbar,
   Tech,
   Works,
-  StarsCanvas,
 } from "./components";
 
 function App() {
@@ -30,7 +29,6 @@ function App() {
 
         <div className="relative z-0">
           <Contact />
-          <StarsCanvas />
         </div>
 
       </div>
