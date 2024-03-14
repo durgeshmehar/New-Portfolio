@@ -126,6 +126,11 @@
   transform: translateZ(0);
 }
 
+
+::placeholder{
+  font-size: 12px;
+  color: lightblue;
+}
 /*  */
 
 
