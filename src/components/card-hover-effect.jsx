@@ -8,7 +8,7 @@ export const HoverEffect = ({ items, className }) => {
   return (
     <div
       className={cn(
-        "grid grid-cols-2 md:grid-cols-3  lg:grid-cols-3  py-10",
+        "md:w-[75%] mx-auto grid grid-cols-2 md:grid-cols-3  lg:grid-cols-3  py-10",
         className
       )}
     >
@@ -43,7 +43,7 @@ export const HoverEffect = ({ items, className }) => {
 
             <div className="py-1 md:py-10 z-50 relative space-y-5">
             <Icon className="w-6 h-6 md:w-8 md:h-8 mx-auto" />
-              <p className="text-sm md:text-2xl font-bold text-center text-gray-300"> {item.name}</p>
+              <p className="text-sm md:text-xl font-bold text-center text-gray-300"> {item.name}</p>
             </div>
           </div>
           
