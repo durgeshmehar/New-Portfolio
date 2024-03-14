@@ -123,10 +123,10 @@ import {
       iconBg: "#383E56",
       date: "Aug 2022 - Nov 2022",
       points: [
-        "Started off by learning the basics of HTML and CSS in the 2 month and progressively advanced to more complex concepts later.",
+        "Learned HTML and CSS in the 2 month and progressively advanced to more complex concepts later.",
         "Also learned ot make responsive webpages by using frameworks like bootstrap and tailwind.",
-        "Created a few projects using html , css and bootstrap such as a Clone of flipkart ,razorpay ,youtube which was taught along the course and are present in my github profile.",
-        "Dedicated 2 months on learning the basics of javascript and Jquery and progressively advanced to more complex concepts. Created projects such as Dice Game , Drum-Kit and Simon game.",
+        "Created a few projects Clone of flipkart ,razorpay ,youtube which was taught along the course and are present in my github profile.",
+        "Dedicated 2 months on learning the javascript and Jquery. Created projects such as Dice Game , Drum-Kit and Simon game.",
       ],
     },
     {
@@ -136,9 +136,9 @@ import {
       iconBg: "#E6DEDD",
       date: "Nov 2022 - Jan 2023",
       points: [
-        "Started my journey of learning backend technologies by learning Node js and framework such as express js.",
-        "Later leaned Git, Github and Version Control and meanwhile created small projects of Whether app.",
-        "Moving along the course learned the basics of APIs such as making server-side API requested using Axios and also learned API authentication and REST APIs.",
+        "Started my journey of learning backend technologies by Node js and express js framework.",
+        "Later leaned Git, Github and meanwhile created projects of Whether app.",
+        "Moving the course learned the APIs such as making server-side API request, API authentication and REST APIs.",
       ],
     },
     {
@@ -171,7 +171,7 @@ import {
     {
       name: "E-shop Ecommerce",
       description:
-        "E-shop Website is a platform designed to enhance your shopping experience, offering a wide range of products, secure payment options,email notification and efficient order management. You can shop with confidence, knowing that your data is secure and your transactions are handled with care.",
+        "E-shop Website is a platform designed to enhance your shopping experience, offering a wide range of products, secure payment options,email notification and efficient order management.",
       tags: [
         {
           name: "Redux",
@@ -194,7 +194,7 @@ import {
     {
       name: "Snappy Chat Website",
       description:
-        "Introducing Snappy, a real-time chat application developed with React.js and Socket IO, designed to enhance communication among users. Featuring dynamic notification counts for real-time updates on unread messages. Snappy offers a stunning UI, responsive design and best experience.",
+        "Introducing Snappy, a real-time chat app developed with React and Socket IO to enhance communication. Featuring dynamic notification for real-time updates on unread messages.",
       tags: [
         {
           name: "Styled-Cp",
@@ -217,7 +217,7 @@ import {
     {
       name: "AI Chatbot",
       description:
-      "Presenting an AI Chatbot Application ,you can ask any quesions to AI. This project developed with Next.js, Fastapi and Langchain for error-free responses from gemini. The application features storing chat history using PostgreSQL, secure user authentication and a responsive design.",
+      "Presenting an AI Chatbot app ,you can ask any quesions to AI. This project developed with Next.js, Fastapi, Langchain for responses from gemini and PostgreSQL for store chat history.",
       tags: [
         {
           name: "Next.js",
@@ -240,7 +240,7 @@ import {
     {
       name: "YouTube Clone",
       description:
-      "Explore our YouTube Clone project, built with React, React Routing, and Material UI. This project showcases seamless API integration, offering essential features such as comments, video player, suggestions, and search functionality.",
+      "Explore our YouTube Clone project, built with React and Material UI. This project showcases seamless API integration offering essential features such as comments, video player and search functionality.",
       tags: [
         {
           name: "React",
@@ -263,7 +263,7 @@ import {
     {
       name: "Portfolio Project",
       description:
-      "Presenting my latest creation, a stunning 3D Animated Portfolio crafted with React.js, Tailwind CSS, and Three.js. This immersive portfolio project showcases the fusion of technology and design, featuring captivating animations powered by React libraries like Framer Motion.",
+      "Presenting my latest creation, a stunning 3D Animated Portfolio crafted with React.js, Tailwind CSS, and Three.js. This immersive portfolio project showcases the fusion of technology and design, featuring animations by Framer Motion.",
       tags: [
         {
           name: "React",
@@ -287,7 +287,7 @@ import {
     {
       name: "Crypto App",
       description:
-      "Crypto App is a comprehensive cryptocurrency tracking application built with React and Tailwind CSS, utilizing the CoinGecko API for real-time data. It features a mobile-responsive design, a dynamic crypto tracking graph, and provides detailed information about each coin.",
+      "Crypto App is a cryptocurrency tracking app built with React and Tailwind CSS. Utilizing the CoinGecko API for real-time data. Project showcase mobile-responsive design, a dynamic crypto tracking graph, and provides detailed information about each coin.",
       tags: [
         {
           name: "React",
@@ -306,7 +306,7 @@ import {
     {
       name: "Razorpay Clone",
       description:
-      "Razorpay clone, a meticulously designed application built with HTML and Tailwind, focusing on user design, UI, UX, and responsive design.This is user-friendly and visually appealing platform, ensuring an intuitive and seamless experience across all devices.",
+      "Razorpay clone, a meticulously designed application built with HTML and Tailwind. Focusing on UI/UX and responsive design.This is visually appealing platform ensuring an intuitive and seamless experience across all devices.",
       tags: [
         {
           name: "HTML",

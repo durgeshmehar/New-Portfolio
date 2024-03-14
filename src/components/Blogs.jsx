@@ -19,7 +19,7 @@ const BlogCard = ({ index, title, description, bloglink, tags, image }) => (
         scale: 1,
         speed: 450,
       }}
-      className="bg-black-200 p-5 rounded-xl w-[280px]  md:w-[320px]"
+      className="md:bg-black-200 border border-transparent dark:border-white/[0.2] p-5 rounded-xl w-[280px]  md:w-[320px]"
     >
       <div className="relative mx-auto h-[170px] w-full md:h-[230px]">
         <img
@@ -65,7 +65,7 @@ const BlogCard = ({ index, title, description, bloglink, tags, image }) => (
 
 const Blogs = () => {
   return (
-    <div className={`-mt-6 md:mt-12 bg-black-100 rounded-[20px] flex justify-center items-center flex-col md:block`}>
+    <div className={`-mt-6 md:mt-12  -mb-[50px] md:mb-[0px] md:bg-black-100 rounded-[20px] flex justify-center items-center flex-col md:block`}>
       <div
         className={`md:bg-tertiary rounded-xl ${styles.padding} md:min-h-[300px]`}
       >

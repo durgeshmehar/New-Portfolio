@@ -34,11 +34,11 @@
 }
 
 .violet-gradient {
-  background: #804dee;
-  background: linear-gradient(-90deg, #804dee 0%, rgba(60, 51, 80, 0) 100%);
+  background: #291a4a;
+  background: linear-gradient(-90deg, #2c1b4f 0%, rgba(60, 51, 80, 0) 100%);
   background: -webkit-linear-gradient(
     -90deg,
-    #804dee 0%,
+    #24124a 0%,
     rgba(60, 51, 80, 0) 100%
   );
 }
@@ -129,9 +129,20 @@
 
 ::placeholder{
   font-size: 12px;
-  color: lightblue;
+  color: rgb(57, 72, 97);
+
 }
 /*  */
+.project {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s, transform 0.5s;
+ }
+ 
+ .project.in-view {
+  opacity: 1;
+  transform: translateY(0);
+ }
 
 
 /*  */

@@ -5,7 +5,7 @@ import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
 // import { github } from "../assets";
-import { fadeIn, textVariant } from "../utils/motion";
+import { fadeIn , textVariant } from "../utils/motion";
 import { ProjectHoverEffect } from "./project-hover-effect";
 
 const navlist = ["All", "Fullstack", "React"];
@@ -76,7 +76,7 @@ const Works = () => {
 
   return (
     <>
-      <div className="max-w-6xl -mt-[50px] md:mt-0 mx-auto md:px-8 text-center">
+      <div className="max-w-6xl md:mt-0 mx-auto md:px-8 text-center">
         <motion.div variants={textVariant()}>
           <p className={`${styles.sectionSubText} `}>My work</p>
           <h2 className={`${styles.sectionHeadText}`}>Projects.</h2>
@@ -95,11 +95,11 @@ const Works = () => {
           </motion.p>
         </div>
 
-        <div className="overflow-hidden mt-20 w-fit  mx-auto flex flex-nowrap justify-start items-start border-2 rounded-xl">
+        <div className="overflow-hidden mt-10 w-fit  mx-auto flex flex-nowrap justify-start items-start border-2 rounded-xl">
           {navlist.map((item, index) => (
             <div
               key={index}
-              className={`h-16 p-4 cursor-pointer
+              className={`h-14 p-4 cursor-pointer
                ${index == 2 ? "" : "border-r-4"} ${
                 toggle === item
                   ? "bg-tertiary font-bold"
@@ -119,7 +119,7 @@ const Works = () => {
           ))}
         </div>
 
-        <div className="mt-2 md:mt-14 w-full gap-7  flex flex-wrap justify-center items-center ">
+        <div className="mt-2 md:mt-4 w-full gap-7  flex flex-wrap justify-center items-center ">
           
 
           {toggle === "All" ? (

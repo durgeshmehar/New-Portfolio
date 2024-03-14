@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 
 const Tech = () => {
   return (
-    <div className="max-w-5xl mx-auto md:px-8">
+    <div className="max-w-5xl -mb-[50px] md:mb-[0px] mx-auto md:px-8">
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} text-center`}>
           What I Know

@@ -92,11 +92,11 @@ const Contact = () => {
 
   return (
     <div
-      className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap-10 overflow-hidden`}
+      className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap:4 md:gap-6 overflow-hidden`}
     >
       <motion.div
-        variants={slideIn("left", "tween", 0.2, 1)}
-        className="flex-[0.75] bg-black-100 p-8 rounded-2xl"
+        variants={slideIn("left", "tween", 0, 0.8)}
+        className="flex-[0.75] violet-gradient p-8 rounded-2xl"
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={styles.sectionHeadText}>Contact.</h3>
@@ -139,7 +139,7 @@ const Contact = () => {
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
             />
           </label>
-          <div className="flex justify-between items-center ">
+          <div className="flex justify-between items-center gap-2">
             <button
               type="submit"
               className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
@@ -147,7 +147,7 @@ const Contact = () => {
               {loading ? "Sending..." : "Send"}
             </button>
 
-            <div className="flex gap-6 border-0.5 px-4 p-2 group hover:border-blue-500 border-blue-500/40 rounded-md ">
+            <div className="flex gap-3 md:gap-6 border-0.5 px-4 p-2 group hover:border-blue-400 border-tertiary rounded-md ">
               <a href="mailto:durgeshmehar2002@gmail.com" target="_blank">
                 <img src={gmail} className="h-8 w-8" />
               </a>
@@ -168,7 +168,7 @@ const Contact = () => {
       </motion.div>
       {EarthCanvas && (
         <motion.div
-          variants={slideIn("right", "tween", 0.2, 1)}
+          variants={slideIn("right", "tween", 0, 0.8)}
           className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
         >
           <EarthCanvas />

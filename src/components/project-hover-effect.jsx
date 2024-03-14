@@ -20,7 +20,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
         return (
           <div
             key={idx}
-            className="relative group block p-3 gap-2 h-full w-full "
+            className="relative h-full group block p-3 gap-2 w-full "
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
@@ -42,17 +42,16 @@ export const ProjectHoverEffect = ({ projects, className }) => {
               )}
             </AnimatePresence>
 
-            <div className="rounded-lg w-full p-4 overflow-hidden border border-transparent dark:border-white/[0.2]  bg-primary  relative z-20 transition-all duration-700">
+            <div className="rounded-lg w-full h-full p-3 overflow-hidden border border-transparent dark:border-white/[0.2]  bg-primary  relative z-20 transition-all duration-700">
               <div className="py-4 z-50 relative space-y-5">
                 {/*  */}
-                <div>
-                  <div className="relative w-full h-[230px] cursor-pointer transition-all duration-500"  onClick={() => window.open(live_link, "_blank")}>
+                <div className="">
+                  <div className="relative w-full cursor-pointer transition-all duration-500"  onClick={() => window.open(live_link, "_blank")}>
 
                       <img
                         src={image}
-                       
                         alt="project_image"
-                        className="w-full h-full object-cover rounded-lg cursor-pointer"
+                        className="w-full h-[200px] md:h-[150px] object-cover rounded-lg cursor-pointer"
                       />
                     
 
@@ -71,14 +70,14 @@ export const ProjectHoverEffect = ({ projects, className }) => {
 
                   </div>
 
-                  <div className="mt-5">
-                    <h3 className="text-white font-bold text-base mb-6 md:text-[24px]">{name}</h3>
-                    <p className="mt-2 text-secondary text-[14px] text-left">
+                  <div className="mt-5 relative -top-[60px]">
+                    <h3 className="orange-text-gradient opacity-70 p-1 font-bold text-base mb-6 md:text-[24px] backdrop-blur-lg">{name}</h3>
+                    <p className="mt-4 pt-4 text-secondary text-[14px] text-left">
                       {description}
                     </p>
                   </div>
 
-                  <div className="mt-4 flex flex-wrap gap-2">
+                  <div className="-mt-[50px] flex flex-wrap gap-2">
                     {tags.map((tag) => (
                       <p
                         key={`${name}-${tag.name}`}
