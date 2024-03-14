@@ -42,16 +42,16 @@ export const ProjectHoverEffect = ({ projects, className }) => {
               )}
             </AnimatePresence>
 
-            <div className="rounded-lg w-full h-full p-3 overflow-hidden border border-transparent dark:border-white/[0.2]  bg-primary  relative z-20 transition-all duration-700">
+            <div className="rounded-lg w-full h-full p-3 overflow-hidden border border-transparent dark:border-white/[0.2]  bg-primary  relative z-20 transition-all duration-700 hover:scale-105">
               <div className="py-4 z-50 relative space-y-5">
                 {/*  */}
                 <div className="">
-                  <div className="relative w-full cursor-pointer transition-all duration-500"  onClick={() => window.open(live_link, "_blank")}>
+                  <div className="hover:scale-110  relative w-full cursor-pointer transition-all duration-800"  onClick={() => window.open(live_link, "_blank")}>
 
                       <img
                         src={image}
                         alt="project_image"
-                        className="w-full h-[200px] md:h-[150px] object-cover rounded-lg cursor-pointer"
+                        className="transition-all duration-300 w-full h-[200px] object-cover rounded-lg cursor-pointer  "
                       />
                     
 
