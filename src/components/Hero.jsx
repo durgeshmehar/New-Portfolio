@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { useEffect, useState } from "react";
+import { profile, blob } from "../assets";
 
 const isLaptop = () => {
   // Assuming a device is a laptop if its width is greater than 1024px
@@ -31,7 +32,7 @@ const Hero = () => {
   }, [isLaptopDevice]);
 
   return (
-    <section className={`relative w-full h-[40vh] xl:h-screen mx-auto`}>
+    <section className={`w-full mx-auto pt-[100vh] overflow-visible`}>
       <div
         className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
@@ -40,17 +41,36 @@ const Hero = () => {
           <div className="w-1 sm:h-80 h-40 violet-gradient" />
         </div>
 
-        <div>
-          <h1 className={`${styles.heroHeadText} text-white`}>
-            Hi, I{`'`}m <span className="text-[#915EFF]">Durgesh</span>
-          </h1>
-          <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-            I develop 3D visuals, user <br className="sm:block hidden" />
-            interfaces and web applications
-          </p>
+        <div className="flex overflow-visible relative">
+          <div className="w-[50%] h-[50%] md:w-[40%] md:h-[50%] rounded-full z-40">
+            <h1 className={`${styles.heroHeadText} text-white`}>
+              Hi 👋, I'm <span className="text-[#915EFF]">Durgesh</span>
+            </h1>
+            <p className={`${styles.heroSubText} mt-2 text-white-100`}>
+              I build efficient backends <br className="sm:block hidden" />
+              and web applications
+            </p>
+          </div>
+
+          <div
+            className="my-auto ml-auto w-[100%] h-[80%] md:w-[40%] md:h-[20%] rounded-full overflow-visible relative"
+            style={{
+              backgroundImage: `url(${blob})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+          >
+            <img
+              src={profile}
+              alt="Profile"
+              className="mx-auto w-[75%] h-[50%]"
+            />
+          </div>
+
         </div>
       </div>
-      {ComputersCanvas && (
+
+      {/* {ComputersCanvas && (
         <>
           <ComputersCanvas />
 
@@ -72,7 +92,7 @@ const Hero = () => {
             </a>
           </div>
         </>
-      )}
+      )} */}
     </section>
   );
 };

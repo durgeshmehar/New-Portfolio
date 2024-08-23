@@ -37,29 +37,34 @@ const ServiceCard = ({ index, title, icon }) => (
 
 const About = () => {
   return (
-    <>
-      <motion.div variants={textVariant()}>
+    <div className="-mt-[60vh] xs:-mt-[45vh] md:-mt-[40vh] lg:-mt-[43vh]">
+      {/* <motion.div variants={textVariant()}> */}
         <p className={styles.sectionSubText}>Introduction</p>
         <h2 className={styles.sectionHeadText}>Overview.</h2>
-      </motion.div>
+      {/* </motion.div> */}
 
-      <motion.p
-        variants={fadeIn("", "", 0.1, 1)}
-        className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'
-      >
-        I{"'"}m a skilled software developer with experience in C++ and
+      <p className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'>
+
+        {/* I{"'"}m a skilled software developer with experience in C++ and
         JavaScript, and expertise in frameworks like React, Nextjs, Node.js, and
         Express.js. I{"'"}m a quick learner and collaborate closely with clients to
         create efficient, scalable, and user-friendly solutions that solve
-        real-world problems. Let{"'"}s work together to bring your ideas to life!
-      </motion.p>
+        real-world problems. Let{"'"}s work together to bring your ideas to life! */}
 
+        I am a passionate Software Engineer specializing in Web Development, AI and Devops. 
+        My core skills include C++, Python, and JavaScript, along with frameworks like Django and Node.js. 
+        I am also experienced in cloud technologies and deployments using Docker, Kubernetes, Jenkins, and AWS.
+      </p>
+      <motion.p
+        variants={fadeIn("", "", 0.2, 0.5)}
+      >
       <div className='mt-20 grid grid-cols-2 lg:grid-cols-4 gap-10 place-items-center'>
         {services.map((service, index) => (
           <ServiceCard key={service.title} index={index} {...service} />
         ))}
       </div>
-    </>
+        </motion.p>
+    </div>
   );
 };
 const WrappedAbout = SectionWrapper(About, "about");

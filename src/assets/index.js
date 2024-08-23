@@ -1,4 +1,6 @@
 import logo from "./logo.png";
+import blob from "./blob.gif";
+import profile from "./profile.png";
 import github from "./github.png";
 import linkedin from "./linkedin.png";
 import gmail from "./gmail.png";
@@ -41,6 +43,8 @@ import mongodb_Blog from "./blogs/mongodb.gif"
 
 export {
   logo,
+  profile,
+  blob,
   backend,
   creator,
   mobile,
