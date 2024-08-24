@@ -113,8 +113,7 @@ const Contact = () => {
               name="name"
               value={form.name}
               onChange={handleChange}
-              placeholder="What's your good name?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-violet-800 focus:ring-1 focus:ring-violet-800 font-medium"
             />
           </label>
           <label className="flex flex-col">
@@ -124,8 +123,7 @@ const Contact = () => {
               name="email"
               value={form.email}
               onChange={handleChange}
-              placeholder="What's your web address?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-violet-800 focus:ring-1 focus:ring-violet-800 font-medium"
             />
           </label>
           <label className="flex flex-col">
@@ -135,32 +133,40 @@ const Contact = () => {
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="What you want to say?"
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border-none font-medium"
+              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-violet-800 focus:ring-1 focus:ring-violet-800 font-medium"
             />
           </label>
           <div className="flex justify-between items-center gap-2">
             <button
               type="submit"
-              className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary"
+              className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary border border-violet-800 focus:ring-1 focus:ring-violet-800"
             >
               {loading ? "Sending..." : "Send"}
             </button>
 
-            <div className="flex gap-3 md:gap-6 border-0.5 px-4 p-2 group hover:border-blue-400 border-tertiary rounded-md ">
-              <a href="mailto:durgeshmehar2002@gmail.com" target="_blank">
-                <img src={gmail} className="h-8 w-8" />
+            <div className="flex gap-2 md:gap-6 lg:ml-4 group  rounded-md ">
+              <a
+                href="mailto:durgeshmehar2002@gmail.com"
+                target="_blank"
+                className="bg-gray-800 text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
+              >
+                <img src={gmail} className="h-7 w-7 md:h-9 md:w-9" />
               </a>
-              <Link to="https://github.com/durgeshmehar" target="_blank">
+              <Link
+                to="https://github.com/durgeshmehar"
+                target="_blank"
+                className="bg-gray-800 text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
+              >
                 {" "}
-                <img src={github} className="h-8 w-8" />{" "}
+                <img src={github} className="h-7 w-7 md:h-9 md:w-9" />{" "}
               </Link>
               <Link
                 to="https://www.linkedin.com/in/durgeshmehar/"
                 target="_blank"
+                className="bg-gray-800 text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
               >
                 {" "}
-                <img src={linkedin} className="h-8 w-8" />{" "}
+                <img src={linkedin} className="h-7 w-7 md:h-9 md:w-9" />{" "}
               </Link>
             </div>
           </div>

@@ -58,7 +58,7 @@ const Hero = () => {
               <a
                 href="https://drive.google.com/file/d/15E-_4cEhQnmU4g9LvlqmH8My-yYIoGBh/view?usp=drive_link" // Replace with your CV link
                 download
-                className="bg-[#915EFF] text-white xs:py-2 xs:px-6 rounded-lg py-1 px-3 text-xs xs:text-lg  xs:font-medium hover:bg-[#7a4dd8] transition duration-300 transform hover:scale-105"
+                className="bg-[#915EFF] text-white py-2 px-6 rounded-lg text-md xs:text-lg  xs:font-medium hover:bg-[#7a4dd8] transition duration-300 transform hover:scale-105"
               >
                 Download CV
               </a>
