@@ -40,7 +40,7 @@ import {
       title: "Contact",
     },
     {
-      id:"https://drive.google.com/file/d/1znLobhz79qq0zmj-bWv0NEutAAGRTxCR/view?usp=sharing",
+      id:"https://drive.google.com/file/d/15E-_4cEhQnmU4g9LvlqmH8My-yYIoGBh/view?usp=drive_link",
       title:"Download CV"
     }
   ];

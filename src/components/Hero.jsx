@@ -2,6 +2,8 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { useEffect, useState } from "react";
 import { profile, blob } from "../assets";
+import { github, linkedin, gmail } from "../assets";
+import { Link } from "react-router-dom";
 
 const isLaptop = () => {
   // Assuming a device is a laptop if its width is greater than 1024px
@@ -41,8 +43,8 @@ const Hero = () => {
           <div className="w-1 sm:h-80 h-40 violet-gradient" />
         </div>
 
-        <div className="flex overflow-visible relative">
-          <div className="w-[50%] h-[50%] md:w-[40%] md:h-[50%] rounded-full z-40">
+        <div className="flex overflow-visible w-full">
+          <div className="w-[60%] md:w-[50%] h-[50%]">
             <h1 className={`${styles.heroHeadText} text-white`}>
               Hi 👋, I'm <span className="text-[#915EFF]">Durgesh</span>
             </h1>
@@ -50,23 +52,48 @@ const Hero = () => {
               I build efficient backends <br className="sm:block hidden" />
               and web applications
             </p>
+
+            {/* Buttons Section */}
+            <div className="mt-8 md:mt-14 flex flex-wrap gap-4">
+              <a
+                href="https://drive.google.com/file/d/15E-_4cEhQnmU4g9LvlqmH8My-yYIoGBh/view?usp=drive_link" // Replace with your CV link
+                download
+                className="bg-[#915EFF] text-white xs:py-2 xs:px-6 rounded-lg py-1 px-3 text-xs xs:text-lg  xs:font-medium hover:bg-[#7a4dd8] transition duration-300 transform hover:scale-105"
+              >
+                Download CV
+              </a>
+
+              <div className="flex gap-2 md:gap-6 lg:ml-4 group  rounded-md ">
+                <a href="mailto:durgeshmehar2002@gmail.com" target="_blank" className="bg-gray-800 text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105">
+                  <img src={gmail} className="h-7 w-7 md:h-9 md:w-9" />
+                </a>
+                <Link to="https://github.com/durgeshmehar" target="_blank" className="bg-gray-800 text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105">
+                  {" "}
+                  <img src={github} className="h-7 w-7 md:h-9 md:w-9" />{" "}
+                </Link>
+                <Link
+                  to="https://www.linkedin.com/in/durgeshmehar/"
+                  target="_blank"
+                  className="bg-gray-800 text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
+                >
+                  {" "}
+                  <img src={linkedin} className="h-7 w-7 md:h-9 md:w-9" />{" "}
+                </Link>
+              </div>
+            </div>
           </div>
 
-          <div
-            className="my-auto ml-auto w-[100%] h-[80%] md:w-[40%] md:h-[20%] rounded-full overflow-visible relative"
-            style={{
-              backgroundImage: `url(${blob})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-            }}
-          >
+          <div className="w-[50%] relative ml-auto">
+            <img
+              src={blob}
+              className="w-[100%] md:w-[70%] top-0 right-0 absolute  object-cover"
+            />
             <img
               src={profile}
               alt="Profile"
-              className="mx-auto w-[75%] h-[50%]"
+              className="absolute mx-auto w-[90%] h-[20vh] xs:w-[100%] xs:h-[30vh] sm:h-[35vh] md:w-[70%] md:h-[40vh] lg:h-[42vh] top-0 right-0  object-contain rounded-sm"
             />
           </div>
-
         </div>
       </div>
 

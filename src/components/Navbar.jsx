@@ -18,6 +18,19 @@ const Navbar = () => {
       } else {
         setScrolled(false);
       }
+
+      // Update active link based on scroll position
+      const sections = navLinks.map((nav) => document.getElementById(nav.id));
+      const currentSection = sections.find(
+        (section) =>
+          section &&
+          section.offsetTop <= scrollTop + window.innerHeight / 2 &&
+          section.offsetTop + section.offsetHeight > scrollTop + window.innerHeight / 2
+      );
+
+      if (currentSection) {
+        setActive(currentSection.id);
+      }
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -29,12 +42,11 @@ const Navbar = () => {
     <nav
       className={`${
         styles.paddingX
-      } w-full flex items-center py-2 fixed top-0 z-20 bg-transparent transition-all duration-300
-     
-      `
-    }
+      } w-full flex items-center py-2 fixed top-0 z-20 ${
+        scrolled ? "bg-transparent shadow-lg" : "bg-transparent"
+      } transition-all duration-300`}
     >
-      <div className='bg-[hsla(0,0%,250%,0.1)] backdrop-blur-[1rem] rounded-md p-2 md:p-4  w-full flex justify-between items-center max-w-7xl mx-auto'>
+      <div className='bg-[hsla(0,0%,250%,0.12)] backdrop-blur-[1rem] rounded-md p-2 md:p-4  w-full flex justify-between items-center max-w-7xl mx-auto'>
         <Link
           to='/'
           className='flex items-center gap-2'
@@ -44,7 +56,6 @@ const Navbar = () => {
           }}
         >
           <img src={logo} alt='logo' className='w-9 h-9 object-contain' />
-          
         </Link>
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
@@ -52,16 +63,22 @@ const Navbar = () => {
             <li
               key={nav.id}
               className={`${
-                active === nav.title ? "text-white font-bold" : "text-secondary"
-              } hover:text-white text-[20px] font-medium cursor-pointer`}
-              onClick={() => setActive(nav.title)}
+                active === nav.id ? "font-bold text-[rgb(45,212,191)] hover:scale-105 transform transition-all duration-300 text-[20px] cursor-pointer relative" : "text-white"
+              } hover:text-[rgb(45,212,191)] hover:scale-105 transform transition-all duration-300 text-[20px] font-medium cursor-pointer relative`}
+              onClick={() => setActive(nav.id)}
             >
-              <a href={`${nav.id}`} >{nav.title}</a>
+              <a href={`${nav.id}`} className="relative group">
+                {nav.title}
+                {/* Hover underline effect */}
+                <span className="absolute bottom-[-5px] left-0 w-0 h-[2px] bg-[rgb(45,212,191)] group-hover:w-full transition-all duration-300"></span>
+              </a>
             </li>
           ))}
         </ul>
 
-        <div className='sm:hidden flex flex-1 justify-end items-center'>
+        {/* mobile screen */}
+
+        <div className='sm:hidden flex flex-1 justify-end items-center z-50'>
           <img
             src={toggle ? close : menu}
             alt='menu'
@@ -72,32 +89,29 @@ const Navbar = () => {
           <div
             className={`${
               !toggle ? "hidden" : "flex"
-            } p-6 black-gradient absolute top-16 right-0 mx-4 my-0 min-w-[140px] z-10 rounded-xl`}
+            } p-6 black-gradient backdrop-blur-[1rem] absolute top-16 right-0 mx-4 my-0 min-w-[140px] z-50 rounded-xl transition-all duration-300`}
           >
             <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
               {navLinks.map((nav) => (
-                <div key={nav.id} className="w-full">
-
                 <li
-                  // key={nav.id}
+                  key={nav.id}
                   className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.title ? "text-white font-bold" : "text-secondary"
-                  }`}
+                    active === nav.id ? "font-bold text-[rgb(45,212,191)]" : "text-secondary"
+                  } hover:text-[rgb(45,212,191)] transition-all duration-300 relative z-50`}
                   onClick={() => {
                     setToggle(!toggle);
-                    setActive(nav.title);
+                    setActive(nav.id);
                   }}
                 >
-                  <a href={`${nav.id}`}>{nav.title}</a>
+                  <a href={`${nav.id}`} className="relative group">
+                    {nav.title}
+                    <span className="absolute bottom-[-3px] left-0 h-[2px] bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                  </a>
                 </li>
-                  <hr className={`w-full ${active === nav.title?"text-white":"text-secondary"}`} />
-                </div>
-
               ))}
             </ul>
           </div>
         </div>
-
       </div>
     </nav>
   );

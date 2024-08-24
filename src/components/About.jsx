@@ -1,4 +1,4 @@
-import { Tilt} from "react-tilt";
+import { Tilt } from "react-tilt";
 import { motion } from "framer-motion";
 
 import { styles } from "../styles";
@@ -7,27 +7,26 @@ import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
 
 const ServiceCard = ({ index, title, icon }) => (
-  <Tilt className=' w-full xs:w-[230px]  md:w-[240px]'
-  options={{
-          max: 45,
-          scale: 1,
-          speed: 450,
-        }}
+  <Tilt
+    className=" w-full xs:w-[230px]  md:w-[240px]"
+    options={{
+      max: 45,
+      scale: 1,
+      speed: 450,
+    }}
   >
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-      className='w-full  green-pink-gradient p-[1px] rounded-[20px] shadow-card'
+      className="w-full  green-pink-gradient p-[1px] rounded-[20px] shadow-card"
     >
-      <div  
-        className='bg-tertiary min-h-[190px] rounded-[20px] py-4 px-8 md:min-h-[280px] flex justify-evenly items-center flex-col'
-      >
+      <div className="bg-tertiary min-h-[190px] rounded-[20px] py-4 px-8 md:min-h-[280px] flex justify-evenly items-center flex-col">
         <img
           src={icon}
-          alt='web-development'
-          className='w-16 h-16 object-contain'
+          alt="web-development"
+          className="w-16 h-16 object-contain"
         />
 
-        <h3 className='text-white text-base md:text-[20px] font-bold text-center '>
+        <h3 className="text-white text-base md:text-[20px] font-bold text-center ">
           {title}
         </h3>
       </div>
@@ -37,36 +36,33 @@ const ServiceCard = ({ index, title, icon }) => (
 
 const About = () => {
   return (
-    <div className="-mt-[60vh] xs:-mt-[45vh] md:-mt-[40vh] lg:-mt-[43vh]">
-      {/* <motion.div variants={textVariant()}> */}
-        <p className={styles.sectionSubText}>Introduction</p>
-        <h2 className={styles.sectionHeadText}>Overview.</h2>
-      {/* </motion.div> */}
-
-      <p className='mt-4 text-secondary text-[17px] max-w-3xl leading-[30px]'>
-
-        {/* I{"'"}m a skilled software developer with experience in C++ and
-        JavaScript, and expertise in frameworks like React, Nextjs, Node.js, and
-        Express.js. I{"'"}m a quick learner and collaborate closely with clients to
-        create efficient, scalable, and user-friendly solutions that solve
-        real-world problems. Let{"'"}s work together to bring your ideas to life! */}
-
-        I am a passionate Software Engineer specializing in Web Development, AI and Devops. 
-        My core skills include C++, Python, and JavaScript, along with frameworks like Django and Node.js. 
-        I am also experienced in cloud technologies and deployments using Docker, Kubernetes, Jenkins, and AWS.
+    <div id="about" className="-mt-[50vh] xs:-mt-[40vh] md:-mt-[35vh] lg:-mt-[40vh]">
+      <p className={styles.sectionSubText}>Introduction</p>
+      <h2 className={styles.sectionHeadText}>Overview.</h2>
+      <p className="mt-4 text-secondary text-[17px] md:text-[20px] max-w-3xl leading-[30px]">
+        I am a passionate Software Engineer specializing in Web Development, AI
+        and Devops. My core skills include C++, Python, and JavaScript, along
+        with frameworks like Django and Node.js. I am also experienced in cloud
+        technologies and deployments using Docker, Kubernetes, Jenkins, and AWS.
       </p>
-      <motion.p
-        variants={fadeIn("", "", 0.2, 0.5)}
-      >
-      <div className='mt-20 grid grid-cols-2 lg:grid-cols-4 gap-10 place-items-center'>
-        {services.map((service, index) => (
-          <ServiceCard key={service.title} index={index} {...service} />
-        ))}
-      </div>
-        </motion.p>
+      <motion.p variants={fadeIn("", "", 0.2, 0.5)}>
+        <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
+          {services.map((service, index) => (
+            <ServiceCard key={service.title} index={index} {...service} />
+          ))}
+        </div>
+      </motion.p>
     </div>
   );
 };
-const WrappedAbout = SectionWrapper(About, "about");
+const WrappedAbout = SectionWrapper(About, "about1");
 
 export default WrappedAbout;
+
+{
+  /* I{"'"}m a skilled software developer with experience in C++ and
+        JavaScript, and expertise in frameworks like React, Nextjs, Node.js, and
+        Express.js. I{"'"}m a quick learner and collaborate closely with clients to
+        create efficient, scalable, and user-friendly solutions that solve
+        real-world problems. Let{"'"}s work together to bring your ideas to life! */
+}
