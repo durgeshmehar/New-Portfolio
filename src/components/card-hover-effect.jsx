@@ -8,7 +8,7 @@ export const HoverEffect = ({ items, className }) => {
   return (
     <div
       className={cn(
-        "md:w-[75%] mx-auto grid grid-cols-2 md:grid-cols-3  lg:grid-cols-3  py-10",
+        "w-[95%] md:w-[80%] mx-auto grid grid-cols-2 xs:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 px-4 py-6",
         className
       )}
     >
@@ -18,14 +18,14 @@ export const HoverEffect = ({ items, className }) => {
 
         <div
           key={idx}
-          className="relative group  block p-2 h-full w-full "
+          className="relative group block p-2 h-full w-full "
           onMouseEnter={() => setHoveredIndex(idx)}
           onMouseLeave={() => setHoveredIndex(null)}
         >
           <AnimatePresence>
             {hoveredIndex === idx && (
               <motion.span
-                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.9] block  rounded-lg"
+                className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.8] block  rounded-lg"
                 layoutId="hoverBackground"
                 initial={{ opacity: 0 }}
                 animate={{
@@ -39,9 +39,9 @@ export const HoverEffect = ({ items, className }) => {
               />
             )}
           </AnimatePresence>
-          <div className="cursor-pointer rounded-md w-full p-4 overflow-hidden border border-transparent dark:border-white/[0.2]  bg-primary  relative z-20 transition-all duration-700">
+          <div className="rounded-2xl h-full w-full p-3 md:p-2 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20 ">
 
-            <div className="py-1 md:py-10 z-50 relative space-y-5">
+            <div className="py-1 md:py-10 z-50 relative space-y-4">
             <Icon className="w-6 h-6 md:w-8 md:h-8 mx-auto" />
               <p className="text-sm md:text-xl font-bold text-center text-gray-300"> {item.name}</p>
             </div>

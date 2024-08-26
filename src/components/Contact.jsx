@@ -136,15 +136,17 @@ const Contact = () => {
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-violet-800 focus:ring-1 focus:ring-violet-800 font-medium"
             />
           </label>
-          <div className="flex justify-between items-center gap-2">
-            <button
-              type="submit"
-              className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary border border-violet-800 focus:ring-1 focus:ring-violet-800"
-            >
-              {loading ? "Sending..." : "Send"}
-            </button>
+          <div className="flex flex-col items-center gap-6">
+            <div className="w-full flex justify-center">
+              <button
+                type="submit"
+                className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary border border-violet-800 focus:ring-1 focus:ring-violet-800"
+              >
+                {loading ? "Sending..." : "Send"}
+              </button>
+            </div>
 
-            <div className="flex gap-2 md:gap-6 lg:ml-4 group  rounded-md ">
+            <div className="flex justify-center gap-2 md:gap-6 group  rounded-md ">
               <a
                 href="mailto:durgeshmehar2002@gmail.com"
                 target="_blank"

@@ -15,15 +15,15 @@ import {
 
   import {
     SiReact,
-    SiNextdotjs,
+    SiPython,
     SiTailwindcss,
     SiNodedotjs,
     SiJavascript,
-    SiTypescript,
     SiCplusplus,
     SiRedux,
     SiMongodb,
-    // SiPostgresql,
+    SiDjango,
+    SiDocker, SiKubernetes, SiJenkins, SiAmazonaws
   } from "react-icons/si";
   
   export const navLinks = [
@@ -66,40 +66,52 @@ import {
   
   const skills = [
     {
-      name: "React",
-      icon: SiReact,
+      name: "C++",
+      icon: SiCplusplus,
     },
     {
-      name: "Next.js ",
-      icon: SiNextdotjs,
-    },
-    {
-      name: "Tailwind",
-      icon: SiTailwindcss,
-    },
-    {
-      name: "Node JS",
-      icon: SiNodedotjs,
+      name: "Python",
+      icon: SiPython,
     },
     {
       name: "JavaScript",
       icon: SiJavascript,
     },
     {
-      name: "Typescript",
-      icon: SiTypescript,
+      name: "React",
+      icon: SiReact,
     },
     {
-      name: "C++ (DSA)",
-      icon: SiCplusplus,
+      name: "Node JS",
+      icon: SiNodedotjs,
     },
     {
-      name: "Redux",
-      icon: SiRedux,
+      name: "Django",
+      icon: SiDjango,
+    },
+    {
+      name: "Tailwind",
+      icon: SiTailwindcss,
     },
     {
       name: "MongoDB",
       icon: SiMongodb,
+    },
+    {
+      name: "Docker",
+      icon: SiDocker,
+    },
+    {
+      name: "Kubernetes",
+      icon: SiKubernetes,
+    },
+    {
+      name: "Jenkins",
+      icon: SiJenkins,
+    },
+    {
+      name: "AWS",
+      icon: SiAmazonaws,
     },
   ];
   
