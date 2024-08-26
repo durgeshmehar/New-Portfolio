@@ -8,7 +8,7 @@ import { fadeIn, textVariant } from "../utils/motion";
 
 const ServiceCard = ({ index, title, icon }) => (
   <Tilt
-    className=" w-full xs:w-[230px]  md:w-[240px]"
+    className="w-full xs:w-[230px] md:w-[240px]"
     options={{
       max: 45,
       scale: 1,
@@ -17,22 +17,31 @@ const ServiceCard = ({ index, title, icon }) => (
   >
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
-      className="w-full  green-pink-gradient p-[1px] rounded-[20px] shadow-card"
+      className="w-full  p-[1px] rounded-[20px] shadow-card border border-gray-700 "
     >
-      <div className="bg-tertiary min-h-[190px] rounded-[20px] py-4 px-8 md:min-h-[280px] flex justify-evenly items-center flex-col">
-        <img
+      <div className="bg-tertiary violet-gradient min-h-[150px] rounded-[20px] py-3 px-6 md:min-h-[240px] flex justify-evenly items-center flex-col md:flex-row">
+        <motion.img
           src={icon}
-          alt="web-development"
+          alt={title}
           className="w-16 h-16 object-contain"
+          animate={{
+            rotate: [0, 360], // Rotate 360 degrees
+          }}
+          transition={{
+            duration: 4, // Rotation duration
+            repeat: Infinity, // Loop indefinitely
+            ease: "linear", // Linear easing for smooth rotation
+          }}
         />
 
-        <h3 className="text-white text-base md:text-[20px] font-bold text-center ">
+        <h3 className="blue-pink-gradient-text text-base md:text-[20px] font-bold text-center">
           {title}
         </h3>
       </div>
     </motion.div>
   </Tilt>
 );
+
 
 const About = () => {
   return (

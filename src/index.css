@@ -53,6 +53,18 @@
   background: -webkit-linear-gradient(-90.13deg, #00cea8 1.9%, #bf61ff 97.5%);
 }
 
+.blue-pink-gradient {
+  background: "#0084ff"; /* Fallback */
+  background: linear-gradient(90.13deg, #0084ff 1.9%, #ff61a6 97.5%);
+  background: -webkit-linear-gradient(-90.13deg, #0084ff 1.9%, #ff61a6 97.5%);
+}
+.blue-pink-gradient-text {
+  background: linear-gradient(90.13deg, #0084ff 1.9%, #ff61a6 97.5%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-fill-color: transparent;
+}
 .orange-text-gradient {
   background: #f12711; /* fallback for old browsers */
   background: -webkit-linear-gradient(

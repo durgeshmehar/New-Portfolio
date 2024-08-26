@@ -150,14 +150,14 @@ const Contact = () => {
               <a
                 href="mailto:durgeshmehar2002@gmail.com"
                 target="_blank"
-                className="bg-gray-800 text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
+                className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
               >
                 <img src={gmail} className="h-7 w-7 md:h-9 md:w-9" />
               </a>
               <Link
                 to="https://github.com/durgeshmehar"
                 target="_blank"
-                className="bg-gray-800 text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
+                className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
               >
                 {" "}
                 <img src={github} className="h-7 w-7 md:h-9 md:w-9" />{" "}
@@ -165,7 +165,7 @@ const Contact = () => {
               <Link
                 to="https://www.linkedin.com/in/durgeshmehar/"
                 target="_blank"
-                className="bg-gray-800 text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
+                className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
               >
                 {" "}
                 <img src={linkedin} className="h-7 w-7 md:h-9 md:w-9" />{" "}

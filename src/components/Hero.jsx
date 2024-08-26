@@ -46,7 +46,7 @@ const Hero = () => {
         <div className="flex overflow-visible w-full">
           <div className="w-[60%] md:w-[50%] h-[50%]">
             <h1 className={`${styles.heroHeadText} text-white`}>
-              Hi 👋, I'm <span className="text-[#915EFF]">Durgesh</span>
+              Hi 👋, I'm <span className="blue-pink-gradient-text">Durgesh</span>
             </h1>
             <p className={`${styles.heroSubText} mt-2 text-white-100`}>
               I build efficient backends <br className="sm:block hidden" />
@@ -58,23 +58,23 @@ const Hero = () => {
               <a
                 href="https://drive.google.com/file/d/15E-_4cEhQnmU4g9LvlqmH8My-yYIoGBh/view?usp=drive_link" // Replace with your CV link
                 download
-                className="bg-[#915EFF] text-white py-2 px-6 rounded-lg text-md xs:text-lg  xs:font-medium hover:bg-[#7a4dd8] transition duration-300 transform hover:scale-105"
+                className="bg-[#80aef7] hover:bg-[#92b9f8] flex justify-center content-center text-black py-2 px-6 rounded-lg text-md xs:text-lg  xs:font-semibold  transition duration-300 transform"
               >
                 Download CV
               </a>
 
               <div className="flex gap-2 md:gap-6 lg:ml-4 group  rounded-md ">
-                <a href="mailto:durgeshmehar2002@gmail.com" target="_blank" className="bg-gray-800 text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105">
+                <a href="mailto:durgeshmehar2002@gmail.com" target="_blank" className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105">
                   <img src={gmail} className="h-7 w-7 md:h-9 md:w-9" />
                 </a>
-                <Link to="https://github.com/durgeshmehar" target="_blank" className="bg-gray-800 text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105">
+                <Link to="https://github.com/durgeshmehar" target="_blank" className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105">
                   {" "}
                   <img src={github} className="h-7 w-7 md:h-9 md:w-9" />{" "}
                 </Link>
                 <Link
                   to="https://www.linkedin.com/in/durgeshmehar/"
                   target="_blank"
-                  className="bg-gray-800 text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
+                  className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
                 >
                   {" "}
                   <img src={linkedin} className="h-7 w-7 md:h-9 md:w-9" />{" "}
