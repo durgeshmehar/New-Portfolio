@@ -42,9 +42,7 @@ const Navbar = () => {
     <nav
       className={`${
         styles.paddingX
-      } w-full flex items-center py-2 fixed top-0 z-20 ${
-        scrolled ? "bg-transparent shadow-lg" : "bg-transparent"
-      } transition-all duration-300`}
+      } w-full flex items-center py-2 fixed top-0 z-20`}
     >
       <div className='bg-[hsla(0,0%,250%,0.12)] backdrop-blur-[1rem] rounded-md p-2 md:p-4  w-full flex justify-between items-center max-w-7xl mx-auto'>
         <Link
@@ -55,7 +53,7 @@ const Navbar = () => {
             window.scrollTo(0, 0);
           }}
         >
-          <img src={logo} alt='logo' className='w-9 h-9 object-contain' />
+          <img src={logo} alt='logo' className='w-10 h-10 object-contain' />
         </Link>
 
         <ul className='list-none hidden sm:flex flex-row gap-10'>
@@ -64,7 +62,7 @@ const Navbar = () => {
               key={nav.id}
               className={`${
                 active === nav.id ? "font-bold text-[rgb(45,212,191)] hover:scale-105 transform transition-all duration-300 text-[20px] cursor-pointer relative" : "text-white"
-              } hover:text-[rgb(45,212,191)] hover:scale-105 transform transition-all duration-300 text-[20px] font-medium cursor-pointer relative`}
+              } hover:text-[rgb(45,212,191)] hover:scale-105 transform transition-all duration-300 text-[20px] font-semibold cursor-pointer relative`}
               onClick={() => setActive(nav.id)}
             >
               <a href={`${nav.id}`} className="relative group">

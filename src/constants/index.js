@@ -13,6 +13,9 @@ import {
     mongodb_Blog
   } from "../assets";
 
+  import { FaSchool,FaUniversity } from "react-icons/fa";
+  import { IoSchoolSharp } from "react-icons/io5";
+
   import {
     SiReact,
     SiPython,
@@ -20,16 +23,19 @@ import {
     SiNodedotjs,
     SiJavascript,
     SiCplusplus,
-    SiRedux,
     SiMongodb,
     SiDjango,
-    SiDocker, SiKubernetes, SiJenkins, SiAmazonaws
+    SiDocker, SiKubernetes, SiJenkins, SiAmazonaws,
   } from "react-icons/si";
   
   export const navLinks = [
     {
       id: "#about",
       title: "About",
+    },
+    {
+      id: "#education",
+      title: "Education",
     },
     {
       id: "#projects",
@@ -115,66 +121,35 @@ import {
     },
   ];
   
-  const experiences = [
+  const educations = [
     {
-      title: "Data Structures & Algorithms",  
-      company_name: "From Love babbar tutorials & documentation",
-      icon: cpp,
-      iconBg: "#242424",
-      date: "March 2022 - Aug 2022",
-      points: [
-        "Started with C as first programming language then moved to C++ and learned the basics of Data Structures and Algorithms.",
-        "Also learned the OOPs and STL and later moved to more complex concepts such as Graphs, Trees, Dynamic Programming and Bit Manipulation.",
-        "I have also started doing problems on Leetcode and GeeksforGeeks and also participated in coding contests.",
-      ],
+      title: "SSC",
+      place:"Z.P. High School & Jr. College",
+      year: "2018",
+      score:"91.80 %",
+      location:"Andhalgaon, Bhandara",
+      icon: FaSchool,
+      iconBg: "#2190FF",
+    },
+    { 
+      title: "HSC",
+      place:"Nanaji Joshi Jr. College",
+      year: "2020",
+      score:"85.23 %",
+      location:"Shahapur, Bhandara",
+      icon: IoSchoolSharp,
+      iconBg: "#2190FF",
+
+     
     },
     {
-      title: "Frontend Technologies",
-      company_name: "From CodeWithHarry, Youtube tutorials & documentation",
-      icon: tailwind,
-      iconBg: "#383E56",
-      date: "Aug 2022 - Nov 2022",
-      points: [
-        "Learned HTML and CSS in the 2 month and progressively advanced to more complex concepts later.",
-        "Also learned ot make responsive webpages by using frameworks like bootstrap and tailwind.",
-        "Created a few projects Clone of flipkart ,razorpay ,youtube which was taught along the course and are present in my github profile.",
-        "Dedicated 2 months on learning the javascript and Jquery. Created projects such as Dice Game , Drum-Kit and Simon game.",
-      ],
-    },
-    {
-      title: "Backend Technologies",
-      company_name: "From Youtube & Web Dev Bootcamp by Angela Yu on Udemy",
-      icon: nodejs,
-      iconBg: "#E6DEDD",
-      date: "Nov 2022 - Jan 2023",
-      points: [
-        "Started my journey of learning backend technologies by Node js and express js framework.",
-        "Later leaned Git, Github and meanwhile created projects of Whether app.",
-        "Moving the course learned the APIs such as making server-side API request, API authentication and REST APIs.",
-      ],
-    },
-    {
-      title: "Database Technologies",
-      company_name: "From Youtube & Web Dev Bootcamp by Angela Yu on Udemy",
-      icon: mongodb,
-      iconBg: "#383E56",
-      date: "Jan 2023 - Feb 2023",
-      points: [
-        "Developed a fully functional E-commerce site, demonstrating advanced database management skills in database schema design, complex queries, and efficient data handling.",
-        "Created a AI Chatbot application in which stores user data , history in postgres database.",
-      ],
-    },
-    {
-      title: "React, Redux, PassportJs, JWT Oauth",
-      company_name: "From Youtube & Web Dev Bootcamp by Angela Yu on Udemy",
-      icon: reactjs,
-      iconBg: "#383E56",
-      date: "Feb 2023",
-      points: [
-        "Started learning about Authentication and Security : concepts such as hashing , salting , bcrypt.",
-        "Learned about creating and handling cookies ,JWT token and sessions using passportJs.",
-        "Implementing all knowledge to create a fully functional projects such as E-commerce site , Realtime chat App and AI Chatbot.",
-      ],
+      title: "B.E Information technology",
+      place:"Dr. D. Y. Patil College of Engineering",
+      year: "2021 - 2025",
+      score:"9.23 CGPA",
+      location:"Akurdi, Pune",
+      icon: FaUniversity,
+      iconBg: "#2190FF",
     },
   ];
   
@@ -371,4 +346,4 @@ import {
     }
   ]
   
-  export { services, skills, experiences,blogs, projects };
+  export { services, skills, educations,blogs, projects };
