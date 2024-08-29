@@ -43,8 +43,8 @@ export const ProjectHoverEffect = ({ projects, className }) => {
               )}
             </AnimatePresence>
 
-            <div className="rounded-lg w-full h-full  overflow-hidden border border-transparent dark:border-white/[0.2]  violet-gradient  relative z-20 transition-all duration-700">
-              <div className="py-1 z-50 relative space-y-2">
+            <div className="rounded-lg w-full h-full  overflow-hidden border border-transparent dark:border-white/[0.2]  violet-gradient  relative z-10 transition-all duration-700">
+              <div className="py-1 z-10 relative space-y-2">
                 <div className="">
                   <div
                     className="relative w-full cursor-pointer transition-all duration-800"
