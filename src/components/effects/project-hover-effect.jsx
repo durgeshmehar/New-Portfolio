@@ -2,6 +2,7 @@ import { cn } from "../../utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 import { github } from "../../assets";
+import { FaExternalLinkAlt } from "react-icons/fa";
 
 export const ProjectHoverEffect = ({ projects, className }) => {
   let [hoveredIndex, setHoveredIndex] = useState(null);
@@ -9,7 +10,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2 3xl:grid-cols-3  gap-4 mt-6",
+        "grid grid-cols-1 md:grid-cols-2 3xl:grid-cols-3  gap-8 mt-6",
         className
       )}
     >
@@ -20,7 +21,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
         return (
           <div
             key={idx}
-            className="relative h-full group block p-3 gap-2 w-full "
+            className="relative h-full group block w-full "
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
@@ -42,47 +43,49 @@ export const ProjectHoverEffect = ({ projects, className }) => {
               )}
             </AnimatePresence>
 
-            <div className="rounded-lg w-full h-full p-3 overflow-hidden border border-transparent dark:border-white/[0.2]  violet-gradient  relative z-20 transition-all duration-700">
+            <div className="rounded-lg w-full h-full  overflow-hidden border border-transparent dark:border-white/[0.2]  violet-gradient  relative z-20 transition-all duration-700">
               <div className="py-1 z-50 relative space-y-2">
                 <div className="">
-                  <div className="hover:scale-110  relative w-full cursor-pointer transition-all duration-800"  onClick={() => window.open(live_link, "_blank")}>
+                  <div
+                    className="relative w-full cursor-pointer transition-all duration-800"
+                    onClick={() => window.open(live_link, "_blank")}
+                  >
+                    <img
+                      src={image}
+                      alt="project_image"
+                      className="transition-all duration-300 w-full h-[220px] md:h-[340px] object-cover rounded-lg cursor-pointer"
+                    />
+                  </div>
 
-                      <img
-                        src={image}
-                        alt="project_image"
-                        className="transition-all duration-300 w-full h-[300px] object-cover rounded-lg cursor-pointer  "
-                      />
-                    
-
-                    <div className=" absolute inset-0 flex justify-end m-3 card-img_hover">
-                      <div
-                        onClick={() => window.open(source_code_link, "_blank")}
-                        className=" black-gradient w-10 h-10 rounded-full flex justify-center items-center cursor-pointer"
-                      >
+                  <div className="p-3 md:p-8 md:pb-3">
+                    <div className="md:mt-4 flex gap-4 justify-center items-center">
+                      <h3 className=" text-white opacity-70 p-1 font-bold text-lg md:text-[24px]">
+                        {name}
+                      </h3>
+                      <a href={live_link} target="_blank">
+                        {" "}
+                        <FaExternalLinkAlt />{" "}
+                      </a>
+                      <a href={source_code_link} target="_blank">
                         <img
                           src={github}
                           alt="source code"
-                          className=" w-6 h-6 object-contain"
+                          className="w-6 h-6 object-contain cursor-pointer"
                         />
-                      </div>
+                      </a>
                     </div>
-
-                  </div>
-
-                  <div className="mt-5 relative -top-[10px]">
-                    <h3 className="text-white opacity-70 p-1 font-bold text-base mb-6 md:text-[24px]">{name}</h3>
-                    <p className="mt-4 pt-4 text-secondary text-[14px] text-left">
+                    <p className="mt-0 pt-4 text-secondary text-[16px] md:text-[18px] text-left">
                       {description}
                     </p>
                   </div>
 
-                  <div className="-mt-[50px] flex flex-wrap gap-2">
+                  <div className="mb-3 px-3 md:px-8 flex flex-wrap gap-2">
                     {tags.map((tag) => (
                       <p
                         key={`${name}-${tag.name}`}
-                        className={`text-[14px] ${tag.color}`}
+                        className={`text-[16px]`}
                       >
-                        #{tag.name}
+                        #<span className={`text-[16px] ${tag.color}`}>{tag.name}&nbsp;</span>
                       </p>
                     ))}
                   </div>

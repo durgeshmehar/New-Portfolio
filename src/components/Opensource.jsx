@@ -14,6 +14,7 @@ const Opensource = () => {
           Github <span className="blue-pink-gradient-text">Contribution </span>
         </h2>
       </motion.div>
+      
       <img src="https://ghchart.rshah.org/durgeshmehar" className="w-full mt-8 lg:mt-16" alt="Github chart" />
       <p className="mt-6 !text-[18px] font-semibold"> 276 contributions in 2024 </p>
 

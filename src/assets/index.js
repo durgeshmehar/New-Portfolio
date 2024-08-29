@@ -6,6 +6,7 @@ import linkedin from "./linkedin.png";
 import gmail from "./gmail.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
+import profile_blog from "./profile-blog.png";        
 
 import backend from "./roles/backend.png";
 import creator from "./roles/creator.png";
@@ -68,6 +69,7 @@ export {
   tailwind,
   typescript,
   threejs,
+  profile_blog,
 
   linkedin,
   gmail,

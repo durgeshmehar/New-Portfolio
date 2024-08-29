@@ -6,14 +6,15 @@ import { projects } from "../constants";
 import { fadeIn , textVariant } from "../utils/motion";
 import { ProjectHoverEffect } from "./effects/project-hover-effect";
 
+
 const navlist = ["All","Django", "NodeJS", "React"];
 
 const Projects = () => {
-  const [toggle, setToggle] = useState("Django");
+  const [toggle, setToggle] = useState("All");
 
   return (
     <>
-      <div className="max-w-6xl md:mt-0 mx-auto md:px-8 text-center">
+      <div className="max-w-6xl md:mt-0 mx-auto md:px-8 text-center flex flex-col justify-center items-center">
         <motion.div variants={textVariant()}>
           <p className={`${styles.sectionSubText} `}>My work</p>
           <h2 className={`${styles.sectionHeadText} blue-pink-gradient-text` }>Projects</h2>
@@ -40,7 +41,7 @@ const Projects = () => {
           ))}
         </div>
 
-        <div className="mt-2 md:mt-4 w-full gap-12  flex flex-wrap justify-center items-center ">
+        <div className="w-[100%] mt-2 md:mt-4 md:w-full gap-12  flex flex-wrap justify-center items-center ">
     
           {toggle === "All" ? (
             <ProjectHoverEffect projects={projects} />

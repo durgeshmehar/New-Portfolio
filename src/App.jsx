@@ -10,13 +10,13 @@ import {
   Skills,
   Projects,
   Opensource,
-  Dsa
+  Dsa,Footer
 } from "./components";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="relative z-0  bg-black">
+      <div className="relative z-0  bg-primary">
         <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
           <Navbar />
           <Hero />
@@ -29,12 +29,9 @@ function App() {
         <Dsa />
         <Projects />
         <Blogs />
-
-        <div className="relative z-0">
-          <Contact />
-        </div>
-
+        <Contact />
       </div>
+        <Footer />
     </BrowserRouter>
   );
 }

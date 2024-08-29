@@ -9,6 +9,7 @@ import Blogs from './Blogs';
 import Contact from './Contact';
 import Opensource from './Opensource'
 import Dsa from './Dsa';
+import Footer from './Footer';
 
 export {
   Hero,
@@ -21,5 +22,6 @@ export {
   Contact,
   EarthCanvas, 
   Opensource,
-  Dsa
+  Dsa,
+  Footer
 }

@@ -97,7 +97,7 @@ const Contact = () => {
     >
       <motion.div
         variants={slideIn("left", "tween", 0, 0.8)}
-        className="flex-[0.75] violet-gradient p-8 rounded-2xl"
+        className="flex-[0.75] violet-gradient p-8 pb-6 rounded-2xl"
       >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={`${styles.sectionHeadText} blue-pink-gradient-text`}>
@@ -107,10 +107,10 @@ const Contact = () => {
         <form
           ref={formRef}
           onSubmit={handleSubmit}
-          className="mt-12 flex flex-col gap-8"
+          className="mt-8 flex flex-col gap-6"
         >
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your Name</span>
+            <span className="text-white font-medium mb-2">Your Name</span>
             <input
               type="text"
               name="name"
@@ -120,7 +120,7 @@ const Contact = () => {
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your email</span>
+            <span className="text-white font-medium mb-2">Your email</span>
             <input
               type="email"
               name="email"
@@ -130,18 +130,21 @@ const Contact = () => {
             />
           </label>
           <label className="flex flex-col">
-            <span className="text-white font-medium mb-4">Your Message</span>
+            <span className="text-white font-medium mb-2">Your Message</span>
             <textarea
-              rows={7}
+              rows={4}
               name="message"
               value={form.message}
               onChange={handleChange}
               className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-violet-800 focus:ring-1 focus:ring-violet-800 font-medium"
             />
           </label>
-          <div className="flex flex-col items-center gap-6">
+          <div className="flex items-center gap-6">
             <div className="w-full flex justify-center">
-              <Button borderRadius="1.2rem" className="text-white font-bold text-[16px] md:text-lg hover:text-white/80">
+              <Button
+                borderRadius="1.2rem"
+                className="text-white font-bold text-[16px] md:text-lg hover:text-white/80"
+              >
                 <button
                   type="submit"
                   // className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary border border-violet-800 focus:ring-1 focus:ring-violet-800"
@@ -151,31 +154,7 @@ const Contact = () => {
               </Button>
             </div>
 
-            <div className="flex justify-center gap-2 md:gap-6 group  rounded-md ">
-              <a
-                href="mailto:durgeshmehar2002@gmail.com"
-                target="_blank"
-                className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
-              >
-                <img src={gmail} className="h-7 w-7 md:h-9 md:w-9" />
-              </a>
-              <Link
-                to="https://github.com/durgeshmehar"
-                target="_blank"
-                className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
-              >
-                {" "}
-                <img src={github} className="h-7 w-7 md:h-9 md:w-9" />{" "}
-              </Link>
-              <Link
-                to="https://www.linkedin.com/in/durgeshmehar/"
-                target="_blank"
-                className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
-              >
-                {" "}
-                <img src={linkedin} className="h-7 w-7 md:h-9 md:w-9" />{" "}
-              </Link>
-            </div>
+            
           </div>
         </form>
       </motion.div>
