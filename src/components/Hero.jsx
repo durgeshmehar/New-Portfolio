@@ -4,35 +4,9 @@ import { useEffect, useState } from "react";
 import { profile, blob } from "../assets";
 import { github, linkedin, gmail } from "../assets";
 import { Link } from "react-router-dom";
-
-const isLaptop = () => {
-  // Assuming a device is a laptop if its width is greater than 1024px
-  return window.innerWidth > 1024;
-};
+import { Button } from "./effects/moving-border";
 
 const Hero = () => {
-  const [isLaptopDevice, setIsLaptopDevice] = useState(isLaptop());
-
-  useEffect(() => {
-    // Update the state when the window is resized
-    const handleResize = () => {
-      setIsLaptopDevice(isLaptop());
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  // Dynamically import ComputersCanvas only if it's a laptop device
-  const [ComputersCanvas, setComputersCanvas] = useState(null);
-  useEffect(() => {
-    if (isLaptopDevice) {
-      import("./canvas").then((module) => {
-        setComputersCanvas(() => module.ComputersCanvas);
-      });
-    }
-  }, [isLaptopDevice]);
-
   return (
     <section className={`w-full mx-auto pt-[100vh] overflow-visible`}>
       <div
@@ -46,7 +20,8 @@ const Hero = () => {
         <div className="flex overflow-visible w-full">
           <div className="w-[60%] md:w-[50%] h-[50%]">
             <h1 className={`${styles.heroHeadText} text-white`}>
-              Hi 👋, I'm <span className="blue-pink-gradient-text">Durgesh</span>
+              Hi 👋, I'm{" "}
+              <span className="blue-pink-gradient-text">Durgesh</span>
             </h1>
             <p className={`${styles.heroSubText} mt-2 text-white-100`}>
               I build efficient backends <br className="sm:block hidden" />
@@ -55,26 +30,42 @@ const Hero = () => {
 
             {/* Buttons Section */}
             <div className="mt-8 md:mt-14 flex flex-wrap gap-4">
-              <a
-                href="https://drive.google.com/file/d/15E-_4cEhQnmU4g9LvlqmH8My-yYIoGBh/view?usp=drive_link" // Replace with your CV link
-                download
-                className="bg-[#80aef7] hover:bg-[#92b9f8] flex justify-center content-center text-black py-2 px-6 rounded-lg text-md xs:text-lg  xs:font-semibold  transition duration-300 transform"
+              <Button
+                borderRadius="1.75rem"
+                className="text-white "
+                duration={2000}
               >
-                Download CV
-              </a>
+                <a
+                  href="https://drive.google.com/file/d/15E-_4cEhQnmU4g9LvlqmH8My-yYIoGBh/view?usp=drive_link" // Replace with your CV link
+                  download
+                  // className="bg-[#80aef7] hover:bg-[#92b9f8] flex justify-center content-center text-black py-2 px-6 rounded-lg text-md xs:text-lg  xs:font-semibold  transition duration-300 transform"
+                  className="font-bold text-lg text-white hover:text-white/80"
+                >
+                  Download CV
+                </a>
+              </Button>
 
               <div className="flex gap-2 md:gap-6 lg:ml-4 group  rounded-md ">
-                <a href="mailto:durgeshmehar2002@gmail.com" target="_blank" className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105">
+                <a
+                  href="mailto:durgeshmehar2002@gmail.com"
+                  target="_blank"
+                  className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center  hover:bg-gray-700 transition duration-300 transform"
+                >
                   <img src={gmail} className="h-7 w-7 md:h-9 md:w-9" />
                 </a>
-                <Link to="https://github.com/durgeshmehar" target="_blank" className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105">
+                
+                <Link
+                  to="https://github.com/durgeshmehar"
+                  target="_blank"
+                  className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform "
+                >
                   {" "}
                   <img src={github} className="h-7 w-7 md:h-9 md:w-9" />{" "}
                 </Link>
                 <Link
                   to="https://www.linkedin.com/in/durgeshmehar/"
                   target="_blank"
-                  className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform hover:scale-105"
+                  className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform "
                 >
                   {" "}
                   <img src={linkedin} className="h-7 w-7 md:h-9 md:w-9" />{" "}
@@ -96,30 +87,6 @@ const Hero = () => {
           </div>
         </div>
       </div>
-
-      {/* {ComputersCanvas && (
-        <>
-          <ComputersCanvas />
-
-          <div className="absolute xs:bottom-10 bottom-32 w-full flex justify-center items-center">
-            <a href="#about">
-              <div className="w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2">
-                <motion.div
-                  animate={{
-                    y: [0, 24, 0],
-                  }}
-                  transition={{
-                    duration: 1.5,
-                    repeat: Infinity,
-                    repeatType: "loop",
-                  }}
-                  className="w-3 h-3 rounded-full bg-secondary mb-1"
-                />
-              </div>
-            </a>
-          </div>
-        </>
-      )} */}
     </section>
   );
 };

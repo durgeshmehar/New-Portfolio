@@ -71,7 +71,7 @@ const Blogs = () => {
       >
         <motion.div variants={textVariant()}>
           <p className={styles.sectionSubText}>How I&apos;m share knowledge</p>
-          <h2 className={styles.sectionHeadText}>Blogs.</h2>
+          <h2 className={`${styles.sectionHeadText} blue-pink-gradient-text`}>Blogs</h2>
         </motion.div>
       </div>
 

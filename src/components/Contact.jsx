@@ -8,6 +8,7 @@ import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import { Link } from "react-router-dom";
+import { Button } from "./effects/moving-border";
 
 const isLaptop = () => {
   return window.innerWidth > 1024;
@@ -99,7 +100,9 @@ const Contact = () => {
         className="flex-[0.75] violet-gradient p-8 rounded-2xl"
       >
         <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={styles.sectionHeadText}>Contact.</h3>
+        <h3 className={`${styles.sectionHeadText} blue-pink-gradient-text`}>
+          Contact
+        </h3>
 
         <form
           ref={formRef}
@@ -138,12 +141,14 @@ const Contact = () => {
           </label>
           <div className="flex flex-col items-center gap-6">
             <div className="w-full flex justify-center">
-              <button
-                type="submit"
-                className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary border border-violet-800 focus:ring-1 focus:ring-violet-800"
-              >
-                {loading ? "Sending..." : "Send"}
-              </button>
+              <Button borderRadius="1.2rem" className="text-white font-bold text-[16px] md:text-lg hover:text-white/80">
+                <button
+                  type="submit"
+                  // className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary border border-violet-800 focus:ring-1 focus:ring-violet-800"
+                >
+                  {loading ? "Sending..." : "Send"}
+                </button>
+              </Button>
             </div>
 
             <div className="flex justify-center gap-2 md:gap-6 group  rounded-md ">

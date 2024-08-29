@@ -10,7 +10,8 @@ import {
     nodejs,
     mongodb,
     git_Blog,
-    mongodb_Blog
+    mongodb_Blog,
+    notify
   } from "../assets";
 
   import { FaSchool,FaUniversity } from "react-icons/fa";
@@ -156,6 +157,52 @@ import {
   // const navlist = ["All", "Fullstack", "React"];
   const projects = [
     {
+      name: "Notify",
+      description:
+      "Developed an email notiﬁcation system to manage a high-volume subscriber base. Asynchronously sent a large number of emails.",
+      tags: [
+        {
+          name: "Django,",
+          color: "orange-text-gradient",
+        },
+        {
+          name: "Celery",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "Google OAuth",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: notify,
+      source_code_link: "https://github.com/durgeshmehar/Message-Board",
+      live_link: "https://github.com/durgeshmehar/Message-Board",
+      category: "Django"
+    },   
+    {
+      name: "AI Chatbot",
+      description:
+      "Developed an application enabling users to upload PDFs and receive precise answers to their queries using advanced AI technologies.",
+      tags: [
+        {
+          name: "Fastapi",
+          color: "orange-text-gradient",
+        },
+        {
+          name: "Next.js",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "ChatGPT-4o",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: chatbot,
+      source_code_link: "https://github.com/durgeshmehar/Chatbot",
+      live_link: "https://durgeshbot.vercel.app/",
+      category: "Django"
+    },   
+    {
       name: "E-shop Ecommerce",
       description:
         "E-shop Website is a platform designed to enhance your shopping experience, offering a wide range of products, secure payment options,email notification and efficient order management.",
@@ -176,7 +223,7 @@ import {
       image: eshop,
       source_code_link: "https://github.com/durgeshmehar/E-commerce-Website",
       live_link: "https://durgesheshop.vercel.app/login",
-      category: "Fullstack"
+      category: "NodeJS"
     },
     {
       name: "Snappy Chat Website",
@@ -199,31 +246,9 @@ import {
       image: snappy,
       source_code_link: "https://github.com/durgeshmehar/Live-Chat-Website",
       live_link: "https://chat-app-2893.onrender.com/",
-      category: "Fullstack"
+      category: "NodeJS"
     },
-    {
-      name: "AI Chatbot",
-      description:
-      "Presenting an AI Chatbot app ,you can ask any quesions to AI. This project developed with Next.js, Fastapi, Langchain for responses from gemini and PostgreSQL for store chat history.",
-      tags: [
-        {
-          name: "Next.js",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "Fastapi",
-          color: "orange-text-gradient",
-        },
-        {
-          name: "PostgreSQL",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: chatbot,
-      source_code_link: "https://github.com/durgeshmehar/Chatbot",
-      live_link: "https://durgeshbot.vercel.app/",
-      category: "Fullstack"
-    },   
+
     {
       name: "YouTube Clone",
       description:
@@ -245,31 +270,31 @@ import {
       image: youtube,
       source_code_link: "https://github.com/durgeshmehar/YouTube",
       live_link: "https://durgeshyoutube.netlify.app/",
-      category: "Fullstack"
+      category: "NodeJS"
     },
-    {
-      name: "Portfolio Project",
-      description:
-      "Presenting my latest creation, a stunning 3D Animated Portfolio crafted with React.js, Tailwind CSS, and Three.js. This immersive portfolio project showcases the fusion of technology and design, featuring animations by Framer Motion.",
-      tags: [
-        {
-          name: "React",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "Tailwind",
-          color: "green-text-gradient",
-        },
-        {
-          name: "ThreeJs",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: portfolio,
-      source_code_link: "https://github.com/durgeshmehar/New-Portfolio",
-      live_link: "durgeshmehar.vercel.app",
-      category: "React"
-    },
+    // {
+    //   name: "Portfolio Project",
+    //   description:
+    //   "Presenting my latest creation, a stunning 3D Animated Portfolio crafted with React.js, Tailwind CSS, and Three.js. This immersive portfolio project showcases the fusion of technology and design, featuring animations by Framer Motion.",
+    //   tags: [
+    //     {
+    //       name: "React",
+    //       color: "blue-text-gradient",
+    //     },
+    //     {
+    //       name: "Tailwind",
+    //       color: "green-text-gradient",
+    //     },
+    //     {
+    //       name: "ThreeJs",
+    //       color: "pink-text-gradient",
+    //     },
+    //   ],
+    //   image: portfolio,
+    //   source_code_link: "https://github.com/durgeshmehar/New-Portfolio",
+    //   live_link: "durgeshmehar.vercel.app",
+    //   category: "React"
+    // },
      
     {
       name: "Crypto App",
@@ -290,25 +315,25 @@ import {
       live_link: "https://durgeshcrypto.vercel.app/",
       category: "React"
     },
-    {
-      name: "Razorpay Clone",
-      description:
-      "Razorpay clone, a meticulously designed application built with HTML and Tailwind. Focusing on UI/UX and responsive design.This is visually appealing platform ensuring an intuitive and seamless experience across all devices.",
-      tags: [
-        {
-          name: "HTML",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "Tailwind",
-          color: "green-text-gradient",
-        },
-      ],
-      image: razorpay,
-      source_code_link: "https://github.com/durgeshmehar/Razorpay",
-      live_link: "http://durgeshrazorpay.netlify.com/",
-      category: "React"
-    },
+    // {
+    //   name: "Razorpay Clone",
+    //   description:
+    //   "Razorpay clone, a meticulously designed application built with HTML and Tailwind. Focusing on UI/UX and responsive design.This is visually appealing platform ensuring an intuitive and seamless experience across all devices.",
+    //   tags: [
+    //     {
+    //       name: "HTML",
+    //       color: "blue-text-gradient",
+    //     },
+    //     {
+    //       name: "Tailwind",
+    //       color: "green-text-gradient",
+    //     },
+    //   ],
+    //   image: razorpay,
+    //   source_code_link: "https://github.com/durgeshmehar/Razorpay",
+    //   live_link: "http://durgeshrazorpay.netlify.com/",
+    //   category: "React"
+    // },
   ];
 
   const blogs = [

@@ -1,4 +1,4 @@
-import { cn } from "../utils/cn";
+import { cn } from "../../utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
 
@@ -8,7 +8,7 @@ export const HoverEffect = ({ items, className }) => {
   return (
     <div
       className={cn(
-        "md:w-[80%] mx-auto grid grid-cols-2 xs:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 px-4 py-6",
+        "md:w-[80%]  mx-auto grid grid-cols-2 xs:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 px-4 py-6",
         className
       )}
     >
@@ -17,7 +17,7 @@ export const HoverEffect = ({ items, className }) => {
         return (
           <div
             key={idx}
-            className="relative group block p-2 h-full w-full "
+            className="relative group block p-2 h-full w-full cursor-pointer"
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >

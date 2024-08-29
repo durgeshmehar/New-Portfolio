@@ -1,23 +1,25 @@
-import { EarthCanvas, BallCanvas, ComputersCanvas } from './canvas';
+import { EarthCanvas } from './canvas';
 import Hero from './Hero';
 import Navbar from './Navbar';
 import About from './About';
-import Tech from './Tech';
+import Skills from './Skills';
 import Education from './Education';
-import Works from './Works';
+import Projects from './Projects';
 import Blogs from './Blogs';
 import Contact from './Contact';
+import Opensource from './Opensource'
+import Dsa from './Dsa';
 
 export {
   Hero,
   Navbar,
   About,
-  Tech,
+  Skills,
   Education,
-  Works,
+  Projects,
   Blogs,
   Contact,
   EarthCanvas, 
-  BallCanvas, 
-  ComputersCanvas, 
+  Opensource,
+  Dsa
 }

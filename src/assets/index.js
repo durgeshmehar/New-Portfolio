@@ -35,6 +35,7 @@ import portfolio from "./project/portfolio.png"
 import razorpay from "./project/razorpay.png"
 import snappy from "./project/snappy.png"
 import youtube from "./project/youtube.png"
+import notify from "./project/notify.png"
 
 import git_Blog from "./blogs/git.jpg"
 import mongodb_Blog from "./blogs/mongodb.gif"
@@ -42,6 +43,7 @@ import mongodb_Blog from "./blogs/mongodb.gif"
 // koinx , portfolio,razorpay ,snappy , youtube
 
 export {
+  notify,
   logo,
   profile,
   blob,

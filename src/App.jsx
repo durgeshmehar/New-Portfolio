@@ -7,15 +7,16 @@ import {
   Blogs,
   Hero,
   Navbar,
-  Tech,
-  Works,
+  Skills,
+  Projects,
+  Opensource,
+  Dsa
 } from "./components";
 
 function App() {
   return (
     <BrowserRouter>
-      <div className="relative z-0 bg-primary">
-
+      <div className="relative z-0  bg-black">
         <div className="bg-hero-pattern bg-cover bg-no-repeat bg-center">
           <Navbar />
           <Hero />
@@ -23,8 +24,10 @@ function App() {
 
         <About />
         <Education />
-        <Tech />
-        <Works />
+        <Skills />
+        <Opensource />
+        <Dsa />
+        <Projects />
         <Blogs />
 
         <div className="relative z-0">

@@ -5,6 +5,8 @@ import { styles } from "../styles";
 import { services } from "../constants";
 import { SectionWrapper } from "../hoc";
 import { fadeIn, textVariant } from "../utils/motion";
+"use client";
+import { TextGenerateEffect } from "./effects/text-generate-effect"
 
 const ServiceCard = ({ index, title, icon }) => (
   <Tilt
@@ -43,16 +45,19 @@ const ServiceCard = ({ index, title, icon }) => (
 );
 
 
-const About = () => {
-  return (
-    <div id="about" className="-mt-[50vh] xs:-mt-[40vh] md:-mt-[35vh] lg:-mt-[40vh]">
-      <p className={styles.sectionSubText}>Introduction</p>
-      <h2 className={styles.sectionHeadText}>Overview.</h2>
-      <p className="mt-4 text-secondary text-[17px] md:text-[20px] max-w-3xl leading-[30px]">
-        I am a passionate Software Engineer specializing in Web Development, AI
+const words = `I am a passionate Software Engineer specializing in Web Development, AI
         and Devops. My core skills include C++, Python, and JavaScript, along
         with frameworks like Django and Node.js. I am also experienced in cloud
-        technologies and deployments using Docker, Kubernetes, Jenkins, and AWS.
+        technologies and deployments using Docker, Kubernetes, Jenkins, and AWS.`;
+
+
+const About = () => {
+  return (
+    <div id="about" className="-mt-[50vh] xs:-mt-[40vh] md:-mt-[40vh] lg:-mt-[45vh]">
+      <p className={styles.sectionSubText}>Introduction</p>
+      <h2 className={`${styles.sectionHeadText} blue-pink-gradient-text`}>Overview</h2>
+      <p className="mt-4 text-secondary text-[17px] md:text-[20px] max-w-3xl leading-[30px]">
+      <TextGenerateEffect words={words} />
       </p>
       <motion.p variants={fadeIn("", "", 0.2, 0.5)}>
         <div className="mt-20 grid grid-cols-2 lg:grid-cols-4 gap-10 place-items-center">
@@ -75,3 +80,14 @@ export default WrappedAbout;
         create efficient, scalable, and user-friendly solutions that solve
         real-world problems. Let{"'"}s work together to bring your ideas to life! */
 }
+
+
+// 
+// import { TextGenerateEffect } from "../ui/text-generate-effect";
+
+// const words = `Oxygen gets you high. In a catastrophic emergency, we're taking giant, panicked breaths. Suddenly you become euphoric, docile. You accept your fate. It's all right here. Emergency water landing, six hundred miles an hour. Blank faces, calm as Hindu cows
+// `;
+
+// export function TextGenerateEffectDemo() {
+//   return <TextGenerateEffect words={words} />;
+// }
