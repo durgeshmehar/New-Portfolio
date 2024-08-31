@@ -31,7 +31,7 @@ const Hero = () => {
             {/* Buttons Section */}
             <div className="mt-8 md:mt-14 flex flex-wrap gap-4">
               <Button
-                borderRadius="1.75rem"
+                borderRadius="1.05rem"
                 className="text-white "
                 duration={2000}
               >
@@ -39,7 +39,7 @@ const Hero = () => {
                   href="https://drive.google.com/file/d/15E-_4cEhQnmU4g9LvlqmH8My-yYIoGBh/view?usp=drive_link" // Replace with your CV link
                   download
                   // className="bg-[#80aef7] hover:bg-[#92b9f8] flex justify-center content-center text-black py-2 px-6 rounded-lg text-md xs:text-lg  xs:font-semibold  transition duration-300 transform"
-                  className="font-bold text-base md:text-lg text-white hover:text-white/80"
+                  className="text-base md:text-lg text-white hover:text-white/80"
                 >
                   Download CV
                 </a>
@@ -82,7 +82,7 @@ const Hero = () => {
             <img
               src={profile}
               alt="Profile"
-              className="absolute mx-auto w-[90%] h-[20vh] xs:w-[100%] xs:h-[30vh] sm:h-[35vh] md:w-[70%] md:h-[40vh] lg:h-[42vh] top-0 right-0  object-contain rounded-sm"
+              className="absolute mx-auto w-[90%] h-[23vh] xs:w-[100%] xs:h-[30vh] sm:h-[35vh] md:w-[70%] md:h-[40vh] lg:h-[42vh] top-0 right-0  object-contain rounded-sm"
             />
           </div>
         </div>

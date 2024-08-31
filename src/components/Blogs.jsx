@@ -12,11 +12,11 @@ import { profile_blog } from "../assets";
 function CardDemo({ index, title, description, bloglink, tags, image }) {
   return (
     <motion.div variants={slideIn("left", "tween", 0, 0.8)} className="">
-    <div className="w-full md:max-w-xs group/card text-left">
+    <div className="max-w-sm md:max-w-sm group/card text-left">
       <a href={bloglink} target="_blank">
         <div
           className={cn(
-            " cursor-pointer overflow-hidden relative card h-96 md:h-[45vh] rounded-md shadow-xl  max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4 bg-cover"
+            " cursor-pointer overflow-hidden relative card h-96 md:h-[50vh] rounded-md shadow-xl  max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4 bg-cover"
           )}
           style={{
             backgroundImage: `url(${image})`,
@@ -64,7 +64,7 @@ const Blogs = () => {
       </motion.div>
 
       <div
-        className={`mt-8 flex justify-center items-center flex-col md:flex-row pb-14 ${styles.paddingX} flex flex-wrap gap-8 md:justify-start`}
+        className={`mt-8 flex justify-center items-center flex-col md:flex-row pb-14 ${styles.paddingX} flex flex-wrap gap-11 md:justify-start`}
       >
         {blogs.map((blog, index) => (
           <CardDemo key={blog.title} index={index} {...blog} />

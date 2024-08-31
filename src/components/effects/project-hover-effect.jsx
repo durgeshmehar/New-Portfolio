@@ -21,11 +21,11 @@ export const ProjectHoverEffect = ({ projects, className }) => {
         return (
           <div
             key={idx}
-            className="relative h-full group block w-full "
+            className="relative h-full group block w-full"
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            <AnimatePresence>
+            {/* <AnimatePresence>
               {hoveredIndex === idx && (
                 <motion.span
                   className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.9] block  rounded-lg"
@@ -41,19 +41,19 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                   }}
                 />
               )}
-            </AnimatePresence>
+            </AnimatePresence> */}
 
-            <div className="rounded-lg w-full h-full  overflow-hidden border border-transparent dark:border-white/[0.2]  violet-gradient  relative z-10 transition-all duration-700">
+            <div className="rounded-lg w-full h-full  overflow-hidden border border-transparent dark:border-white/[0.2]  bg-primary hover:bg-slate-900 relative z-10 transition-all duration-200">
               <div className="py-1 z-10 relative space-y-2">
                 <div className="">
                   <div
-                    className="relative w-full cursor-pointer transition-all duration-800"
+                    className="relative w-full cursor-pointer transition-all duration-200"
                     onClick={() => window.open(live_link, "_blank")}
                   >
                     <img
                       src={image}
                       alt="project_image"
-                      className="transition-all duration-300 w-full h-[220px] md:h-[340px] object-cover rounded-lg cursor-pointer"
+                      className="transition-all duration-200 w-full h-[220px] md:h-[340px] object-cover rounded-lg cursor-pointer"
                     />
                   </div>
 
@@ -62,7 +62,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                       <h3 className=" text-white opacity-70 p-1 font-bold text-lg md:text-[24px]">
                         {name}
                       </h3>
-                      <a href={live_link} target="_blank">
+                      <a className="text-blue-600" href={live_link} target="_blank">
                         {" "}
                         <FaExternalLinkAlt />{" "}
                       </a>
@@ -79,7 +79,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                     </p>
                   </div>
 
-                  <div className="mb-3 px-3 md:px-8 flex flex-wrap gap-2">
+                  <div className="mb-6 px-3 md:px-8 flex flex-wrap gap-2">
                     {tags.map((tag) => (
                       <p
                         key={`${name}-${tag.name}`}

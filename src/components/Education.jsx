@@ -17,12 +17,12 @@ const EducationCard = React.memo(({ education }) => {
   return (
     <VerticalTimelineElement
       contentStyle={{
-        background: "#291a4a",
-        color: "#fff",
+        background: "#050A44",
+        color: "#FF0000",
       }}
-      contentArrowStyle={{ borderRight: "8px solid  #232631" }}
+      contentArrowStyle={{ borderRight: "15px solid  #232631" }}
       date={
-        <span className="text-[18px] md:text-[20px] font-bold text-white">
+        <span className="text-[18px] md:text-[20px] font-bold text-[#B3B4BD]">
           {education.score}
         </span>
       }

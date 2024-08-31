@@ -56,7 +56,7 @@ const Projects = () => {
           ))}
         </div>
 
-        <div className="w-[95%] mt-2 md:mt-4 md:w-full gap-12  flex flex-wrap justify-center items-center ">
+        <div className="w-[90%] mt-2 md:mt-11 md:w-full gap-12  flex flex-wrap justify-center items-center ">
           {toggle === "All" ? (
             <ProjectHoverEffect projects={filteredProjects} />
           ) : (
