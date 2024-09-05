@@ -1,7 +1,7 @@
 import { cn } from "../../utils/cn";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { github } from "../../assets";
+import { github, macbook } from "../../assets";
 import { FaExternalLinkAlt } from "react-icons/fa";
 
 export const ProjectHoverEffect = ({ projects, className }) => {
@@ -10,7 +10,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2 3xl:grid-cols-3  gap-8 mt-6",
+        "lg:w-[100%] grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-3  gap-8 lg:gap-y-28 mt-6",
         className
       )}
     >
@@ -21,56 +21,55 @@ export const ProjectHoverEffect = ({ projects, className }) => {
         return (
           <div
             key={idx}
-            className="relative h-full group block w-full"
+            className="group relative h-full w-full"
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
-            {/* <AnimatePresence>
-              {hoveredIndex === idx && (
-                <motion.span
-                  className="absolute inset-0 h-full w-full bg-neutral-200 dark:bg-slate-800/[0.9] block  rounded-lg"
-                  layoutId="hoverBackground"
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    opacity: 1,
-                    transition: { duration: 0.15 },
-                  }}
-                  exit={{
-                    opacity: 0,
-                    transition: { duration: 0.15, delay: 0.2 },
-                  }}
-                />
-              )}
-            </AnimatePresence> */}
-
-            <div className="rounded-lg w-full h-full  overflow-hidden border border-transparent dark:border-white/[0.2]  bg-primary hover:bg-slate-900 relative z-10 transition-all duration-200">
-              <div className="py-1 z-10 relative space-y-2">
-                <div className="">
-                  <div
-                    className="relative w-full cursor-pointer transition-all duration-200"
-                    onClick={() => window.open(live_link, "_blank")}
-                  >
+            <div className="rounded-lg w-full h-full overflow-hidden bg-primary relative z-10 transition-all duration-200">
+              <div className="relative flex justify-between flex-col">
+                <div
+                  className="w-full aspect-[16/10] relative cursor-pointer group-hover:bg-slate-900"
+                  onClick={() => window.open(live_link, "_blank")}
+                >
+                  <div className="relative w-full h-full">
                     <img
-                      src={image}
-                      alt="project_image"
-                      className="transition-all duration-200 w-full h-[220px] md:h-[340px] object-cover rounded-lg cursor-pointer"
+                      src={macbook}
+                      alt="MacBook frame"
+                      className="absolute inset-0 w-full h-full object-contain pointer-events-none"
                     />
+                    <div className="absolute inset-[3.3%] top-[3%] w-[78%] h-[70%] mt-2 xs:mt-5 md:mt-6 mx-auto overflow-hidden rounded-t-[4%]">
+                      <img
+                        src={image}
+                        alt={`${name} project`}
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
                   </div>
+                </div>
 
-                  <div className="p-3 md:p-8 md:pb-3">
-                    <div className="md:mt-4 flex gap-4 justify-center items-center">
-                      <h3 className=" text-white opacity-70 p-1 font-bold text-lg md:text-[24px]">
+                <div className="relative rounded-md mb-4 p-4 border border-primary dark:border-white/[0.2]">
+                  <div className="md:pb-3">
+                    <div className="md:mt-4 flex gap-4 gap-x-8 justify-center items-center">
+                      <h3 className="text-white opacity-70 p-1 font-bold text-lg md:text-[24px]">
                         {name}
                       </h3>
-                      <a className="text-blue-600" href={live_link} target="_blank">
-                        {" "}
-                        <FaExternalLinkAlt />{" "}
+                      <a
+                        className="text-blue-600 animate-moveRight"
+                        href={live_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <FaExternalLinkAlt className="w-5 h-5" />
                       </a>
-                      <a href={source_code_link} target="_blank">
+                      <a
+                        href={source_code_link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
                         <img
                           src={github}
                           alt="source code"
-                          className="w-6 h-6 object-contain cursor-pointer"
+                          className="w-8 h-8 object-contain cursor-pointer animate-moveLeft"
                         />
                       </a>
                     </div>
@@ -79,19 +78,17 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                     </p>
                   </div>
 
-                  <div className="mb-6 px-3 md:px-8 flex flex-wrap gap-2">
+                  <div className="md:mt-14 lg:mt-0 px-3 md:mx-auto md:text-center justify-center flex flex-wrap gap-2">
                     {tags.map((tag) => (
-                      <p
-                        key={`${name}-${tag.name}`}
-                        className={`text-[16px]`}
-                      >
-                        #<span className={`text-[16px] ${tag.color}`}>{tag.name}&nbsp;</span>
+                      <p key={`${name}-${tag.name}`} className={`text-[16px]`}>
+                        #
+                        <span className={`text-[16px] ${tag.color}`}>
+                          {tag.name}&nbsp;
+                        </span>
                       </p>
                     ))}
                   </div>
                 </div>
-
-                {/*  */}
               </div>
             </div>
           </div>

@@ -26,6 +26,20 @@ export default {
       backgroundImage: {
         "hero-pattern": "url('/src/assets/herobg.png')",
       },
+      keyframes: {
+        moveLeft: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(-10px)' },
+        },
+        moveRight: {
+          '0%, 100%': { transform: 'translateX(0)' },
+          '50%': { transform: 'translateX(10px)' },
+        },
+      },
+      animation: {
+        moveLeft: 'moveLeft 3s ease-in-out infinite',
+        moveRight: 'moveRight 3s ease-in-out infinite',
+      },
     },
   },
   plugins: [

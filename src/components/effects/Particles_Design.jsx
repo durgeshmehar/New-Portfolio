@@ -72,7 +72,7 @@ function Particles_Design() {
               enable: true,
               area: 1200,
             },
-            value: 40,
+            value: 70,
           },
           opacity: {
             value: 0.5,

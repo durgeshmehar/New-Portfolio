@@ -6,7 +6,8 @@ import linkedin from "./linkedin.png";
 import gmail from "./gmail.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
-import profile_blog from "./profile-blog.png";        
+import profile_blog from "./profile-blog.png";      
+import macbook from "./notebook.svg";  
 
 import backend from "./roles/backend.png";
 import creator from "./roles/creator.png";
@@ -70,6 +71,7 @@ export {
   typescript,
   threejs,
   profile_blog,
+  macbook,
 
   linkedin,
   gmail,
