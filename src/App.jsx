@@ -28,12 +28,10 @@ function App() {
     <BrowserRouter>
       <div className="relative z-0  bg-primary">
         <Navbar />
-        <ParticleBackground>
           <div className="bg-hero-pattern bg-coover bg-no-repeat bg-center">
             <Hero />
             <About />
           </div>
-        </ParticleBackground>
 
         <Education />
         <Skills />

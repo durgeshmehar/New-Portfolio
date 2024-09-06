@@ -54,7 +54,6 @@ const words = `I am a passionate Software Engineer specializing in Web Developme
 const About = () => {
   return (
     <div id="about" className="-mt-[50vh] xs:-mt-[33vh] md:-mt-[45vh] lg:-mt-[45vh]">
-      {/* <p className={styles.sectionSubText}>Introduction</p> */}
       <h2 className={`${styles.sectionHeadText} blue-pink-gradient-text`}>Overview</h2>
       <p className="text-secondary text-[17px] md:text-[20px] max-w-3xl leading-[30px]">
       <TextGenerateEffect words={words} />
