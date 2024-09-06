@@ -8,6 +8,7 @@ import menu from "./menu.svg";
 import close from "./close.svg";
 import profile_blog from "./profile-blog.png";      
 import macbook from "./notebook.svg";  
+import leetcode from "./leetcode_page.png"
 
 import backend from "./roles/backend.png";
 import creator from "./roles/creator.png";
@@ -72,6 +73,7 @@ export {
   threejs,
   profile_blog,
   macbook,
+  leetcode,
 
   linkedin,
   gmail,

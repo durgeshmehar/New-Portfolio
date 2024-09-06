@@ -71,6 +71,8 @@ const Hero = () => {
                   <img src={linkedin} className="h-7 w-7 md:h-9 md:w-9" />{" "}
                 </Link>
               </div>
+
+
             </div>
           </div>
 

@@ -29,7 +29,8 @@ export const MacbookScroll = ({
   src,
   showGradient,
   title,
-  badge
+  badge,
+  page
 }) => {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -45,8 +46,8 @@ export const MacbookScroll = ({
     }
   }, []);
 
-  const scaleX = useTransform(scrollYProgress, [0, 0.3], [1.2, isMobile ? 2 : 1.5]);
-  const scaleY = useTransform(scrollYProgress, [0, 0.3], [0.6, isMobile ? 2 : 1.5]);
+  const scaleX = useTransform(scrollYProgress, [0, 0.3], [1.2, isMobile ? 1.8 : 1.8]);
+  const scaleY = useTransform(scrollYProgress, [0, 0.3], [0.6, isMobile ? 1.8 : 1.6]);
   const translate = useTransform(scrollYProgress, [0, 1], [0, 1100]);
   const rotate = useTransform(scrollYProgress, [0.1, 0.12, 0.3], [-28, -28, 0]);
   const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
@@ -66,14 +67,15 @@ export const MacbookScroll = ({
       </motion.h2>
       {/* Lid */}
       <Lid
-        src={src}
+        src={page}
         scaleX={scaleX}
         scaleY={scaleY}
         rotate={rotate}
         translate={translate} />
+
       {/* Base area */}
       <div
-        className="h-[22rem] w-[32rem] bg-red-800 dark:bg-[#272729] rounded-2xl overflow-hidden relative -z-10">
+        className="h-[18rem] w-[32rem] bg-red-800 dark:bg-[#272729] rounded-2xl overflow-hidden relative -z-10">
         {/* above keyboard bar */}
         <div className="h-10 w-full relative">
           <div className="absolute inset-x-0 mx-auto w-[80%] h-4 bg-[#050505]" />

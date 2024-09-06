@@ -47,7 +47,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                   </div>
                 </div>
 
-                <div className="relative rounded-md mb-4 p-4 border border-primary dark:border-white/[0.2]">
+                <div className="relative rounded-md mb-4 p-4 border border-gradient dark:border-white-200 shadow-lg">
                   <div className="md:pb-3">
                     <div className="md:mt-4 flex gap-4 gap-x-8 justify-center items-center">
                       <h3 className="text-white opacity-70 p-1 font-bold text-lg md:text-[24px]">
@@ -78,7 +78,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                     </p>
                   </div>
 
-                  <div className="md:mt-14 lg:mt-0 px-3 md:mx-auto md:text-center justify-center flex flex-wrap gap-2">
+                  <div className="md:mt-14 lg:mt-0 px-0 md:mx-auto md:text-center md:justify-center flex flex-wrap gap-2">
                     {tags.map((tag) => (
                       <p key={`${name}-${tag.name}`} className={`text-[16px]`}>
                         #

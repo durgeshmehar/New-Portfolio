@@ -299,7 +299,7 @@ import {
     {
       name: "Crypto App",
       description:
-      "Crypto App is a cryptocurrency tracking app built with React and Tailwind CSS. Utilizing the CoinGecko API for real-time data. Project showcase mobile-responsive design, a dynamic crypto tracking graph, and provides detailed information about each coin.",
+      "Crypto App is a cryptocurrency tracking app, Utilizing the CoinGecko API for real-time data. Project showcase responsive design, a dynamic crypto tracking graph, and provides detailed information about each coin.",
       tags: [
         {
           name: "React",

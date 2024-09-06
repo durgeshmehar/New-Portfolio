@@ -27,12 +27,14 @@ function App() {
   return (
     <BrowserRouter>
       <div className="relative z-0  bg-primary">
-        <ParticleBackground className="bg-primary bg-cover bg-no-repeat bg-center">
-          <Navbar />
-          <Hero />
-          <About />
+        <Navbar />
+        <ParticleBackground>
+          <div className="bg-hero-pattern bg-coover bg-no-repeat bg-center">
+            <Hero />
+            <About />
+          </div>
         </ParticleBackground>
-        
+
         <Education />
         <Skills />
         <Opensource />
@@ -41,6 +43,7 @@ function App() {
         <Blogs />
         <Contact />
       </div>
+
       <Footer />
     </BrowserRouter>
   );

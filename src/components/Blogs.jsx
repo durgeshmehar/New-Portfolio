@@ -16,7 +16,7 @@ function CardDemo({ index, title, description, bloglink, tags, image }) {
       <a href={bloglink} target="_blank">
         <div
           className={cn(
-            " cursor-pointer overflow-hidden relative card h-96 md:h-[50vh] rounded-md shadow-xl  max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4 bg-cover"
+            " cursor-pointer overflow-hidden relative card h-96 md:h-[50vh] rounded-md shadow-3xl  max-w-xs md:max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4 bg-cover"
           )}
           style={{
             backgroundImage: `url(${image})`,
@@ -39,7 +39,7 @@ function CardDemo({ index, title, description, bloglink, tags, image }) {
             </div>
           </div>
           <div className="text content">
-            <h1 className="font-bold text-xl md:text-2xl text-gray-50 relative z-10">
+            <h1 className="font-bold text-xl md:text-2xl text-cyan-300 relative z-10">
               {title}
             </h1>
             <p className="font-normal text-sm text-gray-50 relative z-10 my-4">
@@ -64,10 +64,15 @@ const Blogs = () => {
       </motion.div>
 
       <div
-        className={`mt-8 flex justify-center items-center flex-col md:flex-row pb-14 ${styles.paddingX} flex flex-wrap gap-11 md:justify-start`}
+        className={`mt-8 flex justify-center items-center flex-col md:flex-row pb-14 ${styles.paddingX} gap-11`}
       >
         {blogs.map((blog, index) => (
+          <div
+          key={blog.title}
+          className={`w-full md:w-auto ${index % 2 === 0 ? 'self-start' : 'self-end'}`}
+        >
           <CardDemo key={blog.title} index={index} {...blog} />
+        </div>
         ))}
       </div>
     </div>

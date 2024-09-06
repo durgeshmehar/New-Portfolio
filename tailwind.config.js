@@ -44,6 +44,13 @@ export default {
   },
   plugins: [
     addVariablesForColors,
+    function ({ addUtilities }) {
+      addUtilities({
+        '.border-gradient': {
+          borderImage: 'linear-gradient(90.13deg, #0084ff 1.9%, #ff61a6 97.5%) 1',
+        },
+      });
+    },
   ],
 };
 

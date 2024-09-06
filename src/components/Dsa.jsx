@@ -3,10 +3,11 @@ import { textVariant } from "../utils/motion";
 import { styles } from "../styles";
 import { motion } from "framer-motion";
 import {MacbookScroll} from "./effects/macbook-scroll";
+import { leetcode } from "../assets";
 
 const Dsa = () => {
   return (
-    <div className="max-w-5xl  mb-[20vh] md:mb-[80vh]  mx-auto md:px-8">
+    <div className="max-w-5xl mt-8  mb-[20vh] md:mb-[78vh]  mx-auto md:px-8">
       <motion.div variants={textVariant()}>
         <p className={`${styles.sectionSubText} text-center`}>
           Problem Solving
@@ -19,7 +20,7 @@ const Dsa = () => {
       {/* <div className="w-[80%] h-[50vh] mx-auto"> */}
       <div className="-mt-[20vh] md:mt-[0]">
 
-      <MacbookScroll src="https://leetcard.jacoblin.cool/durgeshmehar?ext=heatmap" showGradient={false} title="Total 700+ coding questions solved on various platform" />
+      <MacbookScroll src="https://leetcard.jacoblin.cool/durgeshmehar?ext=heatmap" showGradient={false} title="Total 700+ coding questions solved on various platform" page={leetcode} />
       </div>
 {/* 
         <img
