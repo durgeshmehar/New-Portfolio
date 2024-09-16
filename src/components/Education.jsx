@@ -22,7 +22,7 @@ const EducationCard = React.memo(({ education }) => {
       }}
       contentArrowStyle={{ borderRight: "15px solid  #232631" }}
       date={
-        <span className="text-[18px] md:text-[20px] font-bold text-[#B3B4BD]">
+        <span className="text-[18px] md:text-[20px] font-bold text-white">
           {education.score}
         </span>
       }

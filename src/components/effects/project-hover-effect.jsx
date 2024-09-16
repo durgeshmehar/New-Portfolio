@@ -20,7 +20,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
             key={idx}
             className="relative h-full w-full"
           >
-            <div className="rounded-md border-[1px] border-white/20 hover:border-white/40 w-full h-full overflow-hidden bg-primary relative z-10 transition-all duration-200">
+            <div className="rounded-md border-[1px] border-white/20 hover:border-white/40 w-full h-full overflow-hidden bg-transparent relative z-10 transition-all duration-200">
               <div className="relative flex justify-between flex-col">
                 <div
                   className="w-full aspect-[16/10] relative cursor-pointer"
@@ -43,10 +43,10 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                   </div>
                 </div>
 
-                <div className="relative p-4 bg-[rgb(19,17,26)]">
+                <div className="relative p-4 bg-[rgb(19,17,26)] ">
                   <div className="md:pb-3">
                     <div className="md:mt-4 flex gap-4 gap-x-8 justify-center items-center">
-                      <h3 className="text-white opacity-70 p-1 font-bold text-lg md:text-[24px]">
+                      <h3 className="text-white opacity-90 p-1 font-bold text-lg md:text-[24px]">
                         {name}
                       </h3>
                       <a
