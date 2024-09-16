@@ -38,7 +38,7 @@ export const HoverEffect = ({ items, className }) => {
                 />
               )}
             </AnimatePresence>
-            <div className="rounded-2xl h-full w-full p-3 px-5  overflow-hidden bg-[rgb(19,17,26)] border border-transparent dark:border-white/[0.2] group-hover:border-slate-500 relative z-10 ">
+            <div className="rounded-2xl h-full w-full p-8 md:p-6  overflow-hidden bg-[rgb(19,17,26)] border border-transparent dark:border-white/[0.2] group-hover:border-slate-500 relative z-10 ">
               <div className="md:py-7 z-50">
                 <Icon className="w-6 h-6 md:w-8 md:h-8 mx-auto" />
                 <p className="pt-3 text-sm md:text-xl font-bold text-center text-gray-300">

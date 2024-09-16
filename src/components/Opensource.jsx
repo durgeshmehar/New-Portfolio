@@ -19,7 +19,7 @@ const Opensource = () => {
         <a href="https://github.com/durgeshmehar" target="_blank">
           <img
             src="https://ghchart.rshah.org/durgeshmehar"
-            className="w-full h-full"
+            className="w-full h-full min-h-[15vh]"
             alt="Github chart"
           />
         </a>

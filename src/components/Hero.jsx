@@ -82,7 +82,7 @@ const Hero = () => {
             <img
               src={profile}
               alt="Profile"
-              className="absolute mx-auto w-[90%] h-[23vh] xs:w-[100%] xs:h-[30vh] sm:h-[35vh] md:w-[70%] md:h-[40vh] lg:h-[42vh] top-0 right-0  object-contain rounded-sm"
+              className="absolute mx-auto w-[90%] h-[24vh] xs:w-[100%] xs:h-[30vh] sm:h-[35vh] md:w-[70%] md:h-[40vh] lg:h-[42vh] top-0 right-0  object-contain rounded-sm"
             />
           </div>
         </div>

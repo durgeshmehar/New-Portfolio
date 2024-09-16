@@ -44,8 +44,8 @@ export const MacbookScroll = ({
     }
   }, []);
 
-  const scaleX = useTransform(scrollYProgress, [0, 0.3], [1.2, isMobile ? 2 : 1.8]);
-  const scaleY = useTransform(scrollYProgress, [0, 0.3], [0.6, isMobile ? 2 : 1.6]);
+  const scaleX = useTransform(scrollYProgress, [0, 0.3], [1.2, isMobile ? 2.4 : 2]);
+  const scaleY = useTransform(scrollYProgress, [0, 0.3], [0.6, isMobile ? 2.2 : 1.7]);
   const translate = useTransform(scrollYProgress, [0, 1], [0, 1100]);
   const rotate = useTransform(scrollYProgress, [0.1, 0.12, 0.3], [-28, -28, 0]);
   const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
