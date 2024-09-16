@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { services } from "../constants";
 import { SectionWrapper } from "../hoc";
-import { fadeIn, textVariant } from "../utils/motion";
+import { fadeIn } from "../utils/motion";
 "use client";
 import { TextGenerateEffect } from "./effects/text-generate-effect"
 
@@ -54,7 +54,7 @@ const words = `I am a passionate Software Engineer specializing in Web Developme
 const About = () => {
   return (
     <div id="about" className="-mt-[50vh] xs:-mt-[33vh] md:-mt-[45vh] lg:-mt-[45vh]">
-      <h2 className={`${styles.sectionHeadText} blue-pink-gradient-text`}>Overview</h2>
+      <h2 className={`${styles.sectionHeadText} text-left blue-pink-gradient-text`}>Overview</h2>
       <p className="text-secondary text-[17px] md:text-[20px] max-w-3xl leading-[30px]">
       <TextGenerateEffect words={words} />
       </p>

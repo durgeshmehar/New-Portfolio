@@ -1,6 +1,3 @@
-import { motion } from "framer-motion";
-import { textVariant } from "../utils/motion";
-import { styles } from "../styles";
 import { navLinks } from "../constants";
 import { github, linkedin, gmail } from "../assets";
 import {Link} from "react-router-dom";
@@ -15,7 +12,8 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-[#181F27] px-[10vw] pt-[4vw] pb-[2vw]">
+    <footer className="border-t border-white/20 px-[10vw] py-[2vw]">
+    {/* <footer className="bg-[#181F27] px-[10vw] pt-[4vw] pb-[2vw]"> */}
       <div className=" grid grid-cols-1 gap-12 lg:grid-cols-3 lg:gap-44 ">
         <div className="p-4">
           <h2 className="text-[26px] font-bold mb-6 mx-auto text-center">
@@ -37,13 +35,11 @@ const Footer = () => {
 
         <div className="p-4">
           <h2 className="text-[26px] font-bold mb-6 mx-auto text-center">
-            {" "}
-            Let's Build Something!{" "}
+            Let&apos;s Build Something!{" "}
           </h2>
           <p className="text-lg text-gray-300 tracking-wide text-justify">
-            {" "}
             I Love to develop websites. I would love to design the best websites
-            for you. I'm just an email away to transform your ideas into
+            for you. I&apos;m just an email away to transform your ideas into
             reality.
           </p>
         </div>
@@ -83,7 +79,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="mx-auto text-center m-8">
+      <div className="mx-auto text-center m-8 border-t border-white/20 pt-[2vw] w-full ">
         <div className="flex justify-center gap-2 md:gap-6 group  rounded-md ">
           <Link
             to="mailto:durgeshmehar2002@gmail.com"
@@ -134,6 +130,7 @@ const Footer = () => {
           Durgesh Mehar{" "}
         </span>
       </div>
+
     </footer>
   );
 };

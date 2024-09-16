@@ -1,4 +1,3 @@
-import React from 'react';
 import Particles from './effects/Particles_Design';
 
 const ParticleBackground = ({ children, className = '' }) => {

@@ -17,7 +17,7 @@ const EducationCard = React.memo(({ education }) => {
   return (
     <VerticalTimelineElement
       contentStyle={{
-        background: "#050A44",
+        background: "rgb(19,17,26)",
         color: "#FF0000",
       }}
       contentArrowStyle={{ borderRight: "15px solid  #232631" }}
@@ -45,6 +45,8 @@ const EducationCard = React.memo(({ education }) => {
     </VerticalTimelineElement>
   );
 });
+
+EducationCard.displayName = "EducationCard";
 
 const Education = () => {
   const [showScrollTop, setShowScrollTop] = useState(false);
@@ -94,8 +96,8 @@ const Education = () => {
           className="Scroll_Top aos-init aos-animate !bg-[#2190FF] z-50 fixed bottom-4 -right-8 p-7"
           data-aos="fade-up"
           initial={{ y: 0 }}
-          animate={{ y: [-150, -10, 0] }}
-          transition={{ duration: 1, repeat: Infinity }}
+          animate={{ y: [-280, 0, 0] }}
+          transition={{ duration: 0.9, repeat: Infinity }}
         >
           <a className="nav-arrow" onClick={scrollToTop}>
             <FaAngleDoubleUp />

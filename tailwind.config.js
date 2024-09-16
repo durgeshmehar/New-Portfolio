@@ -37,7 +37,7 @@ export default {
         },
       },
       animation: {
-        moveLeft: 'moveLeft 3s ease-in-out infinite',
+        moveLeft: 'moveLeft 2s ease-in-out infinite',
         moveRight: 'moveRight 3s ease-in-out infinite',
       },
     },

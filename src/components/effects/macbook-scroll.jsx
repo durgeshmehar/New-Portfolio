@@ -1,5 +1,4 @@
-"use client";
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { cn } from "../../utils/cn";
 import {
@@ -23,10 +22,9 @@ import { IconWorld } from "@tabler/icons-react";
 import { IconCommand } from "@tabler/icons-react";
 import { IconCaretLeftFilled } from "@tabler/icons-react";
 import { IconCaretDownFilled } from "@tabler/icons-react";
-// import Image from "next/image";
 
 export const MacbookScroll = ({
-  src,
+  // src,
   showGradient,
   title,
   badge,
@@ -142,10 +140,12 @@ export const Lid = ({
         }}
         className="h-92 w-[32rem] absolute inset-0 bg-[#010101] rounded-2xl">
         <div className="absolute inset-0 bg-[#272729] rounded-lg" />
+        <a href="https://leetcode.com/u/durgeshmehar/" target="_blank">
         <img
           src={src}
           alt="aceternity logo"
           className="object-cover  object-top-left absolute rounded-lg inset-0 w-full" />
+          </a>
       </motion.div>
     </div>)
   );

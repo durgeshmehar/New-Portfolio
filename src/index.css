@@ -23,6 +23,10 @@
   display: block;
 }
 
+.blue-pink-body-gradient {
+  background: linear-gradient(90.13deg, #0084ff 1.9%, #ff61a6 97.5%);
+}
+
 .black-gradient {
   background: #000000;  /* fallback for old browsers */
   background: -webkit-linear-gradient(
@@ -244,7 +248,7 @@
 .Scroll_Top {
   position: fixed;
   bottom: 20px;
-  right: 20px;
+  right: 25px;
   background-color: #333;
   color: #fff;
   border-radius: 50%;
@@ -260,4 +264,19 @@
 
 .nav-arrow {
   font-size: 24px;
+}
+
+
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin 20s linear infinite;
 }

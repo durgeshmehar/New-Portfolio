@@ -14,11 +14,19 @@ const Opensource = () => {
           Github <span className="blue-pink-gradient-text">Contribution </span>
         </h2>
       </motion.div>
-      
-      <img src="https://ghchart.rshah.org/durgeshmehar" className="w-full mt-8 lg:mt-16" alt="Github chart" />
-      <p className="mt-6 !text-[18px] font-semibold"> 276 contributions in 2024 </p>
 
-
+      <div className="w-full mt-11 lg:mt-16">
+        <a href="https://github.com/durgeshmehar" target="_blank">
+          <img
+            src="https://ghchart.rshah.org/durgeshmehar"
+            className="w-full h-full"
+            alt="Github chart"
+          />
+        </a>
+        <p className="mt-9 !text-[18px] font-semibold text-center">
+          276 contributions in 2024{" "}
+        </p>
+      </div>
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { projects } from "../constants";
-import { fadeIn, textVariant } from "../utils/motion";
+import { textVariant } from "../utils/motion";
 import { ProjectHoverEffect } from "./effects/project-hover-effect";
 
 const navlist = ["All", "Django", "NodeJS", "React"];
@@ -28,7 +28,7 @@ const Projects = () => {
 
   return (
     <>
-      <div className="max-w-6xl md:mt-0 mx-auto md:px-8 text-center flex flex-col justify-center items-center">
+      <div className="max-w-6xl mt-6 mx-auto md:px-8 text-center flex flex-col justify-center items-center">
         <motion.div variants={textVariant()}>
           <p className={`${styles.sectionSubText} `}>My work</p>
           <h2 className={`${styles.sectionHeadText} blue-pink-gradient-text`}>

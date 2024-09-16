@@ -1,6 +1,4 @@
-import { motion } from "framer-motion";
 import { styles } from "../styles";
-import { useEffect, useState } from "react";
 import { profile, blob } from "../assets";
 import { github, linkedin, gmail } from "../assets";
 import { Link } from "react-router-dom";
@@ -8,9 +6,9 @@ import { Button } from "./effects/moving-border";
 
 const Hero = () => {
   return (
-    <section className={`w-full mx-auto pt-[100vh] overflow-visible`}>
+    <section className={`relative w-full mx-auto pt-[100vh] overflow-visible`}>
       <div
-        className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
+        className={`absolute inset-0 top-[120px]  max-w-7xl max-h-[50vh] mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
       >
         <div className="flex flex-col justify-center items-center mt-5">
           <div className="w-5 h-5 rounded-full bg-[#915EFF]" />
@@ -20,7 +18,7 @@ const Hero = () => {
         <div className="flex overflow-visible w-full">
           <div className="w-[60%] md:w-[50%] h-[50%]">
             <h1 className={`${styles.heroHeadText} text-white`}>
-              Hi 👋, I'm{" "}
+              Hi, I&apos;m{" "}
               <span className="blue-pink-gradient-text">Durgesh</span>
             </h1>
             <p className={`${styles.heroSubText} mt-2 text-white-100`}>
@@ -32,14 +30,14 @@ const Hero = () => {
             <div className="mt-8 md:mt-14 flex flex-wrap gap-4">
               <Button
                 borderRadius="1.05rem"
-                className="text-white "
+                className="bg-gradient-to-r from-indigo-600 to-fuchsia-600 hover:from-indigo-500 hover:to-fuchsia-600"
                 duration={2000}
               >
                 <a
                   href="https://drive.google.com/file/d/15E-_4cEhQnmU4g9LvlqmH8My-yYIoGBh/view?usp=drive_link" // Replace with your CV link
                   download
                   // className="bg-[#80aef7] hover:bg-[#92b9f8] flex justify-center content-center text-black py-2 px-6 rounded-lg text-md xs:text-lg  xs:font-semibold  transition duration-300 transform"
-                  className="text-base md:text-lg text-white hover:text-white/80"
+                  className="text-lg font-bold md:text-lg"
                 >
                   Download CV
                 </a>

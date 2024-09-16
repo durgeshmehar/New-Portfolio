@@ -176,7 +176,7 @@ import {
       ],
       image: notify,
       source_code_link: "https://github.com/durgeshmehar/Message-Board",
-      live_link: "https://github.com/durgeshmehar/Message-Board",
+      live_link: "https://message-board-production-e730.up.railway.app/",
       category: "Django"
     },   
     {

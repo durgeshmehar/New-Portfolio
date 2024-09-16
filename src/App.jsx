@@ -1,6 +1,6 @@
 import { BrowserRouter } from "react-router-dom";
 import { useEffect } from "react";
-import ParticleBackground from "./components/ParticleBackground";
+import { BackgroundAnimation } from "./components/effects/BackgroundAnimation";
 
 import {
   About,
@@ -26,23 +26,49 @@ function App() {
 
   return (
     <BrowserRouter>
-      <div className="relative z-0  bg-primary">
+      <div className="relative z-0 bg-primary/70 ">
         <Navbar />
-          <div className="bg-hero-pattern bg-coover bg-no-repeat bg-center">
-            <Hero />
-            <About />
-          </div>
 
-        <Education />
-        <Skills />
+        <div className="relative flex flex-col items-center w-full overflow-hidden">
+          <BackgroundAnimation
+            top="top-64"
+            right="-right-1/4"
+            left="-left-1/4"
+            animation="animate-spin-slow"
+          />
+          <Hero />
+          <About />
+        </div>
+
+        <div className="w-full overflow-hidden">
+          <Education />
+
+          <div className="relative flex flex-col items-center w-full ">
+            <BackgroundAnimation
+              top="top-[10vw]"
+              right="-right-1/4"
+              left="-left-1/4"
+            />
+            <Skills />
+          </div>
+        </div>
+
         <Opensource />
         <Dsa />
-        <Projects />
+
+        <div className="relative flex flex-col items-center w-full overflow-hidden">
+          <BackgroundAnimation
+            top="top-[20vw]"
+            right="-right-1/4"
+            left="-left-1/4"
+          />
+          <Projects />
+        </div>
+
         <Blogs />
         <Contact />
+        <Footer />
       </div>
-
-      <Footer />
     </BrowserRouter>
   );
 }

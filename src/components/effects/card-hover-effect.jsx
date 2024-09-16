@@ -8,7 +8,7 @@ export const HoverEffect = ({ items, className }) => {
   return (
     <div
       className={cn(
-        "md:w-[80%]  mx-auto grid grid-cols-2 xs:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 px-4 py-6",
+        "mx-auto grid grid-cols-2 xs:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 px-4 py-6",
         className
       )}
     >
@@ -17,7 +17,7 @@ export const HoverEffect = ({ items, className }) => {
         return (
           <div
             key={idx}
-            className="relative group block p-2 h-full w-full cursor-pointer"
+            className="relative group block p-2 px-3 h-full w-full cursor-pointer"
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
@@ -38,11 +38,10 @@ export const HoverEffect = ({ items, className }) => {
                 />
               )}
             </AnimatePresence>
-            <div className="rounded-2xl h-full w-full p-3 md:p-2 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-10 ">
-              <div className="py-1 md:py-10 z-50 relative space-y-4">
+            <div className="rounded-2xl h-full w-full p-3 px-5  overflow-hidden bg-[rgb(19,17,26)] border border-transparent dark:border-white/[0.2] group-hover:border-slate-500 relative z-10 ">
+              <div className="md:py-7 z-50">
                 <Icon className="w-6 h-6 md:w-8 md:h-8 mx-auto" />
-                <p className="text-sm md:text-xl font-bold text-center text-gray-300">
-                  {" "}
+                <p className="pt-3 text-sm md:text-xl font-bold text-center text-gray-300">
                   {item.name}
                 </p>
               </div>
@@ -51,39 +50,5 @@ export const HoverEffect = ({ items, className }) => {
         );
       })}
     </div>
-  );
-};
-
-export const Card = ({ className, children }) => {
-  return (
-    <div
-      className={cn(
-        "rounded-2xl h-full w-full p-4 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 relative z-20",
-        className
-      )}
-    >
-      <div className="relative z-50">
-        <div className="p-4">{children}</div>
-      </div>
-    </div>
-  );
-};
-export const CardTitle = ({ className, children }) => {
-  return (
-    <h4 className={cn("text-zinc-100 font-bold tracking-wide mt-4", className)}>
-      {children}
-    </h4>
-  );
-};
-export const CardDescription = ({ className, children }) => {
-  return (
-    <p
-      className={cn(
-        "mt-8 text-zinc-400 tracking-wide leading-relaxed text-sm",
-        className
-      )}
-    >
-      {children}
-    </p>
   );
 };

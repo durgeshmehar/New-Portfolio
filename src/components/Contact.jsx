@@ -2,12 +2,10 @@
 import { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { github, linkedin, gmail } from "../assets";
 
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
-import { Link } from "react-router-dom";
 import { Button } from "./effects/moving-border";
 
 const isLaptop = () => {
@@ -93,7 +91,7 @@ const Contact = () => {
 
   return (
     <div
-      className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap:4 md:gap-6 overflow-hidden`}
+      className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap:4 md:gap-6 overflow-hidden mb-[15vh]`}
     >
       <motion.div
         variants={slideIn("left", "tween", 0, 0.8)}
@@ -143,11 +141,10 @@ const Contact = () => {
             <div className="w-full flex justify-center">
               <Button
                 borderRadius="1.2rem"
-                className="text-white font-bold text-[16px] md:text-lg hover:text-white/80"
+                className=" font-bold text-[17px] md:text-lg bg-gradient-to-r from-indigo-600 to-fuchsia-600 hover:from-indigo-500 hover:to-fuchsia-600"
               >
                 <button
                   type="submit"
-                  // className="bg-tertiary py-3 px-8 rounded-xl outline-none w-fit text-white font-bold shadow-md shadow-primary border border-violet-800 focus:ring-1 focus:ring-violet-800"
                 >
                   {loading ? "Sending..." : "Send"}
                 </button>
