@@ -280,3 +280,27 @@
 .animate-spin-slow {
   animation: spin 20s linear infinite;
 }
+
+
+.scrollbar::-webkit-scrollbar {
+  width: 15px;
+  height: 15px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+  border-radius: 100vh;
+  background: #212120;
+  /* change height of scroobar */
+  height: 10px;
+ 
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+  background: #444a4a;
+  border-radius: 100vh;
+  /* border: 2px solid #f6f7ed; */
+}
+
+.scrollbar::-webkit-scrollbar-thumb:hover {
+  background: #c0a0b9;
+}

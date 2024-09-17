@@ -7,7 +7,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
   return (
     <div
       className={cn(
-        "lg:w-[100%] grid grid-cols-1 lg:grid-cols-2 3xl:grid-cols-3  gap-8 lg:gap-y-28 mt-6",
+        "overflow-x-scroll scrollbar w-[95vw] mx-auto flex md:grid md:grid-cols-2 3xl:grid-cols-3 lg:w-[100%] gap-6 lg:gap-y-28 mt-6 pb-6",
         className
       )}
     >
@@ -18,10 +18,11 @@ export const ProjectHoverEffect = ({ projects, className }) => {
         return (
           <div
             key={idx}
-            className="relative h-full w-full"
+            className="group relative w-[70vw] md:w-[25vw]"
           >
-            <div className="rounded-md border-[1px] border-white/20 hover:border-white/40 w-full h-full overflow-hidden bg-transparent relative z-10 transition-all duration-200">
-              <div className="relative flex justify-between flex-col">
+            <div className="rounded-md border-[1px] border-white/20 hover:border-white/40 w-[70vw] md:w-[25vw] h-full overflow-hidden bg-transparent relative z-10 transition-all duration-200">
+              <div className="h-full flex flex-col justify-between">
+
                 <div
                   className="w-full aspect-[16/10] relative cursor-pointer"
                   onClick={() => window.open(live_link, "_blank")}
@@ -43,7 +44,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                   </div>
                 </div>
 
-                <div className="relative p-4 bg-[rgb(19,17,26)] ">
+                <div className="relative p-4 bg-[rgb(30,25,47)] group-hover:bg-[rgb(43,38,58)] ">
                   <div className="md:pb-3">
                     <div className="md:mt-4 flex gap-4 gap-x-8 justify-center items-center">
                       <h3 className="text-white opacity-90 p-1 font-bold text-lg md:text-[24px]">

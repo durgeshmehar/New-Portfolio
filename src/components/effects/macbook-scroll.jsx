@@ -39,14 +39,15 @@ export const MacbookScroll = ({
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    if (window && window.innerWidth < 768) {
+    if (window && window.innerWidth < 700 ) {
       setIsMobile(true);
+      console.log("Mobile hai")
     }
   }, []);
 
-  const scaleX = useTransform(scrollYProgress, [0, 0.3], [1.2, isMobile ? 2.3 : 2]);
-  const scaleY = useTransform(scrollYProgress, [0, 0.3], [0.6, isMobile ? 2.5 : 1.7]);
-  const translate = useTransform(scrollYProgress, [0, 1], [0, 1050]);
+  const scaleX = useTransform(scrollYProgress, [0, 0.3], [1.2, isMobile ? 2.2 : 2.2]);
+  const scaleY = useTransform(scrollYProgress, [0, 0.3], [0.6, isMobile ? 2.7 : 1.8]);
+  const translate = useTransform(scrollYProgress, [0, 1], [0, 910]);
   const rotate = useTransform(scrollYProgress, [0.1, 0.12, 0.3], [-28, -28, 0]);
   const textTransform = useTransform(scrollYProgress, [0, 0.3], [0, 100]);
   const textOpacity = useTransform(scrollYProgress, [0, 0.2], [1, 0]);
@@ -54,7 +55,7 @@ export const MacbookScroll = ({
   return (
     (<div
       ref={ref}
-      className="flex flex-col items-center py-0 md:pt-10 md:pb-80 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50">
+      className="flex flex-col items-center py-0 md:pt-10 md:pb-80 justify-start flex-shrink-0 [perspective:800px] transform transition-all duration-300  scroll-smooth md:scale-100  scale-[0.35] sm:scale-50">
       <motion.h2
         style={{
           translateY: textTransform,
@@ -111,7 +112,7 @@ export const Lid = ({
   src
 }) => {
   return (
-    (<div className="relative [perspective:800px]">
+    (<div className="relative [perspective:800px] mt-20">
       <div
         style={{
           transform: "perspective(800px) rotateX(-25deg) translateZ(0px)",

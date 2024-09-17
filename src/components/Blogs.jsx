@@ -10,11 +10,11 @@ import { profile_blog } from "../assets";
 function CardDemo({ title, description, bloglink, tags, image }) {
   return (
     <motion.div variants={slideIn("left", "tween", 0, 0.8)} className="">
-      <div className="max-w-sm md:max-w-sm group/card text-left">
+      <div className="max-w-xs md:max-w-sm group/card text-left">
         <a href={bloglink} target="_blank">
           <div
             className={cn(
-              " cursor-pointer overflow-hidden relative card h-96 md:h-[50vh] rounded-md shadow-3xl  max-w-xs md:max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4 bg-cover"
+              " cursor-pointer relative card h-96 md:h-[50vh] rounded-md shadow-3xl  max-w-xs md:max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4 bg-cover"
             )}
             style={{
               backgroundImage: `url(${image})`,
@@ -44,18 +44,16 @@ function CardDemo({ title, description, bloglink, tags, image }) {
                 {description}
               </p>
               <div className="px-0 text-center flex flex-wrap gap-2">
-              {tags.map((tag) => (
-                <p key={`${name}-${tag.name}`} className={`text-[16px]`}>
-                  #
-                  <span className={`text-[17px] ${tag.color}`}>
-                    {tag.name}&nbsp;
-                  </span>
-                </p>
-              ))}
+                {tags.map((tag) => (
+                  <p key={` ${name}-${tag.name}} className={text-[16px] `}>
+                    #
+                    <span className={` text-[17px] ${tag.color} `}>
+                      {tag.name}&nbsp;
+                    </span>
+                  </p>
+                ))}
+              </div>
             </div>
-            </div>
-
-            
           </div>
         </a>
       </div>
@@ -65,24 +63,21 @@ function CardDemo({ title, description, bloglink, tags, image }) {
 
 const Blogs = () => {
   return (
-    <div className="max-w-6xl md:mt-0 mx-auto md:px-8 text-center flex flex-col justify-center items-center">
-      <motion.div variants={textVariant()}>
+    <div className="max-w-6xl md:mt-0 overflow-hidden mx-auto md:px-8 w-full">
+
+      <motion.div variants={textVariant()}
+       className="flex flex-col justify-center items-center">
         <p className={styles.sectionSubText}>How I&apos;m share knowledge</p>
-        <h2 className={`${styles.sectionHeadText} blue-pink-gradient-text`}>
+        <h2 className={`${styles.sectionHeadText} blue-pink-gradient-text `}>
           Blogs
         </h2>
       </motion.div>
 
       <div
-        className={`mt-8 flex justify-center items-center flex-col md:flex-row pb-14 ${styles.paddingX} gap-14`}
+        className={`mx-auto w-[90vw] md:w-full overflow-x-scroll scrollbar flex md:justify-center md:items-center mt-10 pb-4 gap-8 text-center`}
       >
         {blogs.map((blog, index) => (
-          <div
-            key={blog.title}
-            className={`w-full md:w-auto ${
-              index % 2 === 0 ? "self-start" : "self-end"
-            }`}
-          >
+          <div key={blog.title} className={`min-w-[50vw] md:min-w-[10vw] flex-shrink-0`}>
             <CardDemo key={blog.title} index={index} {...blog} />
           </div>
         ))}

@@ -91,12 +91,13 @@ const Contact = () => {
 
   return (
     <div
-      className={`xl:mt-12 flex xl:flex-row flex-col-reverse gap:4 md:gap-6 overflow-hidden mb-[15vh]`}
+      className={`w-full xl:mt-12 flex xl:flex-row flex-col-reverse gap:4 md:gap-6 overflow-hidden mb-[15vh]`}
     >
       <motion.div
         variants={slideIn("left", "tween", 0, 0.8)}
-        className="flex-[0.75] violet-gradient p-8 pb-6 rounded-2xl"
-      >
+        className="mx-auto w-[80vw] lg:w-[30vw] flex-[0.75] border border-white/20 hover:border-white/40 p-8 pb-6 rounded-2xl   backdrop-blur-[1rem]"
+      > 
+      
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={`${styles.sectionHeadText} blue-pink-gradient-text`}>
           Contact
@@ -158,7 +159,7 @@ const Contact = () => {
       {EarthCanvas && (
         <motion.div
           variants={slideIn("right", "tween", 0, 0.8)}
-          className="xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
+          className="mx-auto w-[80vw] lg:w-[30vw]  xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
         >
           <EarthCanvas />
         </motion.div>

@@ -368,7 +368,7 @@ import {
         },
       ],
       bloglink: "https://dblog.hashnode.dev/mongodb-commands-a-beginners-guide-to-talking-to-your-database"
-    }
+    },
   ]
   
   export { services, skills, educations,blogs, projects };

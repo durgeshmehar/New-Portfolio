@@ -65,8 +65,16 @@ function App() {
           <Projects />
         </div>
 
-        <Blogs />
-        <Contact />
+        <div className="relative flex flex-col items-center w-full overflow-hidden">
+          <BackgroundAnimation
+            top="top-[20vw]"
+            right="-right-1/7"
+            left="-left-1/7"
+          />
+          <Blogs />
+          <Contact />
+        </div>
+
         <Footer />
       </div>
     </BrowserRouter>

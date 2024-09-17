@@ -12,7 +12,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="border-t border-white/20 px-[10vw] py-[2vw]">
+    <footer className="border-t border-white/20 px-[10vw] py-[2vw] overflow-hidden">
     {/* <footer className="bg-[#181F27] px-[10vw] pt-[4vw] pb-[2vw]"> */}
       <div className=" grid grid-cols-1 gap-8 lg:grid-cols-3 lg:gap-44 ">
         <div className="p-4">
