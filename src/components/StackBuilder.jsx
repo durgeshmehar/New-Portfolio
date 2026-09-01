@@ -2,31 +2,34 @@ import { useMemo, useState } from "react";
 import { FaCheck } from "react-icons/fa6";
 import { unlockAchievement } from "../hooks/useAchievements";
 
+const MIN_TO_COMPLETE = 3;
+
 const StackBuilder = ({ items }) => {
   const [selected, setSelected] = useState(() => new Set());
   const total = items.length;
+  const goal = Math.min(MIN_TO_COMPLETE, total);
 
   const toggle = (name) => {
     setSelected((prev) => {
       const next = new Set(prev);
       if (next.has(name)) next.delete(name);
       else next.add(name);
-      if (next.size === total) unlockAchievement("stack-builder");
+      if (next.size >= goal) unlockAchievement("stack-builder");
       return next;
     });
   };
 
-  const percent = useMemo(() => Math.round((selected.size / total) * 100), [selected, total]);
-  const complete = selected.size === total;
+  const percent = useMemo(() => Math.min(100, Math.round((selected.size / goal) * 100)), [selected, goal]);
+  const complete = selected.size >= goal;
 
   return (
     <div className="stack-builder">
       <div className="stack-builder-status" aria-live="polite">
-        <p>{complete ? "Full stack assembled." : "Tap the tools you'd want on your team."}</p>
-        <div className="stack-builder-meter" aria-label={`${selected.size} of ${total} selected`}>
+        <p>{complete ? "Stack assembled." : `Tap ${goal} tools you'd want on your team.`}</p>
+        <div className="stack-builder-meter" aria-label={`${selected.size} of ${goal} selected`}>
           <span style={{ width: `${percent}%` }} />
         </div>
-        <p className="stack-builder-count">{selected.size} / {total}</p>
+        <p className="stack-builder-count">{Math.min(selected.size, goal)} / {goal}</p>
       </div>
 
       <div className="mx-auto mt-6 grid grid-cols-2 gap-2 xs:grid-cols-3 md:grid-cols-5">
