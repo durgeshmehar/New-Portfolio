@@ -7,18 +7,11 @@ import CelebrationBurst from "./CelebrationBurst";
 const ROUTE_ACHIEVEMENTS = {
   "/about": "about",
   "/experience": "experience",
-  "/projects": "projects",
-  "/education": "education",
-  "/contact": "contact",
 };
 
 const ACHIEVEMENT_TARGETS = {
   about: "/about",
   experience: "/experience",
-  projects: "/projects",
-  education: "/education",
-  contact: "/contact",
-  "living-portrait": "/#hero",
   "rate-limiter": "/about#rate-limiter",
   "stack-builder": "/#highlights",
 };

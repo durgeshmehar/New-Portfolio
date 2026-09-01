@@ -4,6 +4,7 @@ const COLORS = ["#67e8f9", "#a78bfa", "#f0abfc", "#5eead4", "#fde68a", "#fca5a5"
 const PARTICLE_COUNT = 260;
 const GRAVITY = 0.13;
 const DRAG = 0.99;
+const WALL_BOUNCE = 0.62;
 
 const prefersReducedMotion = () =>
   typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
@@ -60,11 +61,26 @@ const CelebrationBurst = ({ active, onDone }) => {
 
       particles.forEach((p) => {
         if (p.y <= height + 30) {
+          const half = p.size / 2;
+
           p.speedY += GRAVITY;
           p.speedX *= DRAG;
           p.x += p.speedX;
           p.y += p.speedY;
           p.rotation += p.spin;
+
+          if (p.x < half) {
+            p.x = half;
+            p.speedX = Math.abs(p.speedX) * WALL_BOUNCE;
+          } else if (p.x > width - half) {
+            p.x = width - half;
+            p.speedX = -Math.abs(p.speedX) * WALL_BOUNCE;
+          }
+
+          if (p.y < half) {
+            p.y = half;
+            p.speedY = Math.abs(p.speedY) * WALL_BOUNCE;
+          }
         }
         if (p.y <= height + 30) allSettled = false;
 

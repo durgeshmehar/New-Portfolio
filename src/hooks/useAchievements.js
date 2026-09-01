@@ -5,13 +5,11 @@ const STORAGE_KEY = "dm-portfolio-achievements";
 export const ACHIEVEMENTS = [
   { id: "about", label: "Read the story", hint: "Visit the About page" },
   { id: "experience", label: "Traced the work", hint: "Visit the Experience page" },
-  { id: "projects", label: "Explored the builds", hint: "Visit the Projects page" },
-  { id: "education", label: "Checked the roots", hint: "Visit the Education page" },
-  { id: "contact", label: "Said hello", hint: "Visit the Contact page" },
-  { id: "living-portrait", label: "Noticed you", hint: "Spend a moment with the hero portrait" },
   { id: "rate-limiter", label: "Tamed the traffic", hint: "Finish the rate limiter challenge" },
   { id: "stack-builder", label: "Assembled the stack", hint: "Select 3 tools in Skills" },
 ];
+
+const VALID_IDS = new Set(ACHIEVEMENTS.map((item) => item.id));
 
 const readStored = () => {
   if (typeof window === "undefined") return [];
@@ -19,7 +17,12 @@ const readStored = () => {
     const raw = window.localStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
     const parsed = JSON.parse(raw);
-    return Array.isArray(parsed) ? parsed : [];
+    if (!Array.isArray(parsed)) return [];
+    const cleaned = parsed.filter((id) => VALID_IDS.has(id));
+    if (cleaned.length !== parsed.length) {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(cleaned));
+    }
+    return cleaned;
   } catch {
     return [];
   }

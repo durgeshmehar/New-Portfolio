@@ -4,7 +4,6 @@ import { HiOutlineMail } from "react-icons/hi";
 import { profileWebp } from "../assets";
 import { downloadCvLink } from "../constants";
 import { useLivingPortrait } from "../hooks/useLivingPortrait";
-import { unlockAchievement } from "../hooks/useAchievements";
 
 const SPARK_MESSAGES = [
   "Okay, you found the fun bit.",
@@ -42,7 +41,7 @@ const Hero = () => {
   const [sparkCount, setSparkCount] = useState(0);
   const [spark, setSpark] = useState(null);
   const resetTimer = useRef(null);
-  const { shellRef, tilt, idleGreeting } = useLivingPortrait(() => unlockAchievement("living-portrait"));
+  const { shellRef, tilt, idleGreeting } = useLivingPortrait();
 
   const triggerSpark = () => {
     const next = sparkCount + 1;
