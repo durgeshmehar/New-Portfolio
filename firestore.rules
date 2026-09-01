@@ -1,0 +1,34 @@
+rules_version = '2';
+
+// Paste this into Firebase Console -> Firestore Database -> Rules.
+// Only one admin account will ever sign in (you), so any authenticated
+// user is treated as the admin — Firebase Auth for this project should
+// have exactly one account (yours).
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    match /posts/{postId} {
+      allow read: if true;
+      allow create, delete: if request.auth != null;
+
+      // Allow the admin to update anything, OR allow an anonymous
+      // visitor to update ONLY the likeCount field (so likes work
+      // without visitor accounts, while post content stays protected).
+      allow update: if request.auth != null
+        || request.resource.data.diff(resource.data).affectedKeys()
+             .hasOnly(['likeCount']);
+
+      match /comments/{commentId} {
+        allow read: if true;
+        allow create: if request.resource.data.keys().hasAll(['name', 'text', 'createdAt'])
+          && request.resource.data.name is string
+          && request.resource.data.name.size() > 0
+          && request.resource.data.name.size() < 100
+          && request.resource.data.text is string
+          && request.resource.data.text.size() > 0
+          && request.resource.data.text.size() < 2000;
+        allow update, delete: if request.auth != null;
+      }
+    }
+  }
+}
