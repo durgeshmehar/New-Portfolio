@@ -1,6 +1,7 @@
 import logo from "./logo.png";
 import blob from "./blob.gif";
 import profile from "./profile.png";
+import profileWebp from "./profile.webp";
 import github from "./github.png";
 import linkedin from "./linkedin.png";
 import gmail from "./gmail.png";
@@ -39,6 +40,7 @@ import razorpay from "./project/razorpay.png"
 import snappy from "./project/snappy.png"
 import youtube from "./project/youtube.png"
 import notify from "./project/notify.png"
+import ingredientCheck from "./project/IngredientCheck-Upload-Page.jpeg"
 
 import git_Blog from "./blogs/git.jpg"
 import mongodb_Blog from "./blogs/mongodb.gif"
@@ -49,6 +51,7 @@ export {
   notify,
   logo,
   profile,
+  profileWebp,
   blob,
   backend,
   creator,
@@ -79,6 +82,7 @@ export {
   gmail,
 
   chatbot ,eshop, koinx , portfolio,razorpay ,snappy , youtube,
-  git_Blog, mongodb_Blog
+  git_Blog, mongodb_Blog,
+  ingredientCheck,
 
 };
