@@ -2,17 +2,19 @@ import { useEffect, useRef } from "react";
 
 const COLORS = ["#67e8f9", "#a78bfa", "#f0abfc", "#5eead4", "#fde68a", "#fca5a5"];
 const PARTICLE_COUNT = 260;
-const GRAVITY = 0.13;
-const DRAG = 0.99;
 const WALL_BOUNCE = 0.62;
+const MOBILE_MAX_WIDTH = 640;
 
 const prefersReducedMotion = () =>
   typeof window !== "undefined" && window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
-const makeParticle = (originX, originY) => {
+const isMobileViewport = () =>
+  typeof window !== "undefined" && window.innerWidth <= MOBILE_MAX_WIDTH;
+
+const makeParticle = (originX, originY, speedScale) => {
   const shape = Math.random() < 0.5 ? "rect" : "circle";
   const angle = -Math.PI / 2 + (Math.random() - 0.5) * Math.PI * 1.15;
-  const speed = 7 + Math.random() * 11;
+  const speed = (7 + Math.random() * 11) * speedScale;
   return {
     x: originX,
     y: originY,
@@ -21,7 +23,7 @@ const makeParticle = (originX, originY) => {
     size: 6 + Math.random() * 7,
     color: COLORS[Math.floor(Math.random() * COLORS.length)],
     rotation: Math.random() * Math.PI * 2,
-    spin: (Math.random() - 0.5) * 0.35,
+    spin: (Math.random() - 0.5) * 0.35 * speedScale,
     shape,
   };
 };
@@ -42,9 +44,14 @@ const CelebrationBurst = ({ active, onDone }) => {
     let width = (canvas.width = window.innerWidth);
     let height = (canvas.height = window.innerHeight);
 
+    const mobile = isMobileViewport();
+    const speedScale = mobile ? 0.55 : 1;
+    const gravity = mobile ? 0.07 : 0.13;
+    const drag = mobile ? 0.993 : 0.99;
+
     const originX = width / 2;
     const originY = height * 0.38;
-    const particles = Array.from({ length: PARTICLE_COUNT }, () => makeParticle(originX, originY));
+    const particles = Array.from({ length: PARTICLE_COUNT }, () => makeParticle(originX, originY, speedScale));
 
     const handleResize = () => {
       width = canvas.width = window.innerWidth;
@@ -63,8 +70,8 @@ const CelebrationBurst = ({ active, onDone }) => {
         if (p.y <= height + 30) {
           const half = p.size / 2;
 
-          p.speedY += GRAVITY;
-          p.speedX *= DRAG;
+          p.speedY += gravity;
+          p.speedX *= drag;
           p.x += p.speedX;
           p.y += p.speedY;
           p.rotation += p.spin;

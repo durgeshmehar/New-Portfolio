@@ -60,8 +60,19 @@ const AchievementTracker = () => {
     if (!target) return;
     setOpen(false);
     const [path, hash] = target.split("#");
-    if (path === location.pathname && hash) {
-      document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    const alreadyThere = path === location.pathname;
+
+    if (hash) {
+      // Has its own completion condition (finish the quiz, select tools) —
+      // just take the user there; never auto-complete on click.
+      if (alreadyThere) document.getElementById(hash)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      else navigate(target);
+      return;
+    }
+
+    if (alreadyThere) {
+      // Pure page-visit achievement with nowhere further to redirect — treat as done.
+      unlockAchievement(id);
     } else {
       navigate(target);
     }
