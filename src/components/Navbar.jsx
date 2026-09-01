@@ -1,37 +1,16 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
+import { FaDownload } from "react-icons/fa";
 
 import { styles } from "../styles";
-import { navLinks } from "../constants";
+import { navLinks, downloadCvLink } from "../constants";
 import { logo, menu, close } from "../assets";
 
 const Navbar = () => {
-  const [active, setActive] = useState("");
   const [toggle, setToggle] = useState(false);
+  const location = useLocation();
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-
-      // Update active link based on scroll position
-      const sections = navLinks.map((nav) => document.getElementById(nav.id));
-      const currentSection = sections.find(
-        (section) =>
-          section &&
-          section.offsetTop <= scrollTop + window.innerHeight / 2 &&
-          section.offsetTop + section.offsetHeight >
-            scrollTop + window.innerHeight / 2
-      );
-
-      if (currentSection) {
-        setActive(currentSection.id);
-      }
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  const isActive = (path) => location.pathname === path;
 
   return (
     <nav
@@ -44,32 +23,43 @@ const Navbar = () => {
         <Link
           to="/"
           className="flex items-center gap-2"
-          onClick={() => {
-            setActive("");
-            window.scrollTo(0, 0);
-          }}
+          onClick={() => window.scrollTo(0, 0)}
         >
           <img src={logo} alt="logo" className="w-10 h-10 object-contain" />
         </Link>
 
-        <ul className="list-none hidden sm:flex flex-row gap-10">
-          {navLinks.map((nav) => (
-            <li
-              key={nav.id}
-              className={`${
-                active === nav.id
-                  ? "font-bold text-[rgb(45,212,191)] hover:scale-105 transform transition-all duration-300 text-[20px] cursor-pointer relative"
-                  : "text-white/90"
-              } hover:text-[rgb(45,212,191)] hover:scale-105 transform transition-all duration-300 text-[20px] font-semibold cursor-pointer relative`}
-              onClick={() => setActive(nav.id)}
+        <ul className="list-none hidden sm:flex flex-row gap-6 xl:gap-8">
+          {navLinks.map((nav) => {
+            const active = isActive(nav.id);
+            return (
+              <li
+                key={nav.id}
+                className={`${
+                  active
+                    ? "font-bold text-[rgb(45,212,191)] hover:scale-105 transform transition-all duration-300 text-[17px] xl:text-[18px] cursor-pointer relative"
+                    : "text-white/90"
+                } hover:text-[rgb(45,212,191)] hover:scale-105 transform transition-all duration-300 text-[17px] xl:text-[18px] font-semibold cursor-pointer relative`}
+              >
+                <Link to={nav.id} className="relative group">
+                  {nav.title}
+                  {/* Hover underline effect */}
+                  <span className="absolute bottom-[-5px] left-0 w-0 h-[2px] bg-[rgb(45,212,191)] group-hover:w-full transition-all duration-300"></span>
+                </Link>
+              </li>
+            );
+          })}
+          <li>
+            <a
+              href={downloadCvLink}
+              download
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 border border-white/30 hover:border-cyan-300 hover:text-cyan-300 text-white text-[15px] xl:text-[16px] font-semibold py-2 px-4 rounded-full transition-all duration-300 hover:scale-105"
             >
-              <a href={`${nav.id}`} className="relative group">
-                {nav.title}
-                {/* Hover underline effect */}
-                <span className="absolute bottom-[-5px] left-0 w-0 h-[2px] bg-[rgb(45,212,191)] group-hover:w-full transition-all duration-300"></span>
-              </a>
-            </li>
-          ))}
+              <FaDownload size={13} />
+              Download CV
+            </a>
+          </li>
         </ul>
 
         {/* mobile screen */}
@@ -88,25 +78,38 @@ const Navbar = () => {
             } p-6 black-gradient backdrop-blur-[1rem] absolute top-16 right-0 mx-4 my-0 min-w-[140px] z-50 rounded-xl transition-all duration-300`}
           >
             <ul className="list-none flex justify-end items-start flex-1 flex-col gap-4">
-              {navLinks.map((nav) => (
-                <li
-                  key={nav.id}
-                  className={`font-poppins font-medium cursor-pointer text-[16px] ${
-                    active === nav.id
-                      ? "font-bold text-[rgb(45,212,191)]"
-                      : "text-secondary"
-                  } hover:text-[rgb(45,212,191)] transition-all duration-300 relative z-50`}
-                  onClick={() => {
-                    setToggle(!toggle);
-                    setActive(nav.id);
-                  }}
+              {navLinks.map((nav) => {
+                const active = isActive(nav.id);
+                return (
+                  <li
+                    key={nav.id}
+                    className={`font-poppins font-medium cursor-pointer text-[16px] ${
+                      active
+                        ? "font-bold text-[rgb(45,212,191)]"
+                        : "text-secondary"
+                    } hover:text-[rgb(45,212,191)] transition-all duration-300 relative z-50`}
+                    onClick={() => setToggle(false)}
+                  >
+                    <Link to={nav.id} className="relative group">
+                      {nav.title}
+                      <span className="absolute bottom-[-3px] left-0 h-[2px] bg-green-400 group-hover:w-full transition-all duration-300"></span>
+                    </Link>
+                  </li>
+                );
+              })}
+              <li className="mt-2">
+                <a
+                  href={downloadCvLink}
+                  download
+                  target="_blank"
+                  rel="noreferrer"
+                  onClick={() => setToggle(false)}
+                  className="flex items-center justify-center gap-2 border border-white/30 text-white text-[15px] font-semibold py-2.5 px-4 rounded-full"
                 >
-                  <a href={`${nav.id}`} className="relative group">
-                    {nav.title}
-                    <span className="absolute bottom-[-3px] left-0 h-[2px] bg-green-400 group-hover:w-full transition-all duration-300"></span>
-                  </a>
-                </li>
-              ))}
+                  <FaDownload size={13} />
+                  Download CV
+                </a>
+              </li>
             </ul>
           </div>
         </div>
