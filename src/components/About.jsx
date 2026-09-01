@@ -45,10 +45,11 @@ const ServiceCard = ({ index, title, icon }) => (
 );
 
 
-const words = `I am a passionate Software Engineer specializing in Web Development, AI
-        and Devops. My core skills include C++, Python, and JavaScript, along
-        with frameworks like Django and Node.js. I am also experienced in cloud
-        technologies and deployments using Docker, Kubernetes, Jenkins, and AWS.`;
+const words = `I am a Backend Engineer with 2 years of production experience at
+        EkaCare, building foundational cloud-platform services in Python, Go, and
+        Elasticsearch. My core expertise lies in architecting distributed systems,
+        engineering rapid-search capabilities, and seamlessly integrating AI into
+        production workflows using Django, FastAPI, Redis, and AWS.`;
 
 
 const About = () => {
@@ -71,22 +72,3 @@ const About = () => {
 const WrappedAbout = SectionWrapper(About, "about1");
 
 export default WrappedAbout;
-
-{
-  /* I{"'"}m a skilled software developer with experience in C++ and
-        JavaScript, and expertise in frameworks like React, Nextjs, Node.js, and
-        Express.js. I{"'"}m a quick learner and collaborate closely with clients to
-        create efficient, scalable, and user-friendly solutions that solve
-        real-world problems. Let{"'"}s work together to bring your ideas to life! */
-}
-
-
-// 
-// import { TextGenerateEffect } from "../ui/text-generate-effect";
-
-// const words = `Oxygen gets you high. In a catastrophic emergency, we're taking giant, panicked breaths. Suddenly you become euphoric, docile. You accept your fate. It's all right here. Emergency water landing, six hundred miles an hour. Blank faces, calm as Hindu cows
-// `;
-
-// export function TextGenerateEffectDemo() {
-//   return <TextGenerateEffect words={words} />;
-// }
