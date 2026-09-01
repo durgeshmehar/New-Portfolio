@@ -1,6 +1,5 @@
 import Hero from './Hero';
 import Navbar from './Navbar';
-import About from './About';
 import Skills from './Skills';
 import Experience from './Experience';
 import Education from './Education';
@@ -12,7 +11,6 @@ import HomeHighlights from './HomeHighlights';
 export {
   Hero,
   Navbar,
-  About,
   Skills,
   Experience,
   Education,

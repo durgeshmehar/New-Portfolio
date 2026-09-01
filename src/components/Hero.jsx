@@ -1,96 +1,147 @@
-import { styles } from "../styles";
-import { profile, profileWebp, blob } from "../assets";
-import { github, linkedin, gmail } from "../assets";
-import { Link } from "react-router-dom";
-import { Button } from "./effects/moving-border";
+import { useRef, useState } from "react";
+import { FaArrowDown, FaArrowRight, FaGithub, FaLinkedin } from "react-icons/fa6";
+import { HiOutlineMail } from "react-icons/hi";
+import { profileWebp } from "../assets";
+import { downloadCvLink } from "../constants";
+import { useLivingPortrait } from "../hooks/useLivingPortrait";
+import { unlockAchievement } from "../hooks/useAchievements";
+
+const SPARK_MESSAGES = [
+  "Okay, you found the fun bit.",
+  "Status: still curious.",
+  "That's a stable click rate.",
+  "Nice—no rate limit here.",
+];
+
+const timeGreeting = () => {
+  const hour = new Date().getHours();
+  if (hour < 5) return "Building late in Bangalore";
+  if (hour < 12) return "Good morning from Bangalore";
+  if (hour < 17) return "Mid-shift in Bangalore";
+  if (hour < 21) return "Good evening from Bangalore";
+  return "Building late in Bangalore";
+};
+
+const lenses = {
+  recruiter: {
+    label: "Recruiter",
+    copy: "A concise story of ownership, outcomes, and the problems I am ready to solve next.",
+  },
+  engineer: {
+    label: "Engineer",
+    copy: "The decisions behind the work: resilient systems, search at scale, and thoughtful trade-offs.",
+  },
+  human: {
+    label: "Human",
+    copy: "A builder who enjoys learning in public and making complex things a little more useful for people.",
+  },
+};
 
 const Hero = () => {
+  const [lens, setLens] = useState("recruiter");
+  const [sparkCount, setSparkCount] = useState(0);
+  const [spark, setSpark] = useState(null);
+  const resetTimer = useRef(null);
+  const { shellRef, tilt, idleGreeting } = useLivingPortrait(() => unlockAchievement("living-portrait"));
+
+  const triggerSpark = () => {
+    const next = sparkCount + 1;
+    setSparkCount(next);
+    window.clearTimeout(resetTimer.current);
+    resetTimer.current = window.setTimeout(() => setSparkCount(0), 1400);
+
+    if (next >= 5) {
+      setSpark(SPARK_MESSAGES[Math.floor(Math.random() * SPARK_MESSAGES.length)]);
+      setSparkCount(0);
+      window.setTimeout(() => setSpark(null), 2600);
+    }
+  };
+
   return (
-    <section className={`relative w-full mx-auto pt-[100vh] overflow-visible`}>
-      <div
-        className={`absolute inset-0 top-[120px]  max-w-7xl max-h-[50vh] mx-auto ${styles.paddingX} flex flex-row items-start gap-5`}
-      >
-        <div className="flex flex-col justify-center items-center mt-5">
-          <div className="w-5 h-5 rounded-full bg-[#915EFF]" />
-          <div className="w-1 sm:h-80 h-40 violet-gradient" />
-        </div>
+    <section className="hero-section relative isolate min-h-[100svh] overflow-hidden px-6 pb-16 pt-32 sm:px-12 lg:px-16 lg:pt-40">
+      <div className="hero-grid" aria-hidden="true" />
+      <div className="hero-orb hero-orb-one" aria-hidden="true" />
+      <div className="hero-orb hero-orb-two" aria-hidden="true" />
 
-        <div className="flex overflow-visible w-full">
-          <div className="w-[60%] md:w-[50%] h-[50%]">
-            <h1 className={`${styles.heroHeadText} text-white`}>
-              Hi, I&apos;m{" "}
-              <span className="blue-pink-gradient-text">Durgesh</span>
-            </h1>
-            <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-              I build scalable backends <br className="sm:block hidden" />
-              and distributed systems
-            </p>
+      <div className="relative mx-auto grid max-w-7xl items-center gap-14 lg:grid-cols-[1.15fr_0.85fr]">
+        <div className="max-w-3xl">
+          <p className="hero-kicker">BACKEND ENGINEER · BANGALORE, INDIA</p>
+          <h1 className="mt-6 text-4xl font-semibold leading-[0.98] tracking-[-0.055em] text-white sm:text-5xl lg:text-7xl">
+            Building the quiet systems that make <span className="hero-emphasis">people’s work</span> feel effortless.
+          </h1>
+          <p className="mt-7 max-w-2xl text-lg leading-relaxed text-slate-300 sm:text-xl">
+            I&apos;m Durgesh Mehar. I turn difficult backend problems into reliable, fast experiences—from healthcare search to AI-assisted clinical workflows.
+          </p>
 
-            {/* Buttons Section */}
-            <div className="mt-8 md:mt-14 flex flex-wrap gap-4">
-              <Button
-                borderRadius="1.05rem"
-                className="bg-gradient-to-r from-indigo-600 to-fuchsia-600 hover:from-indigo-500 hover:to-fuchsia-600"
-                duration={2000}
-              >
-                <a
-                  href="https://drive.google.com/file/d/15E-_4cEhQnmU4g9LvlqmH8My-yYIoGBh/view?usp=drive_link" // Replace with your CV link
-                  download
-                  // className="bg-[#80aef7] hover:bg-[#92b9f8] flex justify-center content-center text-black py-2 px-6 rounded-lg text-md xs:text-lg  xs:font-semibold  transition duration-300 transform"
-                  className="text-lg font-bold md:text-lg"
+          <div className="mt-9 flex flex-wrap items-center gap-3">
+            <a className="hero-primary-action" href="#journey">
+              Start the journey <FaArrowDown aria-hidden="true" />
+            </a>
+            <a className="hero-secondary-action" href={downloadCvLink} target="_blank" rel="noreferrer">
+              View resume <FaArrowRight aria-hidden="true" />
+            </a>
+          </div>
+
+          <div className="mt-11">
+            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Choose your lens</p>
+            <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Choose how to explore this portfolio">
+              {Object.entries(lenses).map(([key, item]) => (
+                <button
+                  key={key}
+                  type="button"
+                  aria-pressed={lens === key}
+                  onClick={() => setLens(key)}
+                  className={`lens-button ${lens === key ? "lens-button-active" : ""}`}
                 >
-                  Download CV
-                </a>
-              </Button>
-
-              <div className="flex gap-2 md:gap-6 lg:ml-4 group  rounded-md ">
-                <a
-                  href="mailto:durgeshmehar2002@gmail.com"
-                  target="_blank"
-                  className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center  hover:bg-gray-700 transition duration-300 transform"
-                >
-                  <img src={gmail} className="h-7 w-7 md:h-9 md:w-9" />
-                </a>
-                
-                <Link
-                  to="https://github.com/durgeshmehar-dev"
-                  target="_blank"
-                  className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform "
-                >
-                  {" "}
-                  <img src={github} className="h-7 w-7 md:h-9 md:w-9" />{" "}
-                </Link>
-                <Link
-                  to="https://www.linkedin.com/in/durgeshmehar/"
-                  target="_blank"
-                  className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform "
-                >
-                  {" "}
-                  <img src={linkedin} className="h-7 w-7 md:h-9 md:w-9" />{" "}
-                </Link>
-              </div>
-
-
+                  {item.label}
+                </button>
+              ))}
             </div>
-          </div>
-
-          <div className="w-[50%] relative ml-auto">
-            <img
-              src={blob}
-              loading="lazy"
-              className="w-[100%] md:w-[70%] top-0 right-0 absolute  object-cover"
-            />
-            <picture>
-              <source srcSet={profileWebp} type="image/webp" />
-              <img
-                src={profile}
-                alt="Profile"
-                fetchPriority="high"
-                className="absolute mx-auto w-[90%] h-[24vh] xs:w-[100%] xs:h-[30vh] sm:h-[35vh] md:w-[70%] md:h-[40vh] lg:h-[42vh] top-0 right-0  object-contain rounded-sm"
-              />
-            </picture>
+            <p className="mt-3 min-h-12 max-w-xl text-sm leading-relaxed text-slate-400" aria-live="polite">
+              {lenses[lens].copy}
+            </p>
           </div>
         </div>
+
+        <div className="relative mx-auto w-full max-w-md lg:-mt-10 lg:max-w-none">
+          <div
+            ref={shellRef}
+            className="hero-portrait-shell hero-portrait-live"
+            style={{ transform: `perspective(900px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg)` }}
+          >
+            <div className="hero-portrait-label">{timeGreeting()}</div>
+            <img src={profileWebp} alt="Durgesh Mehar" fetchpriority="high" className="hero-portrait" />
+            <button
+              type="button"
+              className="hero-portrait-note hero-status-trigger"
+              onClick={triggerSpark}
+              aria-label="Status: open to meaningful conversations"
+            >
+              <span className="hero-status-dot" aria-hidden="true" />
+              Open to meaningful conversations
+            </button>
+            {spark && (
+              <div className="hero-spark" role="status">
+                {spark}
+              </div>
+            )}
+            {idleGreeting && !spark && (
+              <div className="hero-idle-greeting" role="status">
+                {idleGreeting}
+              </div>
+            )}
+          </div>
+          <div className="hero-socials" aria-label="Durgesh Mehar on social platforms">
+            <a href="mailto:durgeshmehar2002@gmail.com" aria-label="Email Durgesh Mehar"><HiOutlineMail /></a>
+            <a href="https://github.com/durgeshmehar-dev" target="_blank" rel="noreferrer" aria-label="Durgesh Mehar on GitHub"><FaGithub /></a>
+            <a href="https://www.linkedin.com/in/durgeshmehar/" target="_blank" rel="noreferrer" aria-label="Durgesh Mehar on LinkedIn"><FaLinkedin /></a>
+          </div>
+        </div>
+      </div>
+
+      <div className="relative mx-auto mt-16 flex max-w-7xl items-center gap-3 text-xs uppercase tracking-[0.18em] text-slate-500">
+        <span className="h-px w-12 bg-cyan-300/60" />
+        Scroll for the evidence
       </div>
     </section>
   );

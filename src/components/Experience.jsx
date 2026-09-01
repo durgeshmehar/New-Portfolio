@@ -1,87 +1,30 @@
-import {
-  VerticalTimeline,
-  VerticalTimelineElement,
-} from "react-vertical-timeline-component";
-import "react-vertical-timeline-component/style.min.css";
-import React from "react";
-import { textVariant } from "../utils/motion";
+import { Link } from "react-router-dom";
+import { FaArrowRight } from "react-icons/fa6";
 import { experiences } from "../constants";
-import { motion } from "framer-motion";
-import { SectionWrapper } from "../hoc";
-import { styles } from "../styles";
 
-const ExperienceCard = React.memo(({ experience }) => {
-  return (
-    <VerticalTimelineElement
-      contentStyle={{
-        background: "rgb(19,17,26)",
-        color: "#fff",
-      }}
-      contentArrowStyle={{ borderRight: "15px solid  #232631" }}
-      date={
-        <span className="text-[16px] md:text-[18px] font-bold text-white">
-          {experience.date}
-        </span>
-      }
-      iconStyle={{ background: experience.iconBg }}
-      icon={<experience.icon className="relative top-0 left-0 scale-75" />}
-    >
-      <div>
-        <h3 className="text-[#2190FF] mb-2 text:base text-[20px] md:text-[24px] font-bold">
-          {experience.title}
-        </h3>
-        <p className="text-white !text-[18px] md:!text-[22px] font-extrabold">
-          {experience.company_name}
-        </p>
-        <p className="!text-[16px] md:!text-[18px] text-secondary mb-4">
-          {experience.location}
-        </p>
+const Experience = () => (
+  <section className="site-page-section">
+    <div className="page-intro max-w-3xl">
+      <p className="section-eyebrow">EXPERIENCE</p>
+      <h2 className="page-title">Building useful systems, one meaningful constraint at a time.</h2>
+      <p className="page-copy">A progression from community leadership to production healthcare systems—always guided by clarity, reliability, and the person using the product on the other side.</p>
+    </div>
 
-        <ul className="list-disc ml-5 space-y-2">
-          {experience.points.map((point, index) => (
-            <li
-              key={`experience-point-${index}`}
-              className="text-white-100 !text-[14px] md:!text-[16px] pl-1 tracking-wide"
-            >
-              {point}
-            </li>
-          ))}
-        </ul>
-      </div>
-    </VerticalTimelineElement>
-  );
-});
+    <div className="experience-list mt-14">
+      {experiences.map((experience) => (
+        <article className="experience-entry" key={`${experience.company_name}-${experience.title}-${experience.date}`}>
+          <div className="experience-entry-meta"><p>{experience.date}</p><p>{experience.location}</p></div>
+          <div>
+            <p className="section-eyebrow">{experience.company_name}</p>
+            <h2>{experience.title}</h2>
+            <ul>{experience.points.map((point) => <li key={point}>{point}</li>)}</ul>
+          </div>
+        </article>
+      ))}
+    </div>
 
-ExperienceCard.displayName = "ExperienceCard";
+    <Link to="/projects" className="text-link mt-12">Explore independent projects <FaArrowRight aria-hidden="true" /></Link>
+  </section>
+);
 
-const Experience = () => {
-  return (
-    <>
-      <motion.div variants={textVariant()}>
-        <p className={`${styles.sectionSubText} text-center`}>
-          What I&apos;ve Been Building
-        </p>
-        <h2
-          className={`${styles.sectionHeadText} text-center blue-pink-gradient-text`}
-        >
-          Experience
-        </h2>
-      </motion.div>
-
-      <div className="w-[100%] sm:w-[80%] mx-auto lg:w-[100%] mt-20 flex flex-col">
-        <VerticalTimeline>
-          {experiences.map((experience, index) => (
-            <ExperienceCard
-              key={`experience-${index}`}
-              experience={experience}
-            />
-          ))}
-        </VerticalTimeline>
-      </div>
-    </>
-  );
-};
-
-const WrappedExperience = SectionWrapper(Experience, "experience");
-
-export default WrappedExperience;
+export default Experience;

@@ -8,7 +8,7 @@ export const HoverEffect = ({ items, className }) => {
   return (
     <div
       className={cn(
-        "mx-auto grid grid-cols-2 xs:grid-cols-3 md:grid-cols-3 lg:grid-cols-4 px-4 py-6",
+        "mx-auto mt-8 grid grid-cols-2 xs:grid-cols-3 md:grid-cols-3 lg:grid-cols-5 gap-2",
         className
       )}
     >
@@ -17,7 +17,7 @@ export const HoverEffect = ({ items, className }) => {
         return (
           <div
             key={idx}
-            className="relative group block p-2 px-3 h-full w-full cursor-pointer"
+            className="relative group block h-full w-full"
             onMouseEnter={() => setHoveredIndex(idx)}
             onMouseLeave={() => setHoveredIndex(null)}
           >
@@ -38,8 +38,8 @@ export const HoverEffect = ({ items, className }) => {
                 />
               )}
             </AnimatePresence>
-            <div className="rounded-2xl h-full w-full p-8 md:p-6  overflow-hidden bg-[rgb(19,17,26)] border border-transparent dark:border-white/[0.2] group-hover:border-slate-500 relative z-10 ">
-              <div className="md:py-7 z-50">
+            <div className="content-panel h-full w-full p-5 relative z-10">
+              <div className="md:py-4">
                 <Icon className="w-6 h-6 md:w-8 md:h-8 mx-auto" />
                 <p className="pt-3 text-sm md:text-xl font-bold text-center text-gray-300">
                   {item.name}

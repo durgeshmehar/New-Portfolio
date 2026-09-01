@@ -1,20 +1,13 @@
 import logo from "./logo.png";
-import blob from "./blob.gif";
-import profile from "./profile.png";
 import profileWebp from "./profile.webp";
 import github from "./github.png";
 import linkedin from "./linkedin.png";
 import gmail from "./gmail.png";
 import menu from "./menu.svg";
 import close from "./close.svg";
-import profile_blog from "./profile-blog.png";      
-import macbook from "./notebook.svg";  
+import macbook from "./notebook.svg";
 import leetcode from "./leetcode_page.png"
 
-import backend from "./roles/backend.png";
-import creator from "./roles/creator.png";
-import mobile from "./roles/mobile.png";
-import web from "./roles/web.png";
 
 
 import css from "./tech/css.png";
@@ -30,13 +23,10 @@ import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
 import tailwind from "./tech/tailwind.png";
 import typescript from "./tech/typescript.png";
-import threejs from "./tech/threejs.svg";
 
 import chatbot from "./project/chatbot.png"
 import eshop from "./project/eshop.png"
 import koinx from "./project/koinx.png"
-import portfolio from "./project/portfolio.png"
-import razorpay from "./project/razorpay.png"
 import snappy from "./project/snappy.png"
 import youtube from "./project/youtube.png"
 import notify from "./project/notify.png"
@@ -45,18 +35,10 @@ import ingredientCheck from "./project/IngredientCheck-Upload-Page.jpeg"
 import git_Blog from "./blogs/git.jpg"
 import mongodb_Blog from "./blogs/mongodb.gif"
 
-// koinx , portfolio,razorpay ,snappy , youtube
-
 export {
   notify,
   logo,
-  profile,
   profileWebp,
-  blob,
-  backend,
-  creator,
-  mobile,
-  web,
   cpp,
   github,
   menu,
@@ -73,15 +55,13 @@ export {
   redux,
   tailwind,
   typescript,
-  threejs,
-  profile_blog,
   macbook,
   leetcode,
 
   linkedin,
   gmail,
 
-  chatbot ,eshop, koinx , portfolio,razorpay ,snappy , youtube,
+  chatbot ,eshop, koinx, snappy, youtube,
   git_Blog, mongodb_Blog,
   ingredientCheck,
 
