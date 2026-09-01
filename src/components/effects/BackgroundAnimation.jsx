@@ -1,7 +1,7 @@
 
 export const BackgroundAnimation = ({ top, right, left ,animation}) => {
   return (
-    <>
+    <div className="pointer-events-none absolute inset-0 -z-10">
       <div className={`w-1/2 h-64 absolute ${top} ${right} opacity-50 ${animation}  filter blur-[120px]`}>
         <div className="relative">
           <div className="border border-green-600 rounded-full h-60 w-full bg-blue-600"></div>
@@ -17,6 +17,6 @@ export const BackgroundAnimation = ({ top, right, left ,animation}) => {
           <div className="absolute top-24 left-24 rounded-full h-60 w-full bg-purple-600"></div>
         </div>
       </div>
-    </>
+    </div>
   );
 };

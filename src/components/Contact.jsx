@@ -1,38 +1,34 @@
-// require("dotenv").config();
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { FaMapMarkerAlt, FaEnvelope, FaClock } from "react-icons/fa";
 
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { slideIn } from "../utils/motion";
 import { Button } from "./effects/moving-border";
+import { socialLinks, contactInfo } from "../constants";
 
-const isLaptop = () => {
-  return window.innerWidth > 1024;
-};
+const infoItems = [
+  {
+    icon: FaMapMarkerAlt,
+    label: "Location",
+    value: contactInfo.location,
+  },
+  {
+    icon: FaEnvelope,
+    label: "Email",
+    value: contactInfo.email,
+    href: `mailto:${contactInfo.email}`,
+  },
+  {
+    icon: FaClock,
+    label: "Response time",
+    value: contactInfo.responseTime,
+  },
+];
 
 const Contact = () => {
-  const [isLaptopDevice, setIsLaptopDevice] = useState(isLaptop());
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsLaptopDevice(isLaptop());
-    };
-
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  const [EarthCanvas, setEarthCanvas] = useState(null);
-  useEffect(() => {
-    if (isLaptopDevice) {
-      import("./canvas").then((module) => {
-        setEarthCanvas(() => module.EarthCanvas);
-      });
-    }
-  }, [isLaptopDevice]);
-
   const formRef = useRef();
   const [form, setForm] = useState({
     name: "",
@@ -91,13 +87,12 @@ const Contact = () => {
 
   return (
     <div
-      className={`w-full xl:mt-12 flex xl:flex-row flex-col-reverse gap:4 md:gap-6 overflow-hidden mb-[15vh]`}
+      className={`w-full xl:mt-12 flex xl:flex-row flex-col gap-6 overflow-hidden mb-[15vh]`}
     >
       <motion.div
         variants={slideIn("left", "tween", 0, 0.8)}
-        className="mx-auto w-[80vw] lg:w-[30vw] flex-[0.75] border border-white/20 hover:border-white/40 p-8 pb-6 rounded-2xl   backdrop-blur-[1rem]"
-      > 
-      
+        className="mx-auto w-[80vw] lg:w-[30vw] flex-[0.75] border border-white/20 hover:border-white/40 p-8 pb-6 rounded-2xl backdrop-blur-[1rem]"
+      >
         <p className={styles.sectionSubText}>Get in touch</p>
         <h3 className={`${styles.sectionHeadText} blue-pink-gradient-text`}>
           Contact
@@ -144,26 +139,73 @@ const Contact = () => {
                 borderRadius="1.2rem"
                 className=" font-bold text-[17px] md:text-lg bg-gradient-to-r from-indigo-600 to-fuchsia-600 hover:from-indigo-500 hover:to-fuchsia-600"
               >
-                <button
-                  type="submit"
-                >
+                <button type="submit">
                   {loading ? "Sending..." : "Send"}
                 </button>
               </Button>
             </div>
-
-            
           </div>
         </form>
       </motion.div>
-      {EarthCanvas && (
-        <motion.div
-          variants={slideIn("right", "tween", 0, 0.8)}
-          className="mx-auto w-[80vw] lg:w-[30vw]  xl:flex-1 xl:h-auto md:h-[550px] h-[350px]"
-        >
-          <EarthCanvas />
-        </motion.div>
-      )}
+
+      <motion.div
+        variants={slideIn("right", "tween", 0, 0.8)}
+        className="mx-auto w-[80vw] lg:w-[30vw] xl:flex-1 flex flex-col justify-center gap-6"
+      >
+        <div className="border border-white/20 hover:border-white/40 rounded-2xl backdrop-blur-[1rem] p-8">
+          <h4 className="text-white font-bold text-xl mb-6">
+            Let&apos;s build something together
+          </h4>
+          <div className="flex flex-col gap-5">
+            {infoItems.map(({ icon: Icon, label, value, href }) => {
+              const content = (
+                <div className="flex items-start gap-4">
+                  <div className="violet-gradient rounded-full p-3 flex items-center justify-center shrink-0">
+                    <Icon className="text-white w-4 h-4" />
+                  </div>
+                  <div>
+                    <p className="text-secondary text-sm">{label}</p>
+                    <p className="text-white font-medium">{value}</p>
+                  </div>
+                </div>
+              );
+              return href ? (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="hover:opacity-80 transition-opacity"
+                >
+                  {content}
+                </a>
+              ) : (
+                <div key={label}>{content}</div>
+              );
+            })}
+          </div>
+
+          <div className="mt-8 pt-6 border-t border-white/10">
+            <p className="text-secondary text-sm mb-4">Find me on</p>
+            <div className="flex gap-4">
+              {socialLinks
+                .filter((link) => link.label !== "Email")
+                .map(({ icon: Icon, label, href }) => (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    title={label}
+                    className="violet-gradient text-white p-3 rounded-full flex items-center justify-center hover:scale-105 transition-transform"
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                ))}
+            </div>
+          </div>
+        </div>
+      </motion.div>
     </div>
   );
 };

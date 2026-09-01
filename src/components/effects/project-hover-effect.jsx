@@ -7,7 +7,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
   return (
     <div
       className={cn(
-        "overflow-x-scroll scrollbar w-[95vw] mx-auto flex md:grid md:grid-cols-2 3xl:grid-cols-3 lg:w-[100%] gap-6 lg:gap-y-28 mt-6 pb-6",
+        "overflow-x-auto scrollbar-hide w-[95vw] mx-auto flex md:grid md:grid-cols-2 3xl:grid-cols-3 gap-8 lg:gap-y-24 lg:w-[100%] mt-6 pb-6",
         className
       )}
     >
@@ -20,7 +20,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
             key={idx}
             className="group relative w-[70vw] md:w-[25vw]"
           >
-            <div className="rounded-md border-[1px] border-white/20 hover:border-white/40 w-[70vw] md:w-[25vw] h-full overflow-hidden bg-transparent relative z-10 transition-all duration-200">
+            <div className="rounded-2xl border border-white/10 group-hover:border-white/25 w-[70vw] md:w-[25vw] h-full overflow-hidden bg-tertiary/40 relative z-10 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_20px_60px_-15px_rgba(139,92,246,0.35)]">
               <div className="h-full flex flex-col justify-between">
 
                 <div
@@ -34,7 +34,6 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                       className="absolute inset-0 w-full h-full object-contain pointer-events-none"
                     />
                     <div className="absolute inset-[3.3%] top-[3%] w-[78%] h-[70%] mt-2 xs:mt-5 md:mt-6 mx-auto overflow-hidden rounded-t-[4%]">
-    
                       <img
                         src={image}
                         alt={`${name} project`}
@@ -44,45 +43,50 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                   </div>
                 </div>
 
-                <div className="relative p-4 bg-[rgb(30,25,47)] group-hover:bg-[rgb(43,38,58)] ">
-                  <div className="md:pb-3">
-                    <div className="md:mt-4 flex gap-4 gap-x-8 justify-center items-center">
-                      <h3 className="text-white opacity-90 p-1 font-bold text-lg md:text-[24px]">
-                        {name}
-                      </h3>
-                      <a
-                        className="text-blue-600 animate-moveRight"
-                        href={live_link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        <FaExternalLinkAlt className="w-5 h-5 mr-3" />
-                      </a>
+                <div className="relative p-5 md:p-6">
+                  <div className="flex items-center justify-between gap-3">
+                    <h3 className="text-white font-bold text-xl md:text-[22px] tracking-tight">
+                      {name}
+                    </h3>
+                    <div className="flex items-center gap-3 shrink-0">
+                      {live_link && (
+                        <a
+                          className="text-secondary hover:text-cyan-300 transition-colors"
+                          href={live_link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          title="Live demo"
+                        >
+                          <FaExternalLinkAlt className="w-4 h-4" />
+                        </a>
+                      )}
                       <a
                         href={source_code_link}
                         target="_blank"
                         rel="noopener noreferrer"
+                        title="Source code"
                       >
                         <img
                           src={github}
                           alt="source code"
-                          className="w-8 h-8 object-contain cursor-pointer animate-moveLeft"
+                          className="w-6 h-6 object-contain cursor-pointer opacity-80 hover:opacity-100 transition-opacity"
                         />
                       </a>
                     </div>
-                    <p className="mt-0 pt-4 text-secondary text-[16px] md:text-[18px] text-left">
-                      {description}
-                    </p>
                   </div>
 
-                  <div className="md:mt-14 lg:mt-0 px-0 md:mx-auto md:text-center md:justify-center flex flex-wrap gap-2">
+                  <p className="mt-3 text-secondary text-[15px] md:text-[16px] leading-relaxed text-left">
+                    {description}
+                  </p>
+
+                  <div className="mt-5 flex flex-wrap gap-2">
                     {tags.map((tag) => (
-                      <p key={`${name}-${tag.name}`} className={`text-[16px]`}>
-                        #
-                        <span className={`text-[16px] ${tag.color}`}>
-                          {tag.name}&nbsp;
-                        </span>
-                      </p>
+                      <span
+                        key={`${name}-${tag.name}`}
+                        className="text-xs font-medium px-3 py-1 rounded-full border border-white/10 bg-white/[0.03]"
+                      >
+                        <span className={tag.color}>{tag.name}</span>
+                      </span>
                     ))}
                   </div>
                 </div>
