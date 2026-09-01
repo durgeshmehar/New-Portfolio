@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { textVariant, fadeIn } from "../utils/motion";
 import { aboutIntro, aboutPillars } from "../constants";
@@ -17,17 +16,15 @@ const illustrationMap = {
 };
 
 const AboutMeTeaser = () => (
-  <div className="max-w-5xl w-full mx-auto md:px-8 text-center flex flex-col items-center">
+  <section className="portfolio-section mx-auto max-w-7xl text-center">
     <motion.div variants={textVariant()}>
-      <p className={`${styles.sectionSubText} text-center`}>Beyond the code</p>
-      <h2 className={`${styles.sectionHeadText} text-center blue-pink-gradient-text`}>
-        What drives me
-      </h2>
+      <p className="section-eyebrow">BEYOND THE CODE</p>
+      <h2 className="section-title mt-4">What drives me</h2>
     </motion.div>
 
     <motion.p
       variants={fadeIn("up", "tween", 0.1, 0.6)}
-      className="text-secondary text-[16px] md:text-[18px] leading-relaxed max-w-3xl mt-6"
+      className="text-slate-400 text-[16px] md:text-[18px] leading-relaxed max-w-3xl mt-6 mx-auto"
     >
       {aboutIntro}
     </motion.p>
@@ -39,7 +36,7 @@ const AboutMeTeaser = () => (
           <motion.div
             key={pillar.title}
             variants={fadeIn("up", "tween", 0.15 * index, 0.6)}
-            className="border border-white/10 hover:border-white/25 rounded-2xl backdrop-blur-[1rem] p-6 transition-colors"
+            className="content-panel p-6 transition-colors"
           >
             <Illustration className="w-full h-20 mb-4" />
             <h3 className="text-white font-bold text-lg">{pillar.title}</h3>
@@ -48,13 +45,8 @@ const AboutMeTeaser = () => (
       })}
     </div>
 
-    <Link
-      to="/about"
-      className="violet-gradient text-white py-2 px-8 rounded-full font-semibold mt-10"
-    >
-      Read more about me
-    </Link>
-  </div>
+    <Link to="/about" className="text-link mt-10">Read more about me</Link>
+  </section>
 );
 
 const WrappedAboutMeTeaser = SectionWrapper(AboutMeTeaser, "about-me");

@@ -1,215 +1,45 @@
 import { useRef, useState } from "react";
-import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
-import { FaMapMarkerAlt, FaEnvelope, FaClock } from "react-icons/fa";
-
-import { styles } from "../styles";
-import { SectionWrapper } from "../hoc";
-import { slideIn } from "../utils/motion";
-import { Button } from "./effects/moving-border";
-import { socialLinks, contactInfo } from "../constants";
-
-const infoItems = [
-  {
-    icon: FaMapMarkerAlt,
-    label: "Location",
-    value: contactInfo.location,
-  },
-  {
-    icon: FaEnvelope,
-    label: "Email",
-    value: contactInfo.email,
-    href: `mailto:${contactInfo.email}`,
-  },
-  {
-    icon: FaClock,
-    label: "Response time",
-    value: contactInfo.responseTime,
-  },
-];
+import { FaArrowRight, FaEnvelope, FaLocationDot } from "react-icons/fa6";
+import { contactInfo, socialLinks } from "../constants";
 
 const Contact = () => {
   const formRef = useRef();
-  const [form, setForm] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [form, setForm] = useState({ name: "", email: "", message: "" });
+  const [status, setStatus] = useState("idle");
+  const update = (event) => setForm((current) => ({ ...current, [event.target.name]: event.target.value }));
 
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    const { target } = e;
-    const { name, value } = target;
-
-    setForm({
-      ...form,
-      [name]: value,
-    });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setLoading(true);
-
-    emailjs
-      .send(
-        import.meta.env.VITE_APP_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID,
-        {
-          from_name: form.name,
-          to_name: "Durgesh Mehar",
-          from_email: form.email,
-          to_email: "durgeshmehar2002@gmail.com",
-          message: form.message,
-        },
-        import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY
-      )
-      .then(
-        () => {
-          setLoading(false);
-          alert("Thank you. I will get back to you as soon as possible.");
-
-          setForm({
-            name: "",
-            email: "",
-            message: "",
-          });
-        },
-        (error) => {
-          setLoading(false);
-          console.error(error);
-
-          alert("Ahh, something went wrong. Please try again.");
-        }
-      );
+  const submit = async (event) => {
+    event.preventDefault();
+    setStatus("sending");
+    try {
+      await emailjs.send(import.meta.env.VITE_APP_EMAILJS_SERVICE_ID, import.meta.env.VITE_APP_EMAILJS_TEMPLATE_ID, { from_name: form.name, to_name: "Durgesh Mehar", from_email: form.email, to_email: contactInfo.email, message: form.message }, import.meta.env.VITE_APP_EMAILJS_PUBLIC_KEY);
+      setForm({ name: "", email: "", message: "" });
+      setStatus("sent");
+    } catch {
+      setStatus("error");
+    }
   };
 
   return (
-    <div
-      className={`w-full xl:mt-12 flex xl:flex-row flex-col gap-6 overflow-hidden mb-[15vh]`}
-    >
-      <motion.div
-        variants={slideIn("left", "tween", 0, 0.8)}
-        className="mx-auto w-[80vw] lg:w-[30vw] flex-[0.75] border border-white/20 hover:border-white/40 p-8 pb-6 rounded-2xl backdrop-blur-[1rem]"
-      >
-        <p className={styles.sectionSubText}>Get in touch</p>
-        <h3 className={`${styles.sectionHeadText} blue-pink-gradient-text`}>
-          Contact
-        </h3>
-
-        <form
-          ref={formRef}
-          onSubmit={handleSubmit}
-          className="mt-8 flex flex-col gap-6"
-        >
-          <label className="flex flex-col">
-            <span className="text-white font-medium mb-2">Your Name</span>
-            <input
-              type="text"
-              name="name"
-              value={form.name}
-              onChange={handleChange}
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-violet-800 focus:ring-1 focus:ring-violet-800 font-medium"
-            />
-          </label>
-          <label className="flex flex-col">
-            <span className="text-white font-medium mb-2">Your email</span>
-            <input
-              type="email"
-              name="email"
-              value={form.email}
-              onChange={handleChange}
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-violet-800 focus:ring-1 focus:ring-violet-800 font-medium"
-            />
-          </label>
-          <label className="flex flex-col">
-            <span className="text-white font-medium mb-2">Your Message</span>
-            <textarea
-              rows={4}
-              name="message"
-              value={form.message}
-              onChange={handleChange}
-              className="bg-tertiary py-4 px-6 placeholder:text-secondary text-white rounded-lg outline-none border border-violet-800 focus:ring-1 focus:ring-violet-800 font-medium"
-            />
-          </label>
-          <div className="flex items-center gap-6">
-            <div className="w-full flex justify-center">
-              <Button
-                borderRadius="1.2rem"
-                className=" font-bold text-[17px] md:text-lg bg-gradient-to-r from-indigo-600 to-fuchsia-600 hover:from-indigo-500 hover:to-fuchsia-600"
-              >
-                <button type="submit">
-                  {loading ? "Sending..." : "Send"}
-                </button>
-              </Button>
-            </div>
-          </div>
+    <section className="site-page-section">
+      <div className="page-intro max-w-3xl"><p className="section-eyebrow">CONTACT</p><h1 className="page-title">Let’s make something useful.</h1><p className="page-copy">Whether you’re solving a difficult product problem, comparing system trade-offs, or simply want to talk through an idea, I’d be glad to hear from you.</p></div>
+      <div className="contact-layout mt-14">
+        <form ref={formRef} onSubmit={submit} className="content-panel contact-form">
+          <label>Your name<input className="theme-input" name="name" value={form.name} onChange={update} required /></label>
+          <label>Email<input className="theme-input" type="email" name="email" value={form.email} onChange={update} required /></label>
+          <label>What’s on your mind?<textarea className="theme-input" name="message" rows={5} value={form.message} onChange={update} required /></label>
+          <button type="submit" className="theme-action" disabled={status === "sending"}>{status === "sending" ? "Sending…" : "Send a note"} <FaArrowRight aria-hidden="true" /></button>
+          <p className="contact-status" role="status">{status === "sent" && "Thanks—your note is on its way."}{status === "error" && "Something went wrong. Please email me directly instead."}</p>
         </form>
-      </motion.div>
-
-      <motion.div
-        variants={slideIn("right", "tween", 0, 0.8)}
-        className="mx-auto w-[80vw] lg:w-[30vw] xl:flex-1 flex flex-col justify-center gap-6"
-      >
-        <div className="border border-white/20 hover:border-white/40 rounded-2xl backdrop-blur-[1rem] p-8">
-          <h4 className="text-white font-bold text-xl mb-6">
-            Let&apos;s build something together
-          </h4>
-          <div className="flex flex-col gap-5">
-            {infoItems.map(({ icon: Icon, label, value, href }) => {
-              const content = (
-                <div className="flex items-start gap-4">
-                  <div className="violet-gradient rounded-full p-3 flex items-center justify-center shrink-0">
-                    <Icon className="text-white w-4 h-4" />
-                  </div>
-                  <div>
-                    <p className="text-secondary text-sm">{label}</p>
-                    <p className="text-white font-medium">{value}</p>
-                  </div>
-                </div>
-              );
-              return href ? (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="hover:opacity-80 transition-opacity"
-                >
-                  {content}
-                </a>
-              ) : (
-                <div key={label}>{content}</div>
-              );
-            })}
-          </div>
-
-          <div className="mt-8 pt-6 border-t border-white/10">
-            <p className="text-secondary text-sm mb-4">Find me on</p>
-            <div className="flex gap-4">
-              {socialLinks
-                .filter((link) => link.label !== "Email")
-                .map(({ icon: Icon, label, href }) => (
-                  <a
-                    key={label}
-                    href={href}
-                    target="_blank"
-                    rel="noreferrer"
-                    title={label}
-                    className="violet-gradient text-white p-3 rounded-full flex items-center justify-center hover:scale-105 transition-transform"
-                  >
-                    <Icon className="w-5 h-5" />
-                  </a>
-                ))}
-            </div>
-          </div>
-        </div>
-      </motion.div>
-    </div>
+        <aside className="contact-aside">
+          <div className="content-panel contact-detail"><FaEnvelope aria-hidden="true" /><p className="section-eyebrow">EMAIL</p><a href={`mailto:${contactInfo.email}`}>{contactInfo.email}</a><p>Usually replies within 24 hours.</p></div>
+          <div className="content-panel contact-detail"><FaLocationDot aria-hidden="true" /><p className="section-eyebrow">BASED IN</p><p className="text-lg font-medium text-slate-100">{contactInfo.location}</p><p>Available for meaningful conversations and collaborations.</p></div>
+          <div className="flex flex-wrap gap-2">{socialLinks.filter(({ label }) => label !== "Email").map(({ icon: Icon, label, href }) => <a key={label} href={href} target="_blank" rel="noreferrer" className="site-footer-link"><Icon aria-hidden="true" />{label}</a>)}</div>
+        </aside>
+      </div>
+    </section>
   );
 };
 
-const WrappedAbout = SectionWrapper(Contact, "contact");
-
-export default WrappedAbout;
+export default Contact;

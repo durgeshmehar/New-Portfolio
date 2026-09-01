@@ -1,13 +1,8 @@
-import { Education, Skills } from "../components";
-import Opensource from "../components/Opensource";
-import Dsa from "../components/Dsa";
+import { Education } from "../components";
 
 const EducationPage = () => (
   <div className="pt-[100px] pb-[10vh]">
     <Education />
-    <Skills />
-    <Opensource />
-    <Dsa />
   </div>
 );
 

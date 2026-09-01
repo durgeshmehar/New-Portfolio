@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { textVariant, slideIn } from "../utils/motion";
 import { fetchPublishedPosts } from "../lib/blogService";
@@ -73,13 +72,11 @@ const Blogs = () => {
   const hasMore = entries.length > HOME_TEASER_LIMIT;
 
   return (
-    <div className="max-w-3xl mx-auto md:px-8 w-full">
+    <section className="portfolio-section max-w-5xl mx-auto w-full">
       <motion.div variants={textVariant()}
        className="flex flex-col justify-center items-center">
-        <p className={styles.sectionSubText}>Notes, resources & things I&apos;m learning</p>
-        <h2 className={`${styles.sectionHeadText} blue-pink-gradient-text `}>
-          Journal
-        </h2>
+        <p className="section-eyebrow">NOTES, RESOURCES & THINGS I’M LEARNING</p>
+        <h2 className="section-title mt-4">Journal</h2>
       </motion.div>
 
       {!loading && entries.length === 0 && (
@@ -96,13 +93,13 @@ const Blogs = () => {
         <div className="flex justify-center mt-10">
           <Link
             to="/blog"
-            className="border border-white/30 hover:border-cyan-300 hover:text-cyan-300 text-white py-2 px-8 rounded-full font-semibold transition-all duration-300"
+            className="text-link"
           >
             {hasMore ? "View full journal" : "Go to Journal"}
           </Link>
         </div>
       )}
-    </div>
+    </section>
   );
 };
 

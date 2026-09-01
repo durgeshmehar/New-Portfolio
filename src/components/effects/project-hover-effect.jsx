@@ -7,7 +7,7 @@ export const ProjectHoverEffect = ({ projects, className }) => {
   return (
     <div
       className={cn(
-        "overflow-x-auto scrollbar-hide w-[95vw] mx-auto flex md:grid md:grid-cols-2 3xl:grid-cols-3 gap-8 lg:gap-y-24 lg:w-[100%] mt-6 pb-6",
+        "project-grid mx-auto grid w-full grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3",
         className
       )}
     >
@@ -18,14 +18,14 @@ export const ProjectHoverEffect = ({ projects, className }) => {
         return (
           <div
             key={idx}
-            className="group relative w-[70vw] md:w-[25vw]"
+            className="group relative min-w-0"
           >
-            <div className="rounded-2xl border border-white/10 group-hover:border-white/25 w-[70vw] md:w-[25vw] h-full overflow-hidden bg-tertiary/40 relative z-10 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_20px_60px_-15px_rgba(139,92,246,0.35)]">
-              <div className="h-full flex flex-col justify-between">
+            <div className="project-card h-full overflow-hidden">
+              <div className="h-full flex flex-col">
 
                 <div
-                  className="w-full aspect-[16/10] relative cursor-pointer"
-                  onClick={() => window.open(live_link, "_blank")}
+                  className={`w-full aspect-[16/10] relative ${live_link ? "cursor-pointer" : ""}`}
+                  onClick={() => live_link && window.open(live_link, "_blank", "noopener,noreferrer")}
                 >
                   <div className="relative w-full h-full">
                     <img
@@ -43,9 +43,9 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                   </div>
                 </div>
 
-                <div className="relative p-5 md:p-6">
+                <div className="relative flex flex-1 flex-col p-5 md:p-6">
                   <div className="flex items-center justify-between gap-3">
-                    <h3 className="text-white font-bold text-xl md:text-[22px] tracking-tight">
+                    <h3 className="text-white font-semibold text-xl md:text-[22px] tracking-tight">
                       {name}
                     </h3>
                     <div className="flex items-center gap-3 shrink-0">
@@ -75,15 +75,15 @@ export const ProjectHoverEffect = ({ projects, className }) => {
                     </div>
                   </div>
 
-                  <p className="mt-3 text-secondary text-[15px] md:text-[16px] leading-relaxed text-left">
+                  <p className="mt-3 text-slate-400 text-[15px] md:text-[16px] leading-relaxed text-left">
                     {description}
                   </p>
 
-                  <div className="mt-5 flex flex-wrap gap-2">
+                  <div className="mt-auto flex flex-wrap gap-2 pt-5">
                     {tags.map((tag) => (
                       <span
                         key={`${name}-${tag.name}`}
-                        className="text-xs font-medium px-3 py-1 rounded-full border border-white/10 bg-white/[0.03]"
+                        className="project-tag"
                       >
                         <span className={tag.color}>{tag.name}</span>
                       </span>

@@ -1,9 +1,5 @@
 import {
-  chatbot ,eshop, koinx , portfolio,razorpay ,snappy , youtube,
-    mobile,
-    backend,
-    creator,
-    web,
+  chatbot ,eshop, koinx, snappy, youtube,
     notify,
     ingredientCheck,
     git_Blog,
@@ -143,25 +139,6 @@ import {
   export const aboutClosing =
     "I've worked across 4+ distinct microservices and I'm framework-agnostic by necessity — Python (FastAPI, Django) or Go, whatever the system demands. Whether you're a recruiter, a fellow engineer, or just someone who nerds out about distributed systems, I'm always happy to connect, collaborate, and learn together.";
 
-  const services = [
-    {
-      title: "Backend Engineer",
-      icon: backend,
-    },
-    {
-      title: "Django & FastAPI",
-      icon: mobile,
-    },
-    {
-      title: "Distributed Systems",
-      icon: web,
-    },
-    {
-      title: "AI/LLM Integration",
-      icon: creator,
-    },
-  ];
-
   const skills = [
     {
       name: "Python",
@@ -234,7 +211,7 @@ import {
       date: "May 2025 - Present",
       location: "Bangalore, India",
       points: [
-        "Own the Assessment platform, serving doctor-facing fill assessments, project team creation, and AI creation; cut API response time by 60x (30ms to 0.5ms) via Redis caching, reducing PostgreSQL queries by 96% (10K to 400) and DB resource usage by 40%, with a SQL fallback for resilience.",
+        "Own the Assessment platform for internal management workflows: assessment filling, project-team creation, and AI creation. Built Django Admin tooling for assessment pre-processing and post-processing; improved a key API from 30ms to 0.5ms with Redis caching, cutting PostgreSQL queries from 10K to 400 and DB resource usage by 40%, with SQL fallback resilience.",
         "Spearhead Autosuggest Medical Concepts, a Go-based search API spanning 84 Elasticsearch indices and 711 shards with async ingestion pipelines and AWS SQS queues for low-latency autosuggestion.",
         "Built integrations surfacing 10+ business partners' custom medical data in autosuggest responses within their EMR tools (e.g., eVital, FLabs).",
         "Own and extend the EkaScribe backend, a voice-to-prescription platform serving 300+ doctors daily, generating structured prescriptions and FHIR-compliant clinical notes from consultations.",
@@ -528,4 +505,4 @@ import {
     },
   ];
 
-  export { services, skills, educations, experiences, projects, externalBlogs };
+  export { skills, educations, experiences, projects, externalBlogs };
