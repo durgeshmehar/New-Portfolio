@@ -117,7 +117,7 @@ import {
   };
 
   export const aboutIntro =
-    "I'm a backend engineer who genuinely loves the craft — not just shipping features, but understanding why systems work the way they do. Outside of my day-to-day at EkaCare, I spend a lot of time going deeper: reading the papers behind the tools I use, picking apart how large-scale platforms are built, and tracing ideas back to their first principles.";
+    "I'm a backend engineer who genuinely loves the craft — not just shipping features, but understanding why systems work the way they do. Outside of my day-to-day at workplace, I spend a lot of time going deeper: reading the papers behind the tools I use, picking apart how large-scale platforms are built, and tracing ideas back to their first principles.";
 
   export const aboutPillars = [
     {
