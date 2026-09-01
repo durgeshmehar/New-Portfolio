@@ -1,27 +1,23 @@
-import { EarthCanvas } from './canvas';
 import Hero from './Hero';
 import Navbar from './Navbar';
 import About from './About';
 import Skills from './Skills';
+import Experience from './Experience';
 import Education from './Education';
 import Projects from './Projects';
-import Blogs from './Blogs';
 import Contact from './Contact';
-import Opensource from './Opensource'
-import Dsa from './Dsa';
 import Footer from './Footer';
+import HomeHighlights from './HomeHighlights';
 
 export {
   Hero,
   Navbar,
   About,
   Skills,
+  Experience,
   Education,
   Projects,
-  Blogs,
   Contact,
-  EarthCanvas, 
-  Opensource,
-  Dsa,
-  Footer
+  Footer,
+  HomeHighlights
 }
