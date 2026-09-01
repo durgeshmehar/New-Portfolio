@@ -48,6 +48,7 @@ const RateLimiterPlayground = () => {
 
   return (
     <section className="portfolio-section playground-section">
+      <span className="hash-span" id="rate-limiter">&nbsp;</span>
       <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
         <div className="max-w-xl">
           <p className="section-eyebrow">ANOTHER SMALL SYSTEMS CHALLENGE</p>

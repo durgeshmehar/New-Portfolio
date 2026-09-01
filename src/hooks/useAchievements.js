@@ -10,7 +10,7 @@ export const ACHIEVEMENTS = [
   { id: "contact", label: "Said hello", hint: "Visit the Contact page" },
   { id: "living-portrait", label: "Noticed you", hint: "Spend a moment with the hero portrait" },
   { id: "rate-limiter", label: "Tamed the traffic", hint: "Finish the rate limiter challenge" },
-  { id: "stack-builder", label: "Assembled the stack", hint: "Select every tool in Skills" },
+  { id: "stack-builder", label: "Assembled the stack", hint: "Select 3 tools in Skills" },
 ];
 
 const readStored = () => {
@@ -37,17 +37,33 @@ const notify = () => {
   listeners.forEach((listener) => listener(cache));
 };
 
-export const unlockAchievement = (id) => {
-  if (!ACHIEVEMENTS.some((item) => item.id === id)) return;
-  const current = getCache();
-  if (current.includes(id)) return;
-  cache = [...current, id];
+const persist = () => {
   try {
     window.localStorage.setItem(STORAGE_KEY, JSON.stringify(cache));
   } catch {
     // storage unavailable; keep in-memory only
   }
   notify();
+};
+
+export const unlockAchievement = (id) => {
+  if (!ACHIEVEMENTS.some((item) => item.id === id)) return;
+  const current = getCache();
+  if (current.includes(id)) return;
+  cache = [...current, id];
+  persist();
+};
+
+export const lockAchievement = (id) => {
+  const current = getCache();
+  if (!current.includes(id)) return;
+  cache = current.filter((item) => item !== id);
+  persist();
+};
+
+export const toggleAchievement = (id) => {
+  if (getCache().includes(id)) lockAchievement(id);
+  else unlockAchievement(id);
 };
 
 export const useAchievements = () => {
@@ -63,6 +79,8 @@ export const useAchievements = () => {
   }, []);
 
   const unlock = useCallback((id) => unlockAchievement(id), []);
+  const lock = useCallback((id) => lockAchievement(id), []);
+  const toggle = useCallback((id) => toggleAchievement(id), []);
 
-  return { unlocked, total: ACHIEVEMENTS.length, unlock, achievements: ACHIEVEMENTS };
+  return { unlocked, total: ACHIEVEMENTS.length, unlock, lock, toggle, achievements: ACHIEVEMENTS };
 };

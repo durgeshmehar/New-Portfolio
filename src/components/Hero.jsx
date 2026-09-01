@@ -59,6 +59,7 @@ const Hero = () => {
 
   return (
     <section className="hero-section relative isolate min-h-[100svh] overflow-hidden px-6 pb-16 pt-32 sm:px-12 lg:px-16 lg:pt-40">
+      <span className="hash-span" id="hero">&nbsp;</span>
       <div className="hero-grid" aria-hidden="true" />
       <div className="hero-orb hero-orb-one" aria-hidden="true" />
       <div className="hero-orb hero-orb-two" aria-hidden="true" />
