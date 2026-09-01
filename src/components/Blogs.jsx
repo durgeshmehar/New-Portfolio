@@ -1,87 +1,107 @@
 "use client";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { styles } from "../styles";
 import { SectionWrapper } from "../hoc";
 import { textVariant, slideIn } from "../utils/motion";
-import { blogs } from "../constants";
-import { cn } from "../utils/cn";
-import { profile_blog } from "../assets";
+import { fetchPublishedPosts } from "../lib/blogService";
+import { externalBlogs } from "../constants";
 
-function CardDemo({ title, description, bloglink, tags, image }) {
-  return (
-    <motion.div variants={slideIn("left", "tween", 0, 0.8)} className="">
-      <div className="max-w-xs md:max-w-sm group/card text-left">
-        <a href={bloglink} target="_blank">
-          <div
-            className={cn(
-              " cursor-pointer relative card h-96 md:h-[50vh] rounded-md shadow-3xl  max-w-xs md:max-w-sm mx-auto backgroundImage flex flex-col justify-between p-4 bg-cover"
-            )}
-            style={{
-              backgroundImage: `url(${image})`,
-            }}
-          >
-            <div className="absolute w-full h-full top-0 left-0 transition duration-300 group-hover/card:bg-black opacity-60"></div>
-            <div className="flex flex-row items-center space-x-4 z-10">
-              <img
-                height="120"
-                width="150"
-                alt="Avatar"
-                src={profile_blog}
-                className="bg-blue-500 h-14 w-14 rounded-full  object-cover"
-              />
-              <div className="flex flex-col">
-                <p className="font-normal text-lg text-gray-50 relative z-10">
-                  Durgesh Mehar
-                </p>
-                <p className="text-md text-gray-400">2 min read</p>
-              </div>
-            </div>
-            <div className="text content">
-              <h1 className="font-extrabold text-xl md:text-2xl text-cyan-300 relative z-10">
-                {title}
-              </h1>
-              <p className="font-normal text-base text-gray-300 relative z-10 my-4">
-                {description}
-              </p>
-              <div className="px-0 text-center flex flex-wrap gap-2">
-                {tags.map((tag) => (
-                  <p key={` ${name}-${tag.name}} className={text-[16px] `}>
-                    #
-                    <span className={` text-[17px] ${tag.color} `}>
-                      {tag.name}&nbsp;
-                    </span>
-                  </p>
-                ))}
-              </div>
-            </div>
-          </div>
-        </a>
-      </div>
-    </motion.div>
-  );
-}
+const HOME_TEASER_LIMIT = 4;
+
+const formatDate = (value) => {
+  const d = value?.toDate ? value.toDate() : value ? new Date(value) : null;
+  if (!d) return "Undated";
+  return d.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+};
+
+const sortKey = (value) => {
+  const d = value?.toDate ? value.toDate() : value ? new Date(value) : null;
+  return d ? d.getTime() : 0;
+};
+
+const JournalRow = ({ title, date, href, external }) => (
+  <motion.div variants={slideIn("up", "tween", 0, 0.4)}>
+    <Link
+      to={href}
+      className="group grid grid-cols-[6.5rem_1fr] sm:grid-cols-[8rem_1fr] gap-4 py-4 border-b border-white/10 items-baseline"
+    >
+      <span className="text-secondary text-sm font-mono">{date}</span>
+      <span className="flex items-center gap-2 min-w-0">
+        <h3 className="text-white font-semibold group-hover:text-cyan-300 transition-colors truncate">
+          {title}
+        </h3>
+        {external && (
+          <span className="text-[10px] uppercase tracking-wider text-secondary border border-white/20 rounded-full px-2 py-0.5 shrink-0">
+            External
+          </span>
+        )}
+      </span>
+    </Link>
+  </motion.div>
+);
 
 const Blogs = () => {
-  return (
-    <div className="max-w-6xl md:mt-0 overflow-hidden mx-auto md:px-8 w-full">
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  useEffect(() => {
+    fetchPublishedPosts()
+      .then(setPosts)
+      .catch(() => setPosts([]))
+      .finally(() => setLoading(false));
+  }, []);
+
+  const entries = [
+    ...posts.map((post) => ({
+      key: post.id,
+      title: post.title,
+      dateValue: post.createdAt,
+      href: `/blog/${post.slug}`,
+    })),
+    ...externalBlogs.map((post) => ({
+      key: post.key,
+      title: post.title,
+      dateValue: post.date,
+      href: `/blog/external/${post.key}`,
+      external: true,
+    })),
+  ].sort((a, b) => sortKey(b.dateValue) - sortKey(a.dateValue));
+
+  const visible = entries.slice(0, HOME_TEASER_LIMIT);
+  const hasMore = entries.length > HOME_TEASER_LIMIT;
+
+  return (
+    <div className="max-w-3xl mx-auto md:px-8 w-full">
       <motion.div variants={textVariant()}
        className="flex flex-col justify-center items-center">
-        <p className={styles.sectionSubText}>How I&apos;m share knowledge</p>
+        <p className={styles.sectionSubText}>Notes, resources & things I&apos;m learning</p>
         <h2 className={`${styles.sectionHeadText} blue-pink-gradient-text `}>
-          Blogs
+          Journal
         </h2>
       </motion.div>
 
-      <div
-        className={`mx-auto w-[90vw] md:w-full overflow-x-scroll scrollbar flex md:justify-center md:items-center mt-10 pb-4 gap-8 text-center`}
-      >
-        {blogs.map((blog, index) => (
-          <div key={blog.title} className={`min-w-[50vw] md:min-w-[10vw] flex-shrink-0`}>
-            <CardDemo key={blog.title} index={index} {...blog} />
-          </div>
+      {!loading && entries.length === 0 && (
+        <p className="text-center text-secondary mt-10">New entries coming soon.</p>
+      )}
+
+      <div className="mt-10">
+        {visible.map((entry) => (
+          <JournalRow key={entry.key} {...entry} date={formatDate(entry.dateValue)} />
         ))}
       </div>
+
+      {entries.length > 0 && (
+        <div className="flex justify-center mt-10">
+          <Link
+            to="/blog"
+            className="border border-white/30 hover:border-cyan-300 hover:text-cyan-300 text-white py-2 px-8 rounded-full font-semibold transition-all duration-300"
+          >
+            {hasMore ? "View full journal" : "Go to Journal"}
+          </Link>
+        </div>
+      )}
     </div>
   );
 };
