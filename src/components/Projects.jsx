@@ -22,49 +22,39 @@ const Projects = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  const filteredProjects = toggle === "All" 
-    ? (isMobile ? projects.slice(0, -1) : projects) 
+  const filteredProjects = toggle === "All"
+    ? (isMobile ? projects.slice(0, -1) : projects)
     : projects.filter(project => project.category === toggle);
 
   return (
-    <>
-      <div className="max-w-6xl mt-6 mx-auto md:px-8 text-center flex flex-col justify-center items-center">
-        <motion.div variants={textVariant()}>
-          <p className={`${styles.sectionSubText} `}>My work</p>
-          <h2 className={`${styles.sectionHeadText} blue-pink-gradient-text`}>
-            Projects
-          </h2>
-        </motion.div>
+    <div className="max-w-6xl mt-6 mx-auto md:px-8 text-center flex flex-col justify-center items-center">
+      <motion.div variants={textVariant()}>
+        <p className={`${styles.sectionSubText} `}>My work</p>
+        <h2 className={`${styles.sectionHeadText} blue-pink-gradient-text`}>
+          Projects
+        </h2>
+      </motion.div>
 
-        <div className="relative border violet-gradient overflow-hidden mt-8 w-fit  mx-auto flex flex-nowrap justify-start items-start rounded-xl">
-          {navlist.map((item, index) => (
-            <div
-              key={index}
-              className={`h-14 p-4 cursor-pointer hover:bg-black ${
-                index === 3 ? "" : "border-r-2"
-              } 
-             ${toggle === item ? "bg-violet-900 font-bold" : "hover:bg-black"} `
-            }
-              onClick={() => {
-                setToggle(item);
-              }}
-            >
-              <p className="h-full text-base flex justify-center items-center">
-                {item}
-              </p>
-            </div>
-          ))}
-        </div>
-
-        <div className="w-[90%] mt-2 md:mt-11 md:w-full gap-12  flex flex-wrap justify-center items-center ">
-          {toggle === "All" ? (
-            <ProjectHoverEffect projects={filteredProjects} />
-          ) : (
-            <ProjectHoverEffect projects={filteredProjects} />
-          )}
-        </div>
+      <div className="flex flex-wrap gap-2 justify-center mt-8">
+        {navlist.map((item) => (
+          <button
+            key={item}
+            onClick={() => setToggle(item)}
+            className={`px-5 py-2 rounded-full text-sm font-semibold transition-colors duration-200 border ${
+              toggle === item
+                ? "bg-white/10 border-white/30 text-white"
+                : "border-white/10 text-secondary hover:text-white hover:border-white/20"
+            }`}
+          >
+            {item}
+          </button>
+        ))}
       </div>
-    </>
+
+      <div className="w-[90%] mt-2 md:mt-11 md:w-full gap-12 flex flex-wrap justify-center items-center">
+        <ProjectHoverEffect projects={filteredProjects} />
+      </div>
+    </div>
   );
 };
 

@@ -1,5 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 import flattenColorPalette from 'tailwindcss/lib/util/flattenColorPalette';
+import typography from '@tailwindcss/typography';
 
 export default {
   content: ["./src/**/*.{js,jsx}"],
@@ -51,6 +52,7 @@ export default {
         },
       });
     },
+    typography,
   ],
 };
 

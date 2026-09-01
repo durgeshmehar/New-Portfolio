@@ -1,5 +1,5 @@
 import { styles } from "../styles";
-import { profile, blob } from "../assets";
+import { profile, profileWebp, blob } from "../assets";
 import { github, linkedin, gmail } from "../assets";
 import { Link } from "react-router-dom";
 import { Button } from "./effects/moving-border";
@@ -22,8 +22,8 @@ const Hero = () => {
               <span className="blue-pink-gradient-text">Durgesh</span>
             </h1>
             <p className={`${styles.heroSubText} mt-2 text-white-100`}>
-              I build efficient backends <br className="sm:block hidden" />
-              and web applications
+              I build scalable backends <br className="sm:block hidden" />
+              and distributed systems
             </p>
 
             {/* Buttons Section */}
@@ -53,7 +53,7 @@ const Hero = () => {
                 </a>
                 
                 <Link
-                  to="https://github.com/durgeshmehar"
+                  to="https://github.com/durgeshmehar-dev"
                   target="_blank"
                   className="violet-gradient text-white py-1 px-3 md:py-2 md:px-4 rounded-lg md:rounded-full flex items-center justify-center hover:bg-gray-700 transition duration-300 transform "
                 >
@@ -77,13 +77,18 @@ const Hero = () => {
           <div className="w-[50%] relative ml-auto">
             <img
               src={blob}
+              loading="lazy"
               className="w-[100%] md:w-[70%] top-0 right-0 absolute  object-cover"
             />
-            <img
-              src={profile}
-              alt="Profile"
-              className="absolute mx-auto w-[90%] h-[24vh] xs:w-[100%] xs:h-[30vh] sm:h-[35vh] md:w-[70%] md:h-[40vh] lg:h-[42vh] top-0 right-0  object-contain rounded-sm"
-            />
+            <picture>
+              <source srcSet={profileWebp} type="image/webp" />
+              <img
+                src={profile}
+                alt="Profile"
+                fetchPriority="high"
+                className="absolute mx-auto w-[90%] h-[24vh] xs:w-[100%] xs:h-[30vh] sm:h-[35vh] md:w-[70%] md:h-[40vh] lg:h-[42vh] top-0 right-0  object-contain rounded-sm"
+              />
+            </picture>
           </div>
         </div>
       </div>
