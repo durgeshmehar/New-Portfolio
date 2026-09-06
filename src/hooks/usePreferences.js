@@ -17,9 +17,8 @@ export const FONTS = [
   { id: "grotesk", label: "Grotesk", stack: '"Space Grotesk", "Inter", sans-serif' },
 ];
 
-// "Constellation" is the permanent, non-removable ambient effect — it has no
-// "None" entry any more, so the chip row always has an active selection.
 export const EFFECTS = [
+  { id: "none", label: "None" },
   { id: "constellation", label: "Constellation" },
   { id: "snow", label: "Snow" },
   { id: "rain", label: "Rain" },
@@ -54,7 +53,7 @@ export const NAV_ORIENTATIONS = [
 export const DEFAULT_PREFERENCES = {
   accent: "violet",
   font: "mono",
-  effect: "constellation",
+  effect: "none",
   cardStyle: "sharp",
   viewMode: "cinematic",
   navOrientation: "vertical",
