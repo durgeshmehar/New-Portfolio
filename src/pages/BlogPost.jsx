@@ -15,6 +15,10 @@ import {
   markPostLiked,
 } from "../lib/blogService";
 
+// Stable across renders so framer-motion never sees a new variants object
+// identity while unrelated state (like the comment form) updates.
+const postVariants = fadeIn("up", "tween", 0, 0.6);
+
 const formatDate = (timestamp) => {
   if (!timestamp?.toDate) return "";
   return timestamp.toDate().toLocaleDateString("en-US", {
@@ -24,6 +28,74 @@ const formatDate = (timestamp) => {
   });
 };
 
+// Owns its own form state so typing a comment only re-renders this
+// subtree, not the whole post (and never touches the Mermaid diagrams
+// rendered above it in PostContent).
+const CommentSection = ({ postId, comments, onCommented }) => {
+  const [commentForm, setCommentForm] = useState({ name: "", text: "" });
+  const [submitting, setSubmitting] = useState(false);
+
+  const handleCommentSubmit = async (e) => {
+    e.preventDefault();
+    if (!commentForm.name.trim() || !commentForm.text.trim()) return;
+    setSubmitting(true);
+    try {
+      await addComment(postId, {
+        name: commentForm.name.trim(),
+        text: commentForm.text.trim(),
+      });
+      await onCommented();
+      setCommentForm({ name: "", text: "" });
+    } finally {
+      setSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="mt-14 border-t border-white/20 pt-8">
+      <h3 className="text-xl font-bold mb-6">Comments ({comments.length})</h3>
+
+      <form onSubmit={handleCommentSubmit} className="flex flex-col gap-4 mb-10">
+        <input
+          type="text"
+          placeholder="Your name"
+          value={commentForm.name}
+          onChange={(e) => setCommentForm((f) => ({ ...f, name: e.target.value }))}
+          className="bg-tertiary py-3 px-4 placeholder:text-secondary text-white rounded-lg outline-none border border-violet-800 focus:ring-1 focus:ring-violet-800"
+          required
+        />
+        <textarea
+          rows={3}
+          placeholder="Add a comment..."
+          value={commentForm.text}
+          onChange={(e) => setCommentForm((f) => ({ ...f, text: e.target.value }))}
+          className="bg-tertiary py-3 px-4 placeholder:text-secondary text-white rounded-lg outline-none border border-violet-800 focus:ring-1 focus:ring-violet-800"
+          required
+        />
+        <button
+          type="submit"
+          disabled={submitting}
+          className="self-start bg-gradient-to-r from-indigo-600 to-fuchsia-600 hover:from-indigo-500 hover:to-fuchsia-600 text-white py-2 px-6 rounded-lg font-semibold disabled:opacity-60"
+        >
+          {submitting ? "Posting..." : "Post Comment"}
+        </button>
+      </form>
+
+      <div className="flex flex-col gap-6">
+        {comments.map((c) => (
+          <div key={c.id} className="border-b border-white/10 pb-4">
+            <p className="font-semibold text-cyan-300">{c.name}</p>
+            <p className="text-gray-300 mt-1">{c.text}</p>
+          </div>
+        ))}
+        {comments.length === 0 && (
+          <p className="text-secondary">Be the first to comment.</p>
+        )}
+      </div>
+    </div>
+  );
+};
+
 const BlogPost = () => {
   const { slug } = useParams();
   const [post, setPost] = useState(null);
@@ -31,8 +103,6 @@ const BlogPost = () => {
   const [loading, setLoading] = useState(true);
   const [notFound, setNotFound] = useState(false);
   const [liked, setLiked] = useState(false);
-  const [commentForm, setCommentForm] = useState({ name: "", text: "" });
-  const [submitting, setSubmitting] = useState(false);
 
   useEffect(() => {
     let active = true;
@@ -67,21 +137,10 @@ const BlogPost = () => {
     }
   };
 
-  const handleCommentSubmit = async (e) => {
-    e.preventDefault();
-    if (!post || !commentForm.name.trim() || !commentForm.text.trim()) return;
-    setSubmitting(true);
-    try {
-      await addComment(post.id, {
-        name: commentForm.name.trim(),
-        text: commentForm.text.trim(),
-      });
-      const postComments = await fetchComments(post.id);
-      setComments(postComments);
-      setCommentForm({ name: "", text: "" });
-    } finally {
-      setSubmitting(false);
-    }
+  const refreshComments = async () => {
+    if (!post) return;
+    const postComments = await fetchComments(post.id);
+    setComments(postComments);
   };
 
   if (loading) {
@@ -105,7 +164,7 @@ const BlogPost = () => {
 
   return (
     <motion.div
-      variants={fadeIn("up", "tween", 0, 0.6)}
+      variants={postVariants}
       initial="hidden"
       animate="show"
       className="max-w-3xl mx-auto px-6 pt-[140px] pb-[15vh]"
@@ -153,49 +212,7 @@ const BlogPost = () => {
         {post.likeCount || 0} {post.likeCount === 1 ? "like" : "likes"}
       </button>
 
-      <div className="mt-14 border-t border-white/20 pt-8">
-        <h3 className="text-xl font-bold mb-6">
-          Comments ({comments.length})
-        </h3>
-
-        <form onSubmit={handleCommentSubmit} className="flex flex-col gap-4 mb-10">
-          <input
-            type="text"
-            placeholder="Your name"
-            value={commentForm.name}
-            onChange={(e) => setCommentForm((f) => ({ ...f, name: e.target.value }))}
-            className="bg-tertiary py-3 px-4 placeholder:text-secondary text-white rounded-lg outline-none border border-violet-800 focus:ring-1 focus:ring-violet-800"
-            required
-          />
-          <textarea
-            rows={3}
-            placeholder="Add a comment..."
-            value={commentForm.text}
-            onChange={(e) => setCommentForm((f) => ({ ...f, text: e.target.value }))}
-            className="bg-tertiary py-3 px-4 placeholder:text-secondary text-white rounded-lg outline-none border border-violet-800 focus:ring-1 focus:ring-violet-800"
-            required
-          />
-          <button
-            type="submit"
-            disabled={submitting}
-            className="self-start bg-gradient-to-r from-indigo-600 to-fuchsia-600 hover:from-indigo-500 hover:to-fuchsia-600 text-white py-2 px-6 rounded-lg font-semibold disabled:opacity-60"
-          >
-            {submitting ? "Posting..." : "Post Comment"}
-          </button>
-        </form>
-
-        <div className="flex flex-col gap-6">
-          {comments.map((c) => (
-            <div key={c.id} className="border-b border-white/10 pb-4">
-              <p className="font-semibold text-cyan-300">{c.name}</p>
-              <p className="text-gray-300 mt-1">{c.text}</p>
-            </div>
-          ))}
-          {comments.length === 0 && (
-            <p className="text-secondary">Be the first to comment.</p>
-          )}
-        </div>
-      </div>
+      <CommentSection postId={post.id} comments={comments} onCommented={refreshComments} />
     </motion.div>
   );
 };

@@ -88,7 +88,7 @@ const BlogList = () => {
   const hasAnyPosts = entries.length > 0;
 
   return (
-    <div className="max-w-3xl mx-auto md:px-8 w-full pt-[140px] pb-[15vh] px-6">
+    <div className="max-w-3xl md:max-w-6xl mx-auto md:px-8 w-full pt-[140px] pb-[15vh] px-6">
       <motion.div
         variants={textVariant()}
         initial="hidden"
@@ -117,7 +117,7 @@ const BlogList = () => {
         </p>
       )}
 
-      <div className="mt-8">
+      <div className="mt-8 md:grid md:grid-cols-2 md:gap-x-10">
         {entries.map((entry) => (
           <JournalEntry
             key={entry.key}
