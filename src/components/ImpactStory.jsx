@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaArrowRight, FaCreditCard, FaFileWaveform, FaMagnifyingGlass, FaSitemap } from "react-icons/fa6";
+import { useLensCopy } from "../hooks/useLensCopy";
 
 const featuredWork = [
   {
@@ -36,32 +37,39 @@ const featuredWork = [
   },
 ];
 
-const ImpactStory = () => (
-  <section id="impact" className="portfolio-section portfolio-section-tight">
-    <div className="mx-auto max-w-7xl">
-      <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-        <div className="max-w-3xl">
-          <p className="section-eyebrow">WHAT I’VE BEEN BUILDING</p>
-          <h2 className="section-title mt-4">Work with real stakes, told in the order that matters.</h2>
-        </div>
-        <Link to="/experience" className="text-link shrink-0">Read the full experience <FaArrowRight aria-hidden="true" /></Link>
-      </div>
+const ImpactStory = () => {
+  const { eyebrow, title: sectionTitle } = useLensCopy("impact", {
+    eyebrow: "WHAT I’VE BEEN BUILDING",
+    title: "Work with real stakes, told in the order that matters.",
+  });
 
-      <div className="work-sequence mt-12">
-        {featuredWork.map(({ number, icon: Icon, title, label, impact, description }) => (
-          <article key={title} className="work-sequence-item">
-            <div className="work-sequence-index"><span>{number}</span><Icon aria-hidden="true" /></div>
-            <div>
-              <p className="work-sequence-label">{label}</p>
-              <h3>{title}</h3>
-              <p className="work-sequence-description">{description}</p>
-            </div>
-            <p className="work-sequence-impact">{impact}</p>
-          </article>
-        ))}
+  return (
+    <section id="impact" className="portfolio-section portfolio-section-tight">
+      <div className="mx-auto max-w-7xl">
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-3xl">
+            <p className="section-eyebrow">{eyebrow}</p>
+            <h2 className="section-title mt-4">{sectionTitle}</h2>
+          </div>
+          <Link to="/experience" className="text-link shrink-0">Read the full experience <FaArrowRight aria-hidden="true" /></Link>
+        </div>
+
+        <div className="work-sequence mt-12">
+          {featuredWork.map(({ number, icon: Icon, title, label, impact, description }) => (
+            <article key={title} className="work-sequence-item">
+              <div className="work-sequence-index"><span>{number}</span><Icon aria-hidden="true" /></div>
+              <div>
+                <p className="work-sequence-label">{label}</p>
+                <h3>{title}</h3>
+                <p className="work-sequence-description">{description}</p>
+              </div>
+              <p className="work-sequence-impact">{impact}</p>
+            </article>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 export default ImpactStory;

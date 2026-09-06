@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { SectionWrapper } from "../hoc";
 import { textVariant, fadeIn } from "../utils/motion";
 import { aboutIntro, aboutPillars } from "../constants";
+import { useLensCopy } from "../hooks/useLensCopy";
 import {
   ArchitectureIllustration,
   WhitepaperIllustration,
@@ -15,11 +16,17 @@ const illustrationMap = {
   foundation: FoundationIllustration,
 };
 
-const AboutMeTeaser = () => (
+const AboutMeTeaser = () => {
+  const { eyebrow, title } = useLensCopy("about", {
+    eyebrow: "BEYOND THE CODE",
+    title: "What drives me",
+  });
+
+  return (
   <section className="portfolio-section mx-auto max-w-7xl text-center">
     <motion.div variants={textVariant()}>
-      <p className="section-eyebrow">BEYOND THE CODE</p>
-      <h2 className="section-title mt-4">What drives me</h2>
+      <p className="section-eyebrow">{eyebrow}</p>
+      <h2 className="section-title mt-4">{title}</h2>
     </motion.div>
 
     <motion.p
@@ -47,7 +54,8 @@ const AboutMeTeaser = () => (
 
     <Link to="/about" className="text-link mt-10">Read more about me</Link>
   </section>
-);
+  );
+};
 
 const WrappedAboutMeTeaser = SectionWrapper(AboutMeTeaser, "about-me");
 

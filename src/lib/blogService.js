@@ -92,10 +92,10 @@ export async function fetchPostBySlug(slug) {
   return { id: d.id, ...d.data() };
 }
 
-export async function createPost({ title, excerpt, content, tags, coverImageUrl }) {
+export async function createPost({ title, excerpt, content, tags, coverImageUrl, slug }) {
   return addDoc(postsRef(), {
     title,
-    slug: slugify(title),
+    slug: slug ? slugify(slug) : slugify(title),
     excerpt,
     content,
     tags,
@@ -108,7 +108,7 @@ export async function createPost({ title, excerpt, content, tags, coverImageUrl 
   });
 }
 
-export async function updatePost(postId, { title, excerpt, content, tags, published, coverImageUrl }) {
+export async function updatePost(postId, { title, excerpt, content, tags, published, coverImageUrl, slug }) {
   const updates = {
     excerpt,
     content,
@@ -117,10 +117,9 @@ export async function updatePost(postId, { title, excerpt, content, tags, publis
     coverImageUrl: coverImageUrl || null,
     updatedAt: serverTimestamp(),
   };
-  if (title) {
-    updates.title = title;
-    updates.slug = slugify(title);
-  }
+  if (title) updates.title = title;
+  if (slug) updates.slug = slugify(slug);
+  else if (title) updates.slug = slugify(title);
   return updateDoc(doc(requireDb(), "posts", postId), updates);
 }
 
