@@ -1,11 +1,9 @@
 import { useRef, useState } from "react";
-import { FaArrowDown, FaArrowRight, FaGithub, FaLinkedin } from "react-icons/fa6";
+import { FaArrowRight, FaGithub, FaLinkedin } from "react-icons/fa6";
 import { HiOutlineMail } from "react-icons/hi";
 import { profileWebp } from "../assets";
 import { downloadCvLink } from "../constants";
 import { useLivingPortrait } from "../hooks/useLivingPortrait";
-import { useLens } from "../hooks/useLens";
-import { LENSES } from "../constants/lenses";
 
 const SPARK_MESSAGES = [
   "Okay, you found the fun bit.",
@@ -13,15 +11,6 @@ const SPARK_MESSAGES = [
   "That's a stable click rate.",
   "Nice—no rate limit here.",
 ];
-
-// The old markup pointed at "#journey", which never existed anywhere — so the
-// button silently did nothing. Scroll to the work section instead.
-const scrollToWork = () => {
-  const target = document.getElementById("impact");
-  if (!target) return;
-  const reduceMotion = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
-  target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth", block: "start" });
-};
 
 const timeGreeting = () => {
   const hour = new Date().getHours();
@@ -33,7 +22,6 @@ const timeGreeting = () => {
 };
 
 const Hero = () => {
-  const [lens, setLens] = useLens();
   const [sparkCount, setSparkCount] = useState(0);
   const [spark, setSpark] = useState(null);
   const resetTimer = useRef(null);
@@ -70,33 +58,11 @@ const Hero = () => {
           </p>
 
           <div className="mt-9 flex flex-wrap items-center gap-3">
-            <button type="button" className="hero-primary-action" onClick={scrollToWork}>
-              Start the journey <FaArrowDown aria-hidden="true" />
-            </button>
             <a className="hero-secondary-action" href={downloadCvLink} target="_blank" rel="noreferrer">
               View resume <FaArrowRight aria-hidden="true" />
             </a>
           </div>
 
-          <div className="mt-11">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">Choose your lens</p>
-            <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label="Choose how to explore this portfolio">
-              {Object.entries(LENSES).map(([key, item]) => (
-                <button
-                  key={key}
-                  type="button"
-                  aria-pressed={lens === key}
-                  onClick={() => setLens(key)}
-                  className={`lens-button ${lens === key ? "lens-button-active" : ""}`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
-            <p className="mt-3 min-h-12 max-w-xl text-sm leading-relaxed text-slate-400" aria-live="polite">
-              {LENSES[lens].copy}
-            </p>
-          </div>
         </div>
 
         <div className="relative mx-auto w-full max-w-md lg:-mt-10 lg:max-w-none">

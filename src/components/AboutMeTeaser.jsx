@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { SectionWrapper } from "../hoc";
 import { textVariant, fadeIn } from "../utils/motion";
 import { aboutIntro, aboutPillars } from "../constants";
-import { useLensCopy } from "../hooks/useLensCopy";
 import {
   ArchitectureIllustration,
   WhitepaperIllustration,
@@ -17,10 +16,8 @@ const illustrationMap = {
 };
 
 const AboutMeTeaser = () => {
-  const { eyebrow, title } = useLensCopy("about", {
-    eyebrow: "BEYOND THE CODE",
-    title: "What drives me",
-  });
+  const eyebrow = "BEYOND THE CODE";
+  const title = "What drives me";
 
   return (
   <section className="portfolio-section mx-auto max-w-7xl text-center">

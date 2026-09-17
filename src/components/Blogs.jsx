@@ -6,7 +6,6 @@ import { SectionWrapper } from "../hoc";
 import { textVariant, slideIn } from "../utils/motion";
 import { fetchPublishedPosts } from "../lib/blogService";
 import { externalBlogs } from "../constants";
-import { useLensCopy } from "../hooks/useLensCopy";
 
 const HOME_TEASER_LIMIT = 8;
 
@@ -21,13 +20,13 @@ const sortKey = (value) => {
   return d ? d.getTime() : 0;
 };
 
-const JournalRow = ({ title, date, href, external }) => (
+const BlogRow = ({ title, date, href, external }) => (
   <motion.div variants={slideIn("up", "tween", 0, 0.4)}>
     <Link
       to={href}
       className="group grid grid-cols-[6.5rem_1fr] sm:grid-cols-[7rem_1fr] gap-4 py-4 border-b border-white/10 items-baseline"
     >
-      <span className="text-secondary text-sm font-mono">{date}</span>
+      <span className="text-secondary text-base font-mono">{date}</span>
       <span className="flex items-center gap-2 min-w-0">
         <h3 className="text-white font-semibold group-hover:text-cyan-300 transition-colors truncate">
           {title}
@@ -45,10 +44,8 @@ const JournalRow = ({ title, date, href, external }) => (
 const Blogs = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const { eyebrow, title } = useLensCopy("journal", {
-    eyebrow: "NOTES, RESOURCES & THINGS I’M LEARNING",
-    title: "Journal",
-  });
+  const eyebrow = "NOTES, RESOURCES & THINGS I’M LEARNING";
+  const title = "Blog";
 
   useEffect(() => {
     fetchPublishedPosts()
@@ -93,7 +90,7 @@ const Blogs = () => {
 
       <div className="mt-10 grid grid-cols-1 sm:grid-cols-2 gap-x-10">
         {visible.map((entry) => (
-          <JournalRow key={entry.key} {...entry} date={formatDate(entry.dateValue)} />
+          <BlogRow key={entry.key} {...entry} date={formatDate(entry.dateValue)} />
         ))}
       </div>
 
@@ -103,7 +100,7 @@ const Blogs = () => {
             to="/blog"
             className="text-link"
           >
-            {hasMore ? "View full journal" : "Go to Journal"}
+            {hasMore ? "View full blog" : "Go to Blog"}
           </Link>
         </div>
       )}

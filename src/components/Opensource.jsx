@@ -2,13 +2,10 @@ import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
 import { motion } from "framer-motion";
 import { GitHubCalendar } from "react-github-calendar";
-import { useLensCopy } from "../hooks/useLensCopy";
 
 const Opensource = () => {
-  const { eyebrow, title } = useLensCopy("opensource", {
-    eyebrow: "OPEN SOURCE ACTIVITY",
-    title: "GitHub contribution",
-  });
+  const eyebrow = "OPEN SOURCE ACTIVITY";
+  const title = "GitHub contribution";
 
   return (
     <section className="portfolio-section max-w-7xl mx-auto">

@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { FaArrowRight, FaCreditCard, FaFileWaveform, FaMagnifyingGlass, FaSitemap } from "react-icons/fa6";
-import { useLensCopy } from "../hooks/useLensCopy";
 
 const featuredWork = [
   {
@@ -38,10 +37,8 @@ const featuredWork = [
 ];
 
 const ImpactStory = () => {
-  const { eyebrow, title: sectionTitle } = useLensCopy("impact", {
-    eyebrow: "WHAT I’VE BEEN BUILDING",
-    title: "Work with real stakes, told in the order that matters.",
-  });
+  const eyebrow = "WHAT I’VE BEEN BUILDING";
+  const sectionTitle = "Work with real stakes, told in the order that matters.";
 
   return (
     <section id="impact" className="portfolio-section portfolio-section-tight">
