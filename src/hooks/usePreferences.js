@@ -32,17 +32,11 @@ export const CARD_STYLES = [
   { id: "soft", label: "Soft", radius: "1.75rem", borderWidth: "0px" },
 ];
 
-// View modes — alternate ways to browse the whole site, not just tint/spacing.
-// Editorial/Bento/Cinematic are pure visual redesigns of the same homepage
-// content (a CSS layer, not separate pages) — Focus mode and Map view were
-// replaced with these after user feedback that the old modes were novelties
-// nobody actually used.
+// View modes — alternate ways to browse the homepage. Cinematic is a pure
+// CSS redesign of the same content (a layout layer, not a separate page).
 export const VIEW_MODES = [
   { id: "normal", label: "Normal" },
-  { id: "editorial", label: "Editorial" },
-  { id: "bento", label: "Bento grid" },
   { id: "cinematic", label: "Cinematic" },
-  { id: "terminal", label: "Terminal mode" },
 ];
 
 export const NAV_ORIENTATIONS = [
@@ -52,7 +46,7 @@ export const NAV_ORIENTATIONS = [
 
 export const DEFAULT_PREFERENCES = {
   accent: "violet",
-  font: "mono",
+  font: "grotesk",
   effect: "none",
   cardStyle: "sharp",
   viewMode: "cinematic",

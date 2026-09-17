@@ -2,14 +2,11 @@ import { motion } from "framer-motion";
 import { SectionWrapper } from "../hoc";
 import { textVariant } from "../utils/motion";
 import { skills } from "../constants";
-import { useLensCopy } from "../hooks/useLensCopy";
 import StackBuilder from "./StackBuilder";
 
 const HomeHighlights = () => {
-  const { eyebrow, title } = useLensCopy("skills", {
-    eyebrow: "TOOLS I REACH FOR",
-    title: "Skills",
-  });
+  const eyebrow = "TOOLS I REACH FOR";
+  const title = "Skills";
 
   return (
     <section className="portfolio-section max-w-7xl w-full mx-auto text-center">

@@ -111,10 +111,21 @@ MermaidBlock.displayName = "MermaidBlock";
 const remarkPlugins = [remarkGfm];
 
 const markdownComponents = {
-  code({ inline, className, children, ...props }) {
+  // react-markdown v10 no longer passes an `inline` prop to this renderer —
+  // fenced code blocks arrive pre-wrapped in a <pre>, so a code node with no
+  // `language-*` className and no surrounding <pre> is the only signal left
+  // that it's inline code (like `lklj`) rather than a fenced block.
+  code({ className, children, ...props }) {
     const match = /language-(\w+)/.exec(className || "");
-    if (!inline && match && match[1] === "mermaid") {
+    if (match && match[1] === "mermaid") {
       return <MermaidBlock code={String(children).trim()} />;
+    }
+    if (!className) {
+      return (
+        <code className="md-inline-code" {...props}>
+          {children}
+        </code>
+      );
     }
     return (
       <code className={className} {...props}>

@@ -10,12 +10,9 @@ import {
   NAV_ORIENTATIONS,
   DEFAULT_PREFERENCES,
 } from "../hooks/usePreferences";
-import { useLens } from "../hooks/useLens";
-import { LENSES } from "../constants/lenses";
 
 const CustomizerPanel = () => {
   const [prefs, setPrefs] = usePreferences();
-  const [lens, setLens] = useLens();
   const [open, setOpen] = useState(false);
 
   const reset = () => {
@@ -31,23 +28,6 @@ const CustomizerPanel = () => {
             <button type="button" onClick={() => setOpen(false)} aria-label="Close">
               <FaXmark aria-hidden="true" />
             </button>
-          </div>
-
-          <div className="customizer-group">
-            <p className="customizer-label">Lens</p>
-            <div className="customizer-chip-row">
-              {Object.entries(LENSES).map(([key, item]) => (
-                <button
-                  key={key}
-                  type="button"
-                  aria-pressed={lens === key}
-                  onClick={() => setLens(key)}
-                  className={`customizer-chip ${lens === key ? "customizer-chip-active" : ""}`}
-                >
-                  {item.label}
-                </button>
-              ))}
-            </div>
           </div>
 
           <div className="customizer-group">

@@ -331,6 +331,7 @@ const PostEditor = ({ initial, onSave, onCancel, saving }) => {
   const [editorHeight, setEditorHeight] = useState(DEFAULT_EDITOR_HEIGHT);
   const [panelWidth, setPanelWidth] = useState(DEFAULT_PANEL_WIDTH);
   const viewRef = useRef(null);
+  const previewRef = useRef(null);
   const panelRef = useRef(null);
   const splitRef = useRef(null);
   const [editorPercent, setEditorPercent] = useState(68);
@@ -468,6 +469,29 @@ const PostEditor = ({ initial, onSave, onCancel, saving }) => {
     viewRef.current = view;
   }, []);
 
+  // Keeps the preview pane's scroll position proportional to the editor's,
+  // so scrolling through a long post while writing brings the matching part
+  // of the rendered preview into view automatically — no separate manual
+  // scroll needed on the preview side.
+  useEffect(() => {
+    if (!showEditor || !showPreview || !isDesktop) return undefined;
+    const editorScroller = viewRef.current?.scrollDOM;
+    const previewEl = previewRef.current;
+    if (!editorScroller || !previewEl) return undefined;
+
+    const syncFromEditor = () => {
+      const { scrollTop, scrollHeight, clientHeight } = editorScroller;
+      const range = scrollHeight - clientHeight;
+      if (range <= 0) return;
+      const fraction = scrollTop / range;
+      const previewRange = previewEl.scrollHeight - previewEl.clientHeight;
+      previewEl.scrollTop = fraction * previewRange;
+    };
+
+    editorScroller.addEventListener("scroll", syncFromEditor);
+    return () => editorScroller.removeEventListener("scroll", syncFromEditor);
+  }, [showEditor, showPreview, isDesktop, form.content]);
+
   // Built from TOOLBAR_ACTIONS so every tooltip hint has a real binding
   // behind it (and vice versa).
   const shortcutKeymap = useMemo(
@@ -536,7 +560,7 @@ const PostEditor = ({ initial, onSave, onCancel, saving }) => {
         <input
           type="text"
           placeholder="e.g. How I sped up an API from 30ms to 0.5ms"
-          title="The post headline, shown on the Journal list and at the top of the post"
+          title="The post headline, shown on the Blog list and at the top of the post"
           value={form.title}
           onChange={(e) => {
             const title = e.target.value;
@@ -569,8 +593,8 @@ const PostEditor = ({ initial, onSave, onCancel, saving }) => {
         <span className={FIELD_LABEL}>Description</span>
         <input
           type="text"
-          placeholder="One-line summary shown on the Journal list"
-          title="Short summary shown under the title on the Journal list"
+          placeholder="One-line summary shown on the Blog list"
+          title="Short summary shown under the title on the Blog list"
           value={form.excerpt}
           onChange={(e) => setForm((f) => ({ ...f, excerpt: e.target.value }))}
           className="flex-1 min-w-0 bg-primary py-3 px-4 text-white rounded-lg outline-none border border-violet-800"
@@ -724,7 +748,7 @@ const PostEditor = ({ initial, onSave, onCancel, saving }) => {
               style={isDesktop && showEditor ? { width: `${100 - editorPercent}%` } : undefined}
               className="w-full lg:pl-1 h-[50vh] lg:h-full min-w-0"
             >
-              <div className="bg-primary rounded-lg border border-white/10 p-4 h-full overflow-y-auto">
+              <div ref={previewRef} className="bg-primary rounded-lg border border-white/10 p-4 h-full overflow-y-auto">
                 <p className="text-xs uppercase tracking-wider text-secondary mb-3">
                   Live preview
                 </p>
@@ -774,7 +798,7 @@ const PostEditor = ({ initial, onSave, onCancel, saving }) => {
         <button
           type="submit"
           disabled={saving}
-          title={initial ? "Save changes to this post" : "Publish this post to the Journal"}
+          title={initial ? "Save changes to this post" : "Publish this post to the Blog"}
           className="bg-gradient-to-r from-indigo-600 to-fuchsia-600 hover:from-indigo-500 hover:to-fuchsia-600 text-white py-2 px-6 rounded-lg font-semibold disabled:opacity-60"
         >
           {saving ? "Saving..." : initial ? "Update Post" : "Publish Post"}
@@ -954,7 +978,7 @@ const BlogAdmin = () => {
               </button>
               <button
                 onClick={() => handleTogglePublish(post)}
-                title={post.published ? "Hide this post from the Journal" : "Make this post visible on the Journal"}
+                title={post.published ? "Hide this post from the Blog" : "Make this post visible on the Blog"}
                 className="text-yellow-300"
               >
                 {post.published ? "Unpublish" : "Publish"}
